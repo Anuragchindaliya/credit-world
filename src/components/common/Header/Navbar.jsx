@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import useWindowSize from "../../../hooks/useWindowSize";
 const menus = [
   {
@@ -94,16 +95,28 @@ const Navbar = () => {
                     {menus.map((item, i) => {
                       const { hasChildren, child } = item;
                       return (
-                        <li key={i} className={hasChildren ? "has-down cn-dropdown-item" : ""}>
-                          <a className={item?.className} href="index">
+                        <li
+                          key={i}
+                          className={
+                            hasChildren ? "has-down cn-dropdown-item" : ""
+                          }
+                        >
+                          <NavLink
+                            className={item?.className}
+                            to={item?.href}
+                            // style={({ isActive }) =>
+                            //   isActive ? { color: "#ffbb38" } : undefined
+                            // }
+                            preventScrollReset={true}
+                          >
                             {item?.title}
-                          </a>
+                          </NavLink>
                           {hasChildren && (
                             <ul className="dropdown">
-                              {child?.map((ci,i) => {
+                              {child?.map((ci, i) => {
                                 return (
                                   <li key={i}>
-                                    <a href={ci?.href}>{ci?.title}</a>
+                                    <Link to={ci?.href}>{ci?.title}</Link>
                                   </li>
                                 );
                               })}
@@ -159,9 +172,9 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li>
-                      <a className="contact-us" href="contact">
+                      <Link className="contact-us" to={"/contact"}>
                         Contact
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

@@ -16,7 +16,6 @@ const Home = () => {
       <HomeCta2 />
       <Services />
       <AddressCta />
-      <Footer />
     </>
   );
 };

@@ -655,6 +655,7 @@ img {
 }
 
 .header-area .credit-main-menu .classy-navbar .classynav ul li a:hover,
+.header-area .credit-main-menu .classy-navbar .classynav  ul li a.active_link,
 .header-area .credit-main-menu .classy-navbar .classynav ul li a:focus {
   color: #ffbb38;
 }

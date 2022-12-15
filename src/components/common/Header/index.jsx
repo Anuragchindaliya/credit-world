@@ -19,7 +19,6 @@ const Header = () => {
         id="sticker-sticky-wrapper"
         className={`sticky-wrapper ${!isIntersecting ? "is-sticky" : ""}`}
         style={{
-          height: 85,
           ...(!isIntersecting && { position: "fixed", width: "100%", top: 0 }),
         }}
       >
