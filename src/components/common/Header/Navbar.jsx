@@ -181,12 +181,12 @@ const Navbar = () => {
                 {/* Nav End */}
               </div>
               {/* Contact */}
-              <div className="contact">
+              {/* <div className="contact">
                 <a href="tel:+91-9654069069">
                   <img src="assets/img/core-img/call2.png" alt="" />
                   +91-9654069069
                 </a>
-              </div>
+              </div> */}
             </nav>
           </div>
         </div>

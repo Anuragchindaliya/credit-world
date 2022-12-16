@@ -40,7 +40,7 @@ const AddressCta = () => {
                   </div>
                 </div>
                 {/* Single Contact Content */}
-                <div className="single-contact-content d-flex align-items-center">
+                {/* <div className="single-contact-content d-flex align-items-center">
                   <a href="tel:+91-9654069069">
                     <div className="icon">
                       <img src="assets/img/core-img/call.png" alt="" />
@@ -52,7 +52,7 @@ const AddressCta = () => {
                     </a>
                     <span>mon-fri , 10.am - 06.pm</span>
                   </div>
-                </div>
+                </div> */}
                 {/* Single Contact Content */}
                 <div className="single-contact-content d-flex align-items-center">
                   <a href="mailto:naveenkumar@gmail.com">
