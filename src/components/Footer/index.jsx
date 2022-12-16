@@ -149,26 +149,36 @@ const Footer = () => {
             <div className="col-12">
               <div className="copywrite-content d-flex flex-wrap justify-content-between align-items-center">
                 {/* Footer Logo */}
-                <a href="index" className="footer-logo" style={{
-                      filter: "drop-shadow(-4px 4px 3px black)!important",
-                    }}>
-                  {/* <img src="assets/img/core-img/dpr.png" alt="" /> */}
-                  <h1
+                <a
+                  href="index"
+                  className="footer-logo"
+                  style={{
+                    filter: "drop-shadow(-4px 4px 3px black)!important",
+                  }}
+                >
+                  <img
+                    src="assets/img/core-img/cwLogo.png"
+                    style={{ borderRadius: "16%", backgroundColor: "white" }}
+                    alt=""
+                  />
+                  {/* <h1
                     
                   >
                     <span style={{ color: "#ffbb38" }}>Credit</span>
                     <span style={{ color: "#003679" }}>World</span>
-                  </h1>
+                  </h1> */}
                 </a>
                 {/* Copywrite Text */}
                 <p className="copywrite-text">
                   <a href="#">
                     {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-                    Copyright © All rights reserved |  Made with{" "}
-                    <i className="fa fa-heart" aria-hidden="true" /> by{" "}
+                    Copyright © All rights reserved |
+                    {/* with{" "}
+                    <i className="fa fa-heart" aria-hidden="true" />  */}
+                    Made by{" "}
                   </a>
                   <a
-                    href="https://www.facebook.com/AnnuragChindaliya"
+                    href="https://www.linkedin.com/in/anurag-chindaliya/"
                     target="_blank"
                   >
                     Anurag

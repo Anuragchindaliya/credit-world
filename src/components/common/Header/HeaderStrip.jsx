@@ -10,11 +10,11 @@ const HeaderStrip = () => {
               {/* Logo Area */}
               <div className="logo">
                 <a href="index">
-                  {/* <img src="assets/img/core-img/dpr.png" alt="" /> */}
-                  <h1>
+                  <img src="assets/img/core-img/cwLogo.png" style={{width:80}} alt="" />
+                  {/* <h1>
                     <span style={{ color: "#ffbb38" }}>Credit</span>
                     <span style={{ color: "#003679" }}>World</span>
-                  </h1>
+                  </h1> */}
                 </a>
               </div>
               {/* Top Contact Info */}
