@@ -9,8 +9,8 @@
 @import url(css/classy-nav.css);
 
 /* owl carasoul */
-@import url("https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css");
-/* @import url(css/owl.carousel.min.css); */
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"); */
+@import url(css/owl.carousel.min.css);
 
 /* footer of css version -> 3.7.2 */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css");
@@ -841,6 +841,7 @@ img {
   right: 0;
 }
 .hero-area .owl-dots .owl-dot {
+  border:none;
   width: 8px;
   height: 8px;
   background-color: #d2d2d2;
@@ -849,9 +850,11 @@ img {
 }
 .hero-area .owl-dots .owl-dot.active {
   background-color: #ffbb38;
+  border:"none"
 }
 .hero-area .owl-prev,
 .hero-area .owl-next {
+  border:none;
   position: absolute;
   width: 46px;
   height: 46px;
