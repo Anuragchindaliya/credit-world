@@ -10,7 +10,7 @@ import HomeSlider from "../components/slider/HomeSlider";
 const Home = () => {
   return (
     < >
-      {/* <HomeSlider /> */}
+      <HomeSlider />
       <HomeFeatures />
       <HomeCta />
       <HomeCta2 />

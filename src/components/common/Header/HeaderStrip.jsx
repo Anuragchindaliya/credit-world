@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HeaderStrip = () => {
   return (
@@ -9,13 +10,13 @@ const HeaderStrip = () => {
             <div className="col-12 d-flex justify-content-between">
               {/* Logo Area */}
               <div className="logo">
-                <a href="index">
+                <Link to="/">
                   <img src="assets/img/core-img/cwLogo.png" style={{width:80}} alt="" />
                   {/* <h1>
                     <span style={{ color: "#ffbb38" }}>Credit</span>
                     <span style={{ color: "#003679" }}>World</span>
                   </h1> */}
-                </a>
+                </Link>
               </div>
               {/* Top Contact Info */}
               <div className="top-contact-info d-flex align-items-center">
