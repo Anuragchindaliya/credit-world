@@ -12,8 +12,8 @@ const Contact = ({ title }) => {
             <div className="col-12 col-lg-6">
               <div className="single-contact-area mb-100">
                 {/* Logo */}
-                <a href="#" className="d-block mb-50">
-                  <img src="assets/img/core-img/logo.png" alt="" />
+                <a href="#" className="d-block mb-30">
+                  <img src="assets/img/core-img/cwLogo.png" width={200} alt="" />
                 </a>
                 <p style={{ textAlign: "justify" }}>
                   Didn't find what you were looking for, Need help to get a
