@@ -1,0 +1,46 @@
+
+    .cards-list{
+        position:relative;
+    }
+    .cards-list li:before {
+        content: '\2713';
+        display: inline-block;
+        margin-bottom: 10px;
+        position: absolute;
+        left: -2px;
+        color: #003679;
+        font-weight: 900;
+    }
+
+    .single-card {
+        flex-direction: row;
+        margin-bottom: 15px;
+    }
+
+    .single-card .active {
+        border-bottom: #0056b3 2px solid;
+    }
+
+    .tab-content .tab-pane {
+        padding-bottom: 15px;
+    }
+
+    @media (min-width: 576px) {
+
+        .modal-dialog {
+            max-width: 75%;
+            margin: 1.75rem auto;
+        }
+    }
+
+    @media screen and (max-width:768px) {
+        .modalcard {
+            flex-direction: column !important;
+        }
+    }
+
+    @media screen and (max-width:961px) {
+        .single-card {
+            flex-direction: column;
+        }
+    }

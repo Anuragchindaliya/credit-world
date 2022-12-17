@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Menu = ({ item }) => {
-  const { hasChildren, child, type } = item;
+  const { child, type } = item;
   const [isOpen, setOpen] = useState(false);
   return (
     <li className={type ? "megamenu-item" : "has-down cn-dropdown-item"}>

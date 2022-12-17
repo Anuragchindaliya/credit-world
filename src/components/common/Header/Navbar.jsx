@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import useWindowSize from "../../../hooks/useWindowSize";
 import Menu from "./Menu";
 const menus = [
@@ -33,48 +33,47 @@ const menus = [
   {
     title: "Bank list",
     className: "bank-list has-down megamenu-item",
-    href: "/",
     hasChildren: true,
     type: "mega",
     child: [
       [
         {
           title: "HDFC BANK",
-          href: "hdfc",
+          href: "bank/hdfc",
         },
         {
           title: "SBI BANK",
-          href: "sbi",
+          href: "bank/sbi",
         },
       ],
       [
         {
           title: "ICICI BANK",
-          href: "icici",
+          href: "bank/icici",
         },
         {
           title: "BANK OF BARODA",
-          href: "bob",
+          href: "bank/bob",
         },
       ],
       [
         {
           title: "INDUSIND BANK",
-          href: "indus",
+          href: "bank/indus",
         },
         {
           title: "KOTAk MAHINDRA BANK",
-          href: "kotak",
+          href: "bank/kotak",
         },
       ],
       [
         {
           title: "YES BANK",
-          href: "yes",
+          href: "bank/yes",
         },
         {
           title: "RBL BANK",
-          href: "rbl",
+          href: "bank/rbl",
         },
       ],
     ],
@@ -93,11 +92,17 @@ const menus = [
   },
 ];
 const Navbar = () => {
+  const { pathname } = useLocation();
   const [drawerShow, setDrawerShow] = useState(false);
   const { width: screenWidth } = useWindowSize();
   const handleDrawer = useCallback(() => {
     setDrawerShow((b) => !b);
   }, []);
+  useEffect(() => {
+    if (drawerShow) {
+      setDrawerShow(false);
+    }
+  }, [pathname]);
 
   return (
     <>

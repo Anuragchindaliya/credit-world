@@ -12,13 +12,13 @@ const Contact = ({ title }) => {
             <div className="col-12 col-lg-4">
               <div className="single-contact-area mb-100">
                 {/* Logo */}
-                <a href="#" className="d-block mb-30">
+                {/* <Link to="/#" className="d-block mb-30"> */}
                   <img
                     src="assets/img/core-img/cwLogo.png"
                     width={300}
                     alt=""
                   />
-                </a>
+                {/* </Link> */}
               </div>
             </div>
             {/* Single Contact Area */}
@@ -105,7 +105,7 @@ const Contact = ({ title }) => {
                     </div> */}
                     {/* Single Contact Content */}
                     <div className="single-contact-content d-flex align-items-center">
-                      <a href="mailto:umeshkumar.bankbizz@gmail.com">
+                      <a href="mailto:support@creditworld.in">
                         <div className="icon">
                           <img src="assets/img/core-img/message2.png" alt="" />
                         </div>
@@ -113,7 +113,7 @@ const Contact = ({ title }) => {
                       <div className="text">
                         <a
                           href="mailto:support@creditworld.in"
-                          title="umeshkumar.bankbizz@gmail.com"
+                          title="support@creditworld.in"
                         >
                           <p>support</p>
                           <span title="WE REPLY IN 24 HRS">
