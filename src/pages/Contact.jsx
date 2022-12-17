@@ -9,12 +9,21 @@ const Contact = ({ title }) => {
         <div className="container">
           <div className="row">
             {/* Single Contact Area */}
-            <div className="col-12 col-lg-6">
+            <div className="col-12 col-lg-4">
               <div className="single-contact-area mb-100">
                 {/* Logo */}
                 <a href="#" className="d-block mb-30">
-                  <img src="assets/img/core-img/cwLogo.png" width={200} alt="" />
+                  <img
+                    src="assets/img/core-img/cwLogo.png"
+                    width={300}
+                    alt=""
+                  />
                 </a>
+              </div>
+            </div>
+            {/* Single Contact Area */}
+            <div className="col-12 col-lg-4">
+              <div className="single-contact-area mb-100">
                 <p style={{ textAlign: "justify" }}>
                   Didn't find what you were looking for, Need help to get a
                   Credit card or reporting a lost card? Contact us for
@@ -26,9 +35,9 @@ const Contact = ({ title }) => {
               </div>
             </div>
             {/* Single Contact Area */}
-            <div className="col-12 col-lg-1">
+            {/* <div className="col-12 col-lg-4">
               <div className="single-contact-area mb-100">
-                {/* <div className="contact-advisor">
+                <div className="contact-advisor">
                   <h5>Contact an advisor</h5>
                   <div className="single-advisor d-flex align-items-center">
                     <div className="advisor-img">
@@ -54,11 +63,11 @@ const Contact = ({ title }) => {
                       </a>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
-            </div>
+            </div> */}
             {/* Single Contact Area */}
-            <div className="col-12 col-lg-5">
+            <div className="col-12 col-lg-4">
               <div className="single-contact-area mb-100">
                 <div className="contact--area contact-page">
                   {/* Contact Content */}
@@ -107,7 +116,9 @@ const Contact = ({ title }) => {
                           title="umeshkumar.bankbizz@gmail.com"
                         >
                           <p>support</p>
-                          <span title="WE REPLY IN 24 HRS">-@creditworld.in</span>
+                          <span title="WE REPLY IN 24 HRS">
+                            -@creditworld.in
+                          </span>
                         </a>
                       </div>
                     </div>

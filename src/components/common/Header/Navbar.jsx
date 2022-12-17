@@ -79,12 +79,12 @@ const menus = [
       ],
     ],
   },
-  {
-    title: "Blog",
-    className: "blog",
-    href: "/post",
-    hasChildren: false,
-  },
+  // {
+  //   title: "Blog",
+  //   className: "blog",
+  //   href: "/post",
+  //   hasChildren: false,
+  // },
   {
     title: "Contact",
     className: "contact-us",
