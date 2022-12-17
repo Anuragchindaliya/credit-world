@@ -53,7 +53,7 @@ const slides = [
     ),
     subTitle: "2 years interest",
     description: "Understand Your Credit. You generally need credit to get a bank loan.",
-    bgimg: "assets/img/bg-img/1.jpg",
+    bgimg: "assets/img/bg-img/21.jpg",
     targetLink: "/",
   },
 ];
@@ -68,7 +68,7 @@ const HomeSlider = () => {
             {/* Background Image*/}
             <div
               className="slide-bg-img bg-img bg-overlay"
-              style={{ backgroundImage: "url(assets/img/bg-img/1.jpg)" }}
+              style={{ backgroundImage: `url(${item?.bgimg})` }}
             />
             {/* Welcome Text */}
             <div className="container h-100">

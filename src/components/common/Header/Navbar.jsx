@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useWindowSize from "../../../hooks/useWindowSize";
+import Menu from "./Menu";
 const menus = [
   {
     title: "Home",
@@ -17,7 +18,6 @@ const menus = [
   {
     title: "Service",
     className: "serv has-down",
-    href: "/",
     hasChildren: true,
     child: [
       {
@@ -35,16 +35,61 @@ const menus = [
     className: "bank-list has-down megamenu-item",
     href: "/",
     hasChildren: true,
+    type: "mega",
     child: [
-      {
-        title: "Credit Card",
-        href: "credit-card",
-      },
-      {
-        title: "Loan",
-        href: "loan",
-      },
+      [
+        {
+          title: "HDFC BANK",
+          href: "hdfc",
+        },
+        {
+          title: "SBI BANK",
+          href: "sbi",
+        },
+      ],
+      [
+        {
+          title: "ICICI BANK",
+          href: "icici",
+        },
+        {
+          title: "BANK OF BARODA",
+          href: "bob",
+        },
+      ],
+      [
+        {
+          title: "INDUSIND BANK",
+          href: "indus",
+        },
+        {
+          title: "KOTAk MAHINDRA BANK",
+          href: "kotak",
+        },
+      ],
+      [
+        {
+          title: "YES BANK",
+          href: "yes",
+        },
+        {
+          title: "RBL BANK",
+          href: "rbl",
+        },
+      ],
     ],
+  },
+  {
+    title: "Blog",
+    className: "blog",
+    href: "/post",
+    hasChildren: false,
+  },
+  {
+    title: "Contact",
+    className: "contact-us",
+    href: "/contact",
+    hasChildren: false,
   },
 ];
 const Navbar = () => {
@@ -93,14 +138,11 @@ const Navbar = () => {
                 <div className="classynav">
                   <ul>
                     {menus.map((item, i) => {
-                      const { hasChildren, child } = item;
+                      if (item?.hasChildren) {
+                        return <Menu key={i} item={item} />;
+                      }
                       return (
-                        <li
-                          key={i}
-                          className={
-                            hasChildren ? "has-down cn-dropdown-item" : ""
-                          }
-                        >
+                        <li key={i}>
                           <NavLink
                             className={item?.className}
                             to={item?.href}
@@ -111,71 +153,9 @@ const Navbar = () => {
                           >
                             {item?.title}
                           </NavLink>
-                          {hasChildren && (
-                            <ul className="dropdown">
-                              {child?.map((ci, i) => {
-                                return (
-                                  <li key={i}>
-                                    <Link to={ci?.href}>{ci?.title}</Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          )}
                         </li>
                       );
                     })}
-                    {/* <li><a href="#">Pages</a> </li> */}
-                    <li className="megamenu-item">
-                      <a className="bank-list" href="#">
-                        Bank list
-                      </a>
-                      <div className="megamenu">
-                        <ul className="single-mega cn-col-4">
-                          <li>
-                            <a href="hdfc">HDFC BANK</a>
-                          </li>
-                          <li>
-                            <a href="sbi">SBI BANK</a>
-                          </li>
-                        </ul>
-                        <ul className="single-mega cn-col-4">
-                          <li>
-                            <a href="icici">ICICI BANK</a>
-                          </li>
-                          <li>
-                            <a href="bob">BANK OF BARODA</a>
-                          </li>
-                        </ul>
-                        <ul className="single-mega cn-col-4">
-                          <li>
-                            <a href="indus">INDUSIND BANK</a>
-                          </li>
-                          <li>
-                            <a href="kotak">KOTAK MAHINDRA BANK</a>
-                          </li>
-                        </ul>
-                        <ul className="single-mega cn-col-4">
-                          <li>
-                            <a href="yes">YES BANK</a>
-                          </li>
-                          <li>
-                            <a href="">RBL BANK</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <span className="dd-trigger" />
-                    </li>
-                    <li>
-                      <a className="blog" href="post">
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <Link className="contact-us" to={"/contact"}>
-                        Contact
-                      </Link>
-                    </li>
                   </ul>
                 </div>
                 {/* Nav End */}
