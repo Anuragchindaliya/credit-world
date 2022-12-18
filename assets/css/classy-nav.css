@@ -163,7 +163,7 @@ img {
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
   position: absolute;
-  top: 0;
+  /* top: 0; */
   right: 10px;
   z-index: 3; }
 
@@ -478,8 +478,9 @@ img {
 .breakpoint-on .classynav ul li.megamenu-item > a::after,
 .breakpoint-on .classynav ul li.has-down > a::after {
   position: absolute;
-  top: 0;
-  right: 20px;
+  /* top: 0; */
+  font-size: 15px;
+  right: 1.5em;
   z-index: 5; }
 .breakpoint-on .classynav ul li.has-down.active > a:after,
 .breakpoint-on .classynav ul li.megamenu-item.active > a:after {
