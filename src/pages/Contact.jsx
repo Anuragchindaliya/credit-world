@@ -1,7 +1,10 @@
 import React from "react";
+import { docTitle } from "../App";
 import Breadcrumb from "../components/common/Breadcrumb";
+import useTitle from "../hooks/useTitle";
 
 const Contact = ({ title }) => {
+  useTitle(`${title} | ${docTitle}`);
   return (
     <>
       <Breadcrumb title={title} />

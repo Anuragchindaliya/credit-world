@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { docTitle } from "../../App";
+import useTitle from "../../hooks/useTitle";
 import "./index.css";
-const NotFound = () => {
+const NotFound = ({title}) => {
+  useTitle(`${title} | ${docTitle}`);
   return (
     <div className="container">
       <div className="row">

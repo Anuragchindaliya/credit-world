@@ -1,5 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { docTitle } from "../../App";
+import useTitle from "../../hooks/useTitle";
 import "./index.css";
 const data = {
   bankname: "Hdfc Bank",
@@ -78,9 +80,11 @@ const data = {
   ],
 };
 
-const Bank = () => {
+const Bank = ({title}) => {
   const { bankname } = useParams();
+  useTitle(`${bankname?.toUpperCase()} ${title} | ${docTitle}`);
   console.log(bankname);
+  
   return (
     <>
       {/* images caps like jumbotron */}

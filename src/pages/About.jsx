@@ -1,7 +1,10 @@
 import React from "react";
+import { docTitle } from "../App";
 import Breadcrumb from "../components/common/Breadcrumb";
+import useTitle from "../hooks/useTitle";
 
 const About = ({ title }) => {
+  useTitle(`${title} | ${docTitle}`);
   return (
     <>
       <Breadcrumb title={title} />
@@ -17,7 +20,12 @@ const About = ({ title }) => {
                   <h2>About our company</h2>
                 </div>
                 <h6 className="mb-4">
-                Creditworld is one of the newly startup for India’s digital consumer credit market place. We deals in all the financial and insurance related products like credit cards, Emi cards, Insurance and loans through ours more than 50+ partners of banking and insurance industries. We help our customers to choose the best suitable product to full fill their needs.
+                  Creditworld is one of the newly startup for India’s digital
+                  consumer credit market place. We deals in all the financial
+                  and insurance related products like credit cards, Emi cards,
+                  Insurance and loans through ours more than 50+ partners of
+                  banking and insurance industries. We help our customers to
+                  choose the best suitable product to full fill their needs.
                   {/* Creditworld is a leading service provider and distributor of
                   Credit cards and services for the infrastructure and
                   agricultural markets.{" "} */}

@@ -9,7 +9,7 @@ const Home = lazy(() => import("./pages"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-
+export const docTitle = "Credit World";
 function App() {
   return (
     <>
@@ -18,17 +18,13 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home title="Credit World" />} />
           <Route exact path="/about" element={<About title="About Us" />} />
-          <Route
-            exact
-            path="/bank/:bankname"
-            element={<Bank title="Bank" />}
-          />
+          <Route exact path="/bank/:bankname" element={<Bank title="Bank" />} />
           <Route
             exact
             path="/contact"
             element={<Contact title="Contact Us" />}
           />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound title="Not found" />} />
         </Routes>
       </Suspense>
       <Footer />
