@@ -1,5 +1,3 @@
-
-
 /* [Core Stylesheet - 1.0] */
 /* :: 1.0 Import Fonts */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:300,400,600,700");
@@ -20,7 +18,8 @@
 
 /* font awesome version -> 4.7.0 */
 /* @import url(css/font-awesome.min.css); */
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css");
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"); */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css");
 
 /* credit icon */
 @import url(css/credit-icon.css);
@@ -428,6 +427,7 @@ img {
   background-position: center center;
   background-size: cover;
 }
+
 .bg-overlay::after {
   background-color: rgba(0, 0, 0, 0.61);
   position: absolute;
@@ -602,30 +602,31 @@ img {
 .header-area .credit-main-menu .classy-navbar .classynav ul li a {
   font-weight: 600;
   text-transform: capitalize;
-  font-size: 15px;
+  font-size: 16px;
   padding: 0 15px;
   color: #ffffff;
 }
 /* icon break points */
 
 @media only screen and (max-width: 767px) {
+  .header-area .credit-main-menu .classy-navbar .classynav > ul > li a {
+    padding: .5em 2em;
+    height: auto!important;
+  }
   .classynav ul li a::before {
-    width: 25px;
+    width: 35px;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 900;
+    font-size: 20px;
   }
   .classynav ul li a.home::before {
     font-family: "Font Awesome 5 Free";
     content: "\f015";
-    display: inline-block;
-    vertical-align: middle;
-    font-weight: 900;
   }
   .classynav ul li a.about::before {
     font-family: "Font Awesome 5 Free";
     content: "\f509";
-    display: inline-block;
-    padding-right: 3px;
-    vertical-align: middle;
-    font-weight: 900;
   }
 
   .classynav ul li a.serv:first-child::before {
@@ -640,6 +641,38 @@ img {
   .classynav ul li a.bank-list::before {
     font-family: "Font Awesome 5 Free";
     content: "\f19c";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+  }
+  .classynav ul li a.cards::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f09d";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+  }
+  .classynav ul li a.privacy::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\e4f0";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+  }
+  .classynav ul li a.loans::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f4c6";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+  }
+  .classynav ul li a.insurance::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\e05c";
     display: inline-block;
     padding-right: 3px;
     vertical-align: middle;
@@ -660,6 +693,7 @@ img {
     padding-right: 3px;
     vertical-align: middle;
     font-weight: 900;
+    transform: rotateY(180deg) translateX(10px);
   }
 }
 
@@ -667,6 +701,9 @@ img {
 .header-area .credit-main-menu .classy-navbar .classynav ul li a.active_link,
 .header-area .credit-main-menu .classy-navbar .classynav ul li a:focus {
   color: var(--secondary-color);
+}
+.header-area .credit-main-menu .classy-navbar .classynav ul li {
+  padding: "1em";
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .header-area .credit-main-menu .classy-navbar .classynav ul li a {
@@ -683,7 +720,7 @@ img {
     color: var(--main-color);
   }
 }
-.header-area
+/* .header-area
   .credit-main-menu
   .classy-navbar
   .classynav
@@ -691,9 +728,9 @@ img {
   > li:first-child
   a {
   padding-left: 0;
-}
+} */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .header-area
+  /* .header-area
     .credit-main-menu
     .classy-navbar
     .classynav
@@ -701,10 +738,10 @@ img {
     > li:first-child
     a {
     padding-left: 15px;
-  }
+  } */
 }
 @media only screen and (max-width: 767px) {
-  .header-area
+  /* .header-area
     .credit-main-menu
     .classy-navbar
     .classynav
@@ -712,7 +749,7 @@ img {
     > li:first-child
     a {
     padding-left: 15px;
-  }
+  } */
 }
 .header-area
   .credit-main-menu

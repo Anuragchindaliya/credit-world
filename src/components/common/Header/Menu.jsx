@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { slugify } from "../../../utils";
 
 const Menu = ({ item }) => {
-  const { child, type } = item;
+  const { child, type, title } = item;
   const [isOpen, setOpen] = useState(false);
   return (
     <li className={type ? "megamenu-item" : "has-down cn-dropdown-item"}>
-      <NavLink
+      <a
         className={item?.className}
         // style={({ isActive }) =>
         //   isActive ? { color: "#ffbb38" } : undefined
         // }
+        style={{cursor:"pointer"}}
         onClick={() => setOpen((b) => !b)}
       >
-        {item?.title} {isOpen}
-      </NavLink>
+        {title} {isOpen}
+      </a>
 
       {/* <span className="dd-trigger" /> */}
       {type ? (
@@ -25,10 +27,15 @@ const Menu = ({ item }) => {
           {child?.map((arr, i) => {
             return (
               <ul key={i} className="single-mega cn-col-4">
-                {arr.map((item, ci) => {
+                {arr.map((cList, ci) => {
+                  const { title } = cList;
+                  let href = cList?.href;
+                  if (!href) {
+                    href = slugify(item?.title) + "/" + slugify(`${title}`);
+                  }
                   return (
                     <li key={ci}>
-                      <NavLink to={item?.href}>{item?.title}</NavLink>
+                      <NavLink to={href}>{title}</NavLink>
                     </li>
                   );
                 })}
@@ -38,10 +45,15 @@ const Menu = ({ item }) => {
         </div>
       ) : (
         <ul className="dropdown" style={{ display: isOpen ? "block" : "none" }}>
-          {child?.map((ci, i) => {
+          {child?.map((cList, ci) => {
+            const { title } = cList;
+            let href = cList?.href;
+            if (!href) {
+              href = slugify(item?.title) + "/" + slugify(`${title}`);
+            }
             return (
-              <li key={i}>
-                <NavLink to={ci?.href}>{ci?.title}</NavLink>
+              <li key={ci}>
+                <NavLink to={href}>{title}</NavLink>
               </li>
             );
           })}
