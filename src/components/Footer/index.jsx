@@ -37,17 +37,17 @@ const Footer = () => {
               <nav>
                 <ul>
                   <li>
-                    <a href="#">Our Cards</a>
+                    <a href="/#">Our Cards</a>
                   </li>
-                  {/* <li><a href="#">Trading &amp; Commerce</a></li> */}
+                  {/* <li><a href="/#">Trading &amp; Commerce</a></li> */}
                   <li>
-                    <a href="#">Accumulation goal</a>
-                  </li>
-                  <li>
-                    <a href="#">Secure financial service</a>
+                    <a href="/#">Accumulation goal</a>
                   </li>
                   <li>
-                    <a href="#">Good investment</a>
+                    <a href="/#">Secure financial service</a>
+                  </li>
+                  <li>
+                    <a href="/#">Good investment</a>
                   </li>
                 </ul>
               </nav>
@@ -61,17 +61,17 @@ const Footer = () => {
               <nav>
                 <ul>
                   <li>
-                    <a href="#">Our Loans</a>
+                    <a href="/#">Our Loans</a>
                   </li>
-                  {/* <li><a href="#">Trading &amp; Commerce</a></li> */}
+                  {/* <li><a href="/#">Trading &amp; Commerce</a></li> */}
                   <li>
-                    <a href="#">Banking &amp; Private Equity</a>
-                  </li>
-                  <li>
-                    <a href="#">Industrial &amp; Factory</a>
+                    <a href="/#">Banking &amp; Private Equity</a>
                   </li>
                   <li>
-                    <a href="#">Financial Solutions</a>
+                    <a href="/#">Industrial &amp; Factory</a>
+                  </li>
+                  <li>
+                    <a href="/#">Financial Solutions</a>
                   </li>
                 </ul>
               </nav>
@@ -170,7 +170,7 @@ const Footer = () => {
                 </a>
                 {/* Copywrite Text */}
                 <p className="copywrite-text">
-                  <a href="#">
+                  <a href="/#">
                     {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
                     Copyright © All rights reserved |
                     {/* with{" "}
@@ -180,6 +180,7 @@ const Footer = () => {
                   <a
                     href="https://www.linkedin.com/in/anurag-chindaliya/"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     Anurag
                   </a>

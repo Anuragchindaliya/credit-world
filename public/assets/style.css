@@ -608,7 +608,7 @@ img {
 }
 /* icon break points */
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 990px) {
   .header-area .credit-main-menu .classy-navbar .classynav > ul > li a {
     padding: .5em 2em;
     height: auto!important;

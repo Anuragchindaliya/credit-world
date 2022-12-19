@@ -11,7 +11,7 @@ const AddressCta = () => {
               className="add-area mb-100 wow fadeInUp"
               data-wow-delay="100ms"
             >
-              <a className="get-img" href="#">
+              <a className="get-img" href="/#">
                 <img src="assets/img/bg-img/2.jpg" alt="" />
               </a>
             </div>
@@ -88,12 +88,12 @@ const AddressCta = () => {
                 </div>
                 <div className="news-content">
                   <span>July 18, 2018</span>
-                  <a href="#">How to get the best loan online</a>
+                  <a href="/#">How to get the best loan online</a>
                   <div className="news-meta">
-                    <a href="#" className="post-author">
+                    <a href="/#" className="post-author">
                       <img src="assets/img/core-img/pencil.png" alt="" /> Sachin
                     </a>
-                    <a href="#" className="post-date">
+                    <a href="/#" className="post-date">
                       <img src="assets/img/core-img/calendar.png" alt="" /> April 26
                     </a>
                   </div>
@@ -106,12 +106,12 @@ const AddressCta = () => {
                 </div>
                 <div className="news-content">
                   <span>July 18, 2018</span>
-                  <a href="#">A new way to finance your dream home</a>
+                  <a href="/#">A new way to finance your dream home</a>
                   <div className="news-meta">
-                    <a href="#" className="post-author">
+                    <a href="/#" className="post-author">
                       <img src="assets/img/core-img/pencil.png" alt="" /> Karan singh
                     </a>
-                    <a href="#" className="post-date">
+                    <a href="/#" className="post-date">
                       <img src="assets/img/core-img/calendar.png" alt="" /> April 26
                     </a>
                   </div>
@@ -124,12 +124,12 @@ const AddressCta = () => {
                 </div>
                 <div className="news-content">
                   <span>July 18, 2018</span>
-                  <a href="#">10 tips to get the best loan for you</a>
+                  <a href="/#">10 tips to get the best loan for you</a>
                   <div className="news-meta">
-                    <a href="#" className="post-author">
+                    <a href="/#" className="post-author">
                       <img src="assets/img/core-img/pencil.png" alt="" /> Anurag ..
                     </a>
-                    <a href="#" className="post-date">
+                    <a href="/#" className="post-date">
                       <img src="assets/img/core-img/calendar.png" alt="" /> April 26
                     </a>
                   </div>

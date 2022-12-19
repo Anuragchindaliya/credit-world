@@ -63,31 +63,31 @@ const Insurance = () => {
                   </div>
                   <ul>
                     <li>
-                      <a href="#">Advices</a>
+                      <a href="/#">Advices</a>
                     </li>
                     <li>
-                      <a href="#">Budgeting</a>
+                      <a href="/#">Budgeting</a>
                     </li>
                     <li>
-                      <a href="#">Fast cash</a>
+                      <a href="/#">Fast cash</a>
                     </li>
                     <li>
-                      <a href="#">Loans for students</a>
+                      <a href="/#">Loans for students</a>
                     </li>
                     <li>
-                      <a href="#">Money hacks</a>
+                      <a href="/#">Money hacks</a>
                     </li>
                     <li>
-                      <a href="#">Payday Loans</a>
+                      <a href="/#">Payday Loans</a>
                     </li>
                     <li>
-                      <a href="#">Quick cash</a>
+                      <a href="/#">Quick cash</a>
                     </li>
                     <li>
-                      <a href="#">Supplement income</a>
+                      <a href="/#">Supplement income</a>
                     </li>
                     <li>
-                      <a href="#">Сash loans</a>
+                      <a href="/#">Сash loans</a>
                     </li>
                   </ul>
                 </div>

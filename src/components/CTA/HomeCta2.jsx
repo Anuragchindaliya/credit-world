@@ -14,7 +14,7 @@ const HomeCta2 = () => {
                 </h4>
               </div>
               <div className="cta-btn">
-                <a href="#" className="btn credit-btn box-shadow">
+                <a href="/#" className="btn credit-btn box-shadow">
                   Read More
                 </a>
               </div>

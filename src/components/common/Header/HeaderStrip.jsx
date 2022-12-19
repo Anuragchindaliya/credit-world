@@ -26,7 +26,7 @@ const HeaderStrip = () => {
             {/* Top Contact Info */}
             <div className="top-contact-info d-flex align-items-center">
               <a
-                href="#"
+                href="/#"
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title=""

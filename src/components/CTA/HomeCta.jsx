@@ -51,7 +51,7 @@ const HomeCta = () => {
             <p>resource</p>
           </div>
         </div>
-        <a href="#" className="btn credit-btn box-shadow btn-2">
+        <a href="/#" className="btn credit-btn box-shadow btn-2">
           Read More
         </a>
       </div>

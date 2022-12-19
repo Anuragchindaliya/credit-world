@@ -24,7 +24,7 @@ const HomeFeatures = () => {
                 help build your credit. Our company have the credit card for
                 you.
               </h6>
-              <a href="#" className="btn credit-btn mt-50">
+              <a href="/#" className="btn credit-btn mt-50">
                 Discover
               </a>
             </div>
