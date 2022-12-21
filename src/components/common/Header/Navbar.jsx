@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import useWindowSize from "../../../hooks/useWindowSize";
 import Menu from "./Menu";
-import menus from "./menus.json";
+import menus from "./menus.js";
 const Navbar = () => {
   const { pathname } = useLocation();
   const [drawerShow, setDrawerShow] = useState(false);
