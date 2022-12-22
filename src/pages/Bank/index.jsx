@@ -80,9 +80,9 @@ const data = {
   ],
 };
 
-const Bank = ({title}) => {
+const Bank = () => {
   const { bankname } = useParams();
-  useTitle(`${bankname?.toUpperCase()} ${title} | ${docTitle}`);
+  useTitle(`${bankname?.toUpperCase()} | ${docTitle}`);
   console.log(bankname);
   
   return (

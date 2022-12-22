@@ -4,7 +4,6 @@ import Footer from "./components/Footer";
 import { lazy, Suspense } from "react";
 import Loader from "./components/common/Loader";
 
-
 const Home = lazy(() => import("./pages"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -18,21 +17,21 @@ function App() {
   let routes = useRoutes([
     {
       path: "/",
-      element: <Home />,
+      element: <Home title="Apply for cards" />,
     },
     { path: "/bank/:bankname", element: <Bank /> },
     {
       path: "about",
-      element: <About />,
+      element: <About title="About Us" />,
     },
-    { path: "contact", element: <Contact /> },
-    { path: "cards/:bankname", element: <Bank /> },
+    { path: "contact", element: <Contact title={"Contact Us"} /> },
+    { path: "cards/:bankname", element: <Bank  /> },
     { path: "loans", element: <Loan /> },
     { path: "loans/:loanname", element: <Loan /> },
-    { path: "loans", element: <Loan /> },
-    { path: "insurance/:insurancename", element: <Insurance /> },
-    { path: "privacy", element: <Privacy /> },
-    { path: "*", element: <NotFound /> },
+    { path: "loans", element: <Loan title="Loan"/> },
+    { path: "insurance/:insurancename", element: <Insurance title="Insurace" /> },
+    { path: "privacy", element: <Privacy title={"Privacy Policy"} /> },
+    { path: "*", element: <NotFound title="Not Found" /> },
   ]);
   return (
     <>
