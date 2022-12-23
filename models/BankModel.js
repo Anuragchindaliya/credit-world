@@ -50,9 +50,11 @@ class Bank {
     return db.query(sql, [this.name, this.slug, this.content, this.img]);
   }
 
-  static findAll() {
-    let sql = "SELECT * FROM banks;";
-
+  static findAll(filter) {
+    let sql = "SELECT * FROM banks";
+    if (!!filter) {
+      sql += ` WHERE ${filter}`;
+    }
     return db.execute(sql);
   }
 

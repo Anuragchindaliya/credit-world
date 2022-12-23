@@ -2,9 +2,14 @@ import Bank from "../models/BankModel.js";
 import Card from "../models/CardModel.js";
 
 export async function getAllCards(req, res, next) {
-  console.log("getAllCards");
   try {
-    const [cards, _] = await Card.findAll();
+    const { query } = req;
+    const filter = Object.keys(query).reduce((sql, key, i) => {
+      const join = i ? " AND " : "";
+      sql += `${join}${key}='${query[key]}'`;
+      return sql;
+    }, "");
+    const [cards, _] = await Card.findAll(filter);
 
     res.status(200).json({ count: cards.length, cards });
   } catch (error) {
@@ -42,11 +47,12 @@ export async function createNewCard(req, res, next) {
 
 export async function getCardById(req, res, next) {
   try {
-    let cardId = req.params.id;
-    console.log({ cardId }, "card by id");
-
-    let [card, _] = await Card.findById(cardId);
-
+    const cardId = req.params.id;
+    const [card, _] = await Card.findById(cardId);
+    const data = card?.[0];
+    if (!data) {
+      return res.status(200).json({ status: "failure", data: null });
+    }
     return res.status(200).json({ status: "success", data: card[0] });
   } catch (error) {
     next(error);

@@ -1,9 +1,14 @@
 import Bank from "../models/BankModel.js";
 
 export async function getAllBanks(req, res, next) {
-  console.log("getAllBanks");
   try {
-    const [banks, _] = await Bank.findAll();
+    const { query } = req;
+    const filter = Object.keys(query).reduce((sql, key, i) => {
+      const join = i ? " AND " : "";
+      sql += `${join}${key}='${query[key]}'`;
+      return sql;
+    }, "");
+    const [banks, _] = await Bank.findAll(filter);
 
     res.status(200).json({ count: banks.length, banks });
   } catch (error) {
@@ -25,7 +30,7 @@ export async function createNewBank(req, res, next) {
 
     const bank = new Bank(name, slug, content, img);
 
-    const [data,_] = await bank.save();
+    const [data, _] = await bank.save();
 
     res.status(201).json({ message: "Bank created", data });
   } catch (error) {
@@ -35,12 +40,9 @@ export async function createNewBank(req, res, next) {
 
 export async function getBankById(req, res, next) {
   try {
-    let cardId = req.params.id;
-    console.log({ cardId }, "card by id");
-
-    let [card, _] = await Bank.findById(cardId);
-    console.log("getBankById", { card });
-    const data = card?.[0];
+    const cardId = req.params.id;
+    const [bank, _] = await Bank.findById(cardId);
+    const data = bank?.[0];
     if (!data) {
       return res.status(200).json({ status: "failure", data: null });
     }

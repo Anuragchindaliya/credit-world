@@ -61,14 +61,16 @@ class Card {
     ]);
   }
 
-  static findAll() {
-    let sql = "SELECT * FROM cards;";
-
+  static findAll(filter) {
+    let sql = "SELECT * FROM cards";
+    if (!!filter) {
+      sql += ` WHERE ${filter}`;
+    }
     return db.execute(sql);
   }
 
   static findById(id) {
-    let sql = `SELECT * FROM cards WHERE id = ${id};`;
+    const sql = `SELECT * FROM cards WHERE id = ${id};`;
 
     return db.execute(sql);
   }
