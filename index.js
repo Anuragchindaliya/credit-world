@@ -1,8 +1,11 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+import cors from "cors";
+import corsOptions from "./config/corsOptions.js";
 import bankRoute from "./routes/bankRoute.js";
 import cardRoute from "./routes/cardRoute.js";
+import subsRoute from "./routes/subsRoute.js";
 const app = express();
 // db.connect((err) => {
 //   if (err) {
@@ -12,11 +15,13 @@ const app = express();
 // });
 
 // Middleware
+app.use(cors(corsOptions));
 app.use(express.json()); // parse json bodies in the request object
 
 // Redirect requests to endpoint starting with /posts to postRoutes.js
 app.use("/cards", cardRoute);
 app.use("/banks", bankRoute);
+app.use("/subs", subsRoute);
 
 // Global Error Handler. IMPORTANT function params MUST start with err
 app.use((err, req, res, next) => {
