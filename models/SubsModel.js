@@ -9,12 +9,14 @@ class Subs {
   // `body` TEXT NOT NULL ,
   // `cardId` INT NOT NULL ,
   // `createdAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  constructor(name, contact, email, subject, body, cardId) {
+
+  constructor(name, contact, email, subject, body, message, cardId) {
     this.name = name;
     this.contact = contact || "";
     this.email = email;
-    this.subject = subject;
-    this.body = body;
+    this.subject = subject || "";
+    this.body = body || "";
+    this.message = message || "";
     this.cardId = cardId;
   }
 
@@ -26,9 +28,10 @@ class Subs {
         email,
         subject,
         body,
+        message,
         cardId
     )
-    VALUES(?,?,?,?,?,?)
+    VALUES(?,?,?,?,?,?,?)
     `;
 
     return db.query(sql, [
@@ -37,6 +40,7 @@ class Subs {
       this.email,
       this.subject,
       this.body,
+      this.message,
       this.cardId,
     ]);
   }
