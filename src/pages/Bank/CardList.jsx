@@ -1,13 +1,13 @@
-import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import { getCardsByBankId } from "../../api";
 
 const CardList = ({ bankId }) => {
   const { isLoading, data } = useQuery(
     ["card", bankId],
     () => {
-      return axios.get(`http://localhost:5000/cards?bankId=${bankId}`);
+      return getCardsByBankId(bankId);
     },
     {
       enabled: !!bankId,

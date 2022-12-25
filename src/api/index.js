@@ -15,4 +15,7 @@ export const getAllCards = () => {
   return api.get("cards");
 };
 
+export const getCardsByBankId = (bankId) => {
+  return api.get(`cards?bankId=${bankId}`);
+};
 export default api;
