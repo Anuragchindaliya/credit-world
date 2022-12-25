@@ -15,49 +15,49 @@ const menus = [
     title: "Cards",
     className: "cards has-down megamenu-item",
     hasChildren: true,
-    child: [
-      {
-        title: "Credit Cards",
-      },
-      {
-        title: "EMI Cards",
-      },
-    ],
-    // type: "mega",
     // child: [
-    //   [
-    //     {
-    //       title: "HDFC BANK",
-    //     },
-    //     {
-    //       title: "AU BANK",
-    //     },
-    //   ],
-    //   [
-    //     {
-    //       title: "IDFC BANK",
-    //     },
-    //     {
-    //       title: "INDUSIND BANK",
-    //     },
-    //   ],
-    //   [
-    //     {
-    //       title: "CITI BANK",
-    //     },
-    //     {
-    //       title: "YES BANK",
-    //     },
-    //   ],
-    //   [
-    //     {
-    //       title: "SBI BANK",
-    //     },
-    //     {
-    //       title: "RBL BANK",
-    //     },
-    //   ],
+    //   {
+    //     title: "Credit Cards",
+    //   },
+    //   {
+    //     title: "EMI Cards",
+    //   },
     // ],
+    type: "mega",
+    child: [
+      [
+        {
+          title: "HDFC BANK",
+        },
+        {
+          title: "AU BANK",
+        },
+      ],
+      [
+        {
+          title: "IDFC BANK",
+        },
+        {
+          title: "INDUSIND BANK",
+        },
+      ],
+      [
+        {
+          title: "CITI BANK",
+        },
+        {
+          title: "YES BANK",
+        },
+      ],
+      [
+        {
+          title: "SBI BANK",
+        },
+        {
+          title: "RBL BANK",
+        },
+      ],
+    ],
   },
   {
     title: "Loans",

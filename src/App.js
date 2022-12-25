@@ -3,6 +3,7 @@ import Header from "./components/common/Header";
 import Footer from "./components/Footer";
 import { lazy, Suspense } from "react";
 import Loader from "./components/common/Loader";
+import Apply from "./pages/Apply";
 
 const Home = lazy(() => import("./pages"));
 const About = lazy(() => import("./pages/About"));
@@ -31,6 +32,7 @@ function App() {
     { path: "loans", element: <Loan title="Loan"/> },
     { path: "insurance/:insurancename", element: <Insurance title="Insurace" /> },
     { path: "privacy", element: <Privacy title={"Privacy Policy"} /> },
+    { path: "apply", element: <Apply title={"Apply"} /> },
     { path: "*", element: <NotFound title="Not Found" /> },
   ]);
   return (

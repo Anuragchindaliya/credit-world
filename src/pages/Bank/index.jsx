@@ -1,7 +1,11 @@
 import React from "react";
+import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { fetchBankData } from "../../api";
 import { docTitle } from "../../App";
 import useTitle from "../../hooks/useTitle";
+import BankAbout from "./BankAbout";
+import CardList from "./CardList";
 import "./index.css";
 const data = {
   bankname: "Hdfc Bank",
@@ -83,82 +87,24 @@ const data = {
 const Bank = () => {
   const { bankname } = useParams();
   useTitle(`${bankname?.toUpperCase()} | ${docTitle}`);
-  console.log(bankname);
-  
+  const { isLoading, data } = useQuery(
+    ["bankData", bankname],
+    () => fetchBankData(bankname),
+    {
+      staleTime: 1000 * 60 * 30,
+    }
+  );
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  const bankDetails = data?.data?.banks?.[0];
   return (
     <>
       {/* images caps like jumbotron */}
-      <div className="container mt-5">
-        <div className="card mb-3 text-center border-0">
-          <img
-            className="card-img-top center"
-            src={data?.img}
-            alt="Card image"
-            style={{ width: "100%", margin: "auto" }}
-          />
-          <div className="card-body p-4">
-            <h5 className="card-title">{data?.title}</h5>
-            <p className="card-text text-justify" style={{ color: "#000" }}>
-              {data?.desc}
-            </p>
-            {/* <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> */}
-          </div>
-        </div>
-      </div>
+      <BankAbout bankDetails={bankDetails} />
       {/* images caps */}
       {/* card start from here */}
-      <section>
-        <div className="container all-cards mb-70">
-          {/* first card start from here*/}
-          {data?.cards?.map((card, ci) => {
-            return (
-              <div key={ci} className="card single-card">
-                <div className="card-header border-0">
-                  <img
-                    className="text-center"
-                    src={data?.img}
-                    alt={data?.title}
-                  />
-                </div>
-                <div className="card-block p-4">
-                  <h4 className="card-title">{card?.title}</h4>
-                  <div className="card-text p-4 text-justify w-100">
-                    <h5>Rewards</h5>
-                    <ul className="cards-list pl-3">
-                      {card?.rewards?.map((reward, ri) => (
-                        <li key={ri}> {reward}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  {/* modal */}
-                  {/* Button trigger modal */}
-                  {/* <button type="button" className="btn btn-primary mr-2">
-                    <a
-                    //   href="tel:+91-7217667147"
-                      style={{ color: "#fff", fontWeight: 500 }}
-                    >
-                      <i className="fas fa-phone-alt pr-2" />
-                      Apply
-                    </a>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    data-toggle="modal"
-                    data-target={".bd-example-modal-lg"+ci}
-                  >
-                    Know more
-                  </button> */}
-                </div>
-                {/* <div class="w-100"></div> */}
-                {/* <div class="card-footer w-100 text-muted">
-          FOOTER
-      </div> */}
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      <CardList bankId={bankDetails?.id} />
     </>
   );
 };
