@@ -1,9 +1,6 @@
 import React from "react";
 
-const BankAbout = ({ bankDetails }) => {
-  if (!bankDetails) {
-    return <div className="container mt-5">Can't find bank details</div>;
-  }
+const BankAbout = ({ bankDetails }) => {  
   return (
     <div className="container mt-5">
       <div className="card mb-3 text-center border-0">

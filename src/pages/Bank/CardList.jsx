@@ -15,13 +15,22 @@ const CardList = ({ bankId }) => {
     }
   );
   if (isLoading) {
-    return <div>Cards Loading...</div>;
+    return (
+      <div className="container py-5 my-5 d-flex justify-content-center align-items-center">
+        <h4>
+          <div className="spinner-border text-primary mx-2" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          Loading Cards...
+        </h4>
+      </div>
+    );
   }
   const cardDetails = data?.data?.cards;
   if (!cardDetails?.length) {
     return (
       <div className="container " style={{ textAlign: "center" }}>
-        <h6>Can't find cards</h6>
+        <h6>No Cards Found</h6>
       </div>
     );
   }
@@ -35,6 +44,7 @@ const CardList = ({ bankId }) => {
             <div key={ci} className="card  single-card">
               <div className="card-header border-0 col-lg-3">
                 <img
+                  style={{ margin: "auto", display: "block" }}
                   className="text-center"
                   src={card?.img}
                   alt={data?.name}

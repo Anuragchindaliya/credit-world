@@ -95,9 +95,25 @@ const Bank = () => {
     }
   );
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="container py-5 my-5 d-flex justify-content-center align-items-center">
+        <h4>
+          <div className="spinner-border text-primary mx-2" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          {bankname?.toUpperCase()} Loading...
+        </h4>
+      </div>
+    );
   }
   const bankDetails = data?.data?.banks?.[0];
+  if (!bankDetails) {
+    return (
+      <div className="container py-5 my-5" style={{ textAlign: "center" }}>
+        <h4>{bankname?.toUpperCase()} Data not found</h4>
+      </div>
+    );
+  }
   return (
     <>
       {/* images caps like jumbotron */}
