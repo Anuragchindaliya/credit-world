@@ -52,9 +52,10 @@ const CardList = ({ bankId }) => {
                 />
               </div>
               <div className="card-block p-4 col-lg-9">
-                <h4 className="card-title">{card?.name}</h4>
+                <h4 className="m-0">{card?.name}</h4>
                 <div className="card-text p-4 text-justify w-100">
-                  <p>{card?.content}</p>
+                  {/* <p>{card?.content}</p> */}
+                  <div dangerouslySetInnerHTML={{ __html: card.content }} />
                   {card?.rewards && <CardRewards rewards={card?.rewards} />}
                 </div>
                 {/* modal */}

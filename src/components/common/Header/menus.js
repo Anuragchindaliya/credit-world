@@ -77,7 +77,7 @@ const menus = [
         title: "Business Loan",
       },
       {
-        title: "Loan against property",
+        title: "LAP",
       },
       {
         title: "Bank transfer",

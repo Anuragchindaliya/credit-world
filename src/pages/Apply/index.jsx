@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { getAllCards, subscribe } from "../../api";
-
+const salaried = "salaried";
+const selfEmployed = "selfEmployed";
 const Apply = () => {
   const { state } = useLocation();
   const [selectedCard, setSelectedCard] = useState(state);
+  const [occupation, setOccupation] = useState(salaried);
 
   const {
     mutate: addSubscriber,
     isLoading: isApplying,
     isSuccess,
-    reset
+    reset,
+    data: successRes,
   } = useMutation(subscribe);
   const { data: allCards } = useQuery("allCards", getAllCards, {
     staleTime: 1000 * 60 * 30,
@@ -23,8 +26,12 @@ const Apply = () => {
     const formProps = Object.fromEntries(formData);
     console.log({ formData, formProps });
     formProps.body = `<div><h1>Credit World</h1><p>Thanks for applying</p><div>Card Name: ${selectedCard?.name}</div><div>Sender Mail: ${formProps.email}</div><div>Message: ${formProps.message}</div></div>`;
-    addSubscriber(formProps, { onSuccess: () => e.target.reset() });
+    addSubscriber(
+      { cardId: selectedCard.id, ...formProps },
+      { onSuccess: () => e.target.reset() }
+    );
   };
+
 
   const cards = allCards?.data?.cards;
   useEffect(() => {
@@ -32,6 +39,9 @@ const Apply = () => {
       setSelectedCard(cards?.[0]);
     }
   }, [state, cards]);
+  const handleOccupation = (e) => {
+    setOccupation(e.target.id);
+  };
   return (
     <div className="contact---area py-5 bg-gray">
       <div className="container bg-white p-5 rounded">
@@ -44,7 +54,9 @@ const Apply = () => {
               <div className="row">
                 <div className="col-lg-6">
                   <div className="form-group">
-                    <label>Name</label>
+                    <label>
+                      Name<span className="text-danger">*</span>
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -56,7 +68,9 @@ const Apply = () => {
                 </div>
                 <div className="col-lg-6">
                   <div className="form-group">
-                    <label>Email</label>
+                    <label>
+                      Email<span className="text-danger">*</span>
+                    </label>
                     <input
                       type="email"
                       className="form-control"
@@ -67,11 +81,114 @@ const Apply = () => {
                   </div>
                 </div>
                 <div className="col-lg-6">
+                  <div className="form-group">
+                    <div className="form-group">
+                      Occupation<span className="text-danger">*</span>
+                    </div>
+                    <div className="row">
+                      <div className="col-lg-3 ">
+                        <input
+                          type="radio"
+                          className="mr-2"
+                          name="occupation"
+                          id={salaried}
+                          onChange={handleOccupation}
+                          checked={occupation === salaried}
+                          required
+                        />
+                        <label htmlFor="salaried">Salaried</label>
+                      </div>
+                      <div className="col-lg-6">
+                        <input
+                          type="radio"
+                          className="mr-2"
+                          name="occupation"
+                          id={selfEmployed}
+                          onChange={handleOccupation}
+                          checked={occupation === selfEmployed}
+                          required
+                        />
+                        <label htmlFor="selfEmployed">Self Employed</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  {occupation === salaried ? (
+                    <div className="form-group">
+                      <label>
+                        Salary<span className="text-danger">*</span> (monthly)
+                      </label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        name="salary"
+                        placeholder="Your Salary in rupees"
+                        required
+                      />
+                    </div>
+                  ) : (
+                    <div className="form-group">
+                      <label>
+                        Income Tax Return<span className="text-danger">*</span>
+                      </label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        name="ITR"
+                        placeholder="Your Income Tax Return"
+                        required
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className="col-lg-6">
+                  <div className="form-group">
+                    <div className="form-group">
+                      <label>Are you credit card user</label>
+                      <div className="row">
+                        <div className="col-lg-6 ">
+                          <input
+                            type="number"
+                            className="form-control"
+                            name="crLimitMin"
+                            placeholder="Your min credit limit"
+                          />
+                        </div>
+                        <div className="col-lg-6">
+                          <input
+                            type="number"
+                            className="form-control"
+                            name="crLimitMax"
+                            placeholder="Your max credit limit"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="form-group">
+                    <label>
+                      Current area pincode<span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="pincode"
+                      placeholder="Your area pincode"
+                      pattern={"[0-9]{6}"}
+                      title="pincode should be of six character"
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-6">
                   <div className="row">
                     <div className="col-12">
                       <div className="form-group">
                         <label>Card</label>
                         <select
+                          disabled={state?.id}
                           className="form-control mb-3"
                           name="cardId"
                           placeholder="Select credit card"
@@ -162,16 +279,16 @@ const Apply = () => {
                         Applying...
                       </>
                     ) : (
-                      <>Apply</>
+                      <>Apply now</>
                     )}
                   </button>
-                  {isSuccess && (
+                  {isSuccess && successRes?.data?.messageRes && (
                     <div
                       className="alert alert-success font-weight-bolder"
                       role="alert"
                     >
                       <i className="fa-solid fa-circle-check mr-2 " />{" "}
-                      Successfully subscribed
+                      {successRes?.data?.messageRes}
                       <button
                         type="button"
                         className="close px-1"
