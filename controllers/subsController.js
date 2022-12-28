@@ -46,7 +46,7 @@ export const saveSubs = async (req, res, next) => {
   try {
     const subResult = await sub.save();
     if (subResult?.[0]?.affectedRows) {
-      messageRes += "Susbcribe";
+      messageRes += "Successfully";
     }else{
       throw new Error("sql error: ",subResult)
     }
@@ -70,7 +70,7 @@ export const saveSubs = async (req, res, next) => {
     if (info?.rejected?.length) {
       return res.json({ message: "Subscribe Error" });
     } else {
-      messageRes += " message sent";
+      messageRes += " subscribed";
     }
   } catch (error) {
     console.log(error);
