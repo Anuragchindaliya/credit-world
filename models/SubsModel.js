@@ -10,14 +10,34 @@ class Subs {
   // `cardId` INT NOT NULL ,
   // `createdAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
 
-  constructor(name, contact, email, subject, body, message, cardId) {
-    this.name = name;
-    this.contact = contact || "";
-    this.email = email;
-    this.subject = subject || "";
-    this.body = body || "";
-    this.message = message || "";
-    this.cardId = cardId;
+  constructor({
+    name,
+    contact,
+    email,
+    subject,
+    body,
+    message,
+    cardId,
+    pincode,
+    salary,
+    ITR,
+    crLimitMin,
+    crLimitMax,
+  }) {
+    this.info = {
+      name: name,
+      contact: contact || null,
+      email: email,
+      subject: subject || null,
+      body: body || null,
+      message: message || null,
+      cardId: cardId,
+      pincode: pincode || null,
+      salary: salary || null,
+      ITR: ITR || null,
+      crLimitMin:crLimitMin||null,
+      crLimitMax:crLimitMax||null,
+    };
   }
 
   save() {
@@ -29,20 +49,17 @@ class Subs {
         subject,
         body,
         message,
-        cardId
+        cardId,
+        pincode,
+        salary,
+        itr,
+        crLimitMin,
+        crLimitMax
     )
-    VALUES(?,?,?,?,?,?,?)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
     `;
 
-    return db.query(sql, [
-      this.name,
-      this.contact,
-      this.email,
-      this.subject,
-      this.body,
-      this.message,
-      this.cardId,
-    ]);
+    return db.query(sql, [...Object.values(this.info)]);
   }
 
   static findAll(filter) {
