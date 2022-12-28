@@ -67,8 +67,11 @@ const CardList = ({ bankId }) => {
                     style={{ color: "#fff", fontWeight: 500 }}
                     state={card}
                   >
-                    <i className="fas fa-phone-alt pr-2" />
-                    Apply
+                    <i
+                      className="fas fa-phone-alt pr-2"
+                      style={{ transform: "rotateY(180deg) translateX(10px)" }}
+                    />
+                    Apply Now
                   </Link>
                 </button>
                 {/* <button
