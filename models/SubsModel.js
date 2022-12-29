@@ -23,6 +23,7 @@ class Subs {
     ITR,
     crLimitMin,
     crLimitMax,
+    cardUser = "0",
   }) {
     this.info = {
       name: name,
@@ -35,8 +36,9 @@ class Subs {
       pincode: pincode || null,
       salary: salary || null,
       ITR: ITR || null,
-      crLimitMin:crLimitMin||null,
-      crLimitMax:crLimitMax||null,
+      crLimitMin: crLimitMin || null,
+      crLimitMax: crLimitMax || null,
+      cardUser,
     };
   }
 
@@ -54,9 +56,10 @@ class Subs {
         salary,
         itr,
         crLimitMin,
-        crLimitMax
+        crLimitMax,
+        cardUser
     )
-    VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)
     `;
 
     return db.query(sql, [...Object.values(this.info)]);

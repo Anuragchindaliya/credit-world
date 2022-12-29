@@ -18,6 +18,7 @@ export const saveSubs = async (req, res, next) => {
     ITR,
     crLimitMin,
     crLimitMax,
+    cardUser
   } = req.body;
   const bodyHtml =
     body ||
@@ -41,6 +42,7 @@ export const saveSubs = async (req, res, next) => {
     ITR,
     crLimitMin,
     crLimitMax,
+    cardUser
   });
   let messageRes = "";
   try {
@@ -56,7 +58,7 @@ export const saveSubs = async (req, res, next) => {
     const mailFormat = {
       from: `"Credit World Agent" <${process.env.MAIL}>`, // sender address
       to: email,
-      subject: `creditworld.in ${subject}`, // Subject line
+      subject: `Credit card applied`, // Subject line
       html: body, // html body
     };
     const info = await sendMail(mailFormat);
