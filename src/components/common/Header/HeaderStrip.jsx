@@ -16,7 +16,7 @@ const HeaderStrip = () => {
                   <img
                     title="Creditworld"
                     src="assets/img/core-img/cwIcon.png"
-                    style={{ width: 40,margin:"auto" }}
+                    style={{ width: 30,margin:"auto" }}
                     alt="Creditworld logo"
                   />
                   RLD
