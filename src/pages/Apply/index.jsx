@@ -59,8 +59,8 @@ const Apply = () => {
         <div dangerouslySetInnerHTML={{__html:data?.data?.bodyHtml}}></div> */}
         <div className="row">
           <div className="col-12">
-            <h4 className="">Send a message</h4>
-            <p>We will this information to connect you for your card request</p>
+            <h4 className="">Get your card now</h4>
+            <p>We need this information to connect with you</p>
             <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="col-lg-6">
