@@ -15,6 +15,9 @@ export const subscribe = (body) => {
 export const getAllCards = () => {
   return api.get("cards");
 };
+export const getAllBanks = () => {
+  return api.get("banks");
+};
 
 export const getCardsByBankId = (bankId) => {
   return api.get(`cards?active=1&bankId=${bankId}`);

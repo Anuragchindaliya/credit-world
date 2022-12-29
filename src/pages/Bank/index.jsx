@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { fetchBankData } from "../../api";
 import { docTitle } from "../../App";
+import BankLogo from "../../components/common/BankLogo";
 import useTitle from "../../hooks/useTitle";
 import BankAbout from "./BankAbout";
 import CardList from "./CardList";
@@ -121,6 +122,7 @@ const Bank = () => {
       {/* images caps */}
       {/* card start from here */}
       <CardList bankId={bankDetails?.id} />
+      <BankLogo />
     </>
   );
 };

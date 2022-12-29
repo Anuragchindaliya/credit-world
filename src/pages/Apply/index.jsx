@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { getAllCards, subscribe } from "../../api";
+import BankLogo from "../../components/common/BankLogo";
+import "./index.css";
+
 const salaried = "salaried";
 const selfEmployed = "selfEmployed";
 const Apply = () => {
   const { state } = useLocation();
   const [selectedCard, setSelectedCard] = useState(state);
   const [occupation, setOccupation] = useState(salaried);
+  const [isCardUser, setCardUser] = useState(false);
 
   const {
     mutate: addSubscriber,
@@ -24,14 +28,14 @@ const Apply = () => {
     console.log("handleSubmit", e);
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);
+    formProps.body = `<div><h1>Credit World</h1><p>Thanks for applying</p><div>Name: ${formProps?.name}</div><div>Sender Mail: ${formProps?.email}</div><div>Contact: ${formProps?.contact}</div><div>pincode: ${formProps?.pincode}</div><div>Credit card User: ${formProps?.cardUser? "YES":"NO"}</div><div>Card Name: ${selectedCard?.name}</div><div><br /><img src="${selectedCard?.img}" style="width:200px" /></div></div>`;
     console.log({ formData, formProps });
-    formProps.body = `<div><h1>Credit World</h1><p>Thanks for applying</p><div>Card Name: ${selectedCard?.name}</div><div>Sender Mail: ${formProps.email}</div><div>Message: ${formProps.message}</div></div>`;
+    // return;
     addSubscriber(
-      { cardId: selectedCard.id, ...formProps },
-      { onSuccess: () => e.target.reset() }
+      { cardId: selectedCard.id, ...formProps }
+      // { onSuccess: () => e.target.reset() }
     );
   };
-
 
   const cards = allCards?.data?.cards;
   useEffect(() => {
@@ -42,14 +46,21 @@ const Apply = () => {
   const handleOccupation = (e) => {
     setOccupation(e.target.id);
   };
+  const handleCardUser = () => {
+    setCardUser((b) => !b);
+  };
   return (
-    <div className="contact---area py-5 bg-gray">
-      <div className="container bg-white p-5 rounded">
+    <div className="applyForm bg-gray">
+      <div
+        className="container bg-white p-5 rounded"
+        style={{ boxShadow: "5px 5px 5px #dce0ff" }}
+      >
         {/* <h1>response</h1>
         <div dangerouslySetInnerHTML={{__html:data?.data?.bodyHtml}}></div> */}
         <div className="row">
           <div className="col-12">
-            <h4 className="mb-50">Send a message</h4>
+            <h4 className="">Send a message</h4>
+            <p>We will this information to connect you for your card request</p>
             <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="col-lg-6">
@@ -69,6 +80,24 @@ const Apply = () => {
                 <div className="col-lg-6">
                   <div className="form-group">
                     <label>
+                      Contact<span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="contact"
+                      placeholder="Your Contact No."
+                      // pattern="\d{10}"
+                      maxLength={10}
+                      minLength={10}
+                      title="Please enter number in correct format"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="form-group">
+                    <label>
                       Email<span className="text-danger">*</span>
                     </label>
                     <input
@@ -78,6 +107,60 @@ const Apply = () => {
                       placeholder="Your E-mail"
                       required
                     />
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="form-group">
+                    <div className="form-group">
+                      Are you credit card user
+                      <span className="text-danger">*</span>
+                    </div>
+                    <div className="row">
+                      <div className="col-lg-3 ">
+                        <input
+                          type="radio"
+                          className="mr-2"
+                          name="cardUser"
+                          id={"cardYes"}
+                          onChange={handleCardUser}
+                          checked={isCardUser}
+                          value="1"
+                          required
+                        />
+                        <label htmlFor="cardYes">Yes</label>
+                      </div>
+                      <div className="col-lg-6">
+                        <input
+                          type="radio"
+                          className="mr-2"
+                          name="cardUser"
+                          id={"cardNo"}
+                          value="0"
+                          onChange={handleCardUser}
+                          checked={!isCardUser}
+                          required
+                        />
+                        <label htmlFor="cardNo">No</label>
+                      </div>
+                      {/* <div className="row">
+                        <div className="col-lg-6 ">
+                          <input
+                            type="number"
+                            className="form-control"
+                            name="crLimitMin"
+                            placeholder="Your min credit limit"
+                          />
+                        </div>
+                        <div className="col-lg-6">
+                          <input
+                            type="number"
+                            className="form-control"
+                            name="crLimitMax"
+                            placeholder="Your max credit limit"
+                          />
+                        </div>
+                      </div> */}
+                    </div>
                   </div>
                 </div>
                 <div className="col-lg-6">
@@ -117,7 +200,8 @@ const Apply = () => {
                   {occupation === salaried ? (
                     <div className="form-group">
                       <label>
-                        Salary<span className="text-danger">*</span> (monthly)
+                        Net Salary<span className="text-danger">*</span>{" "}
+                        (monthly)
                       </label>
                       <input
                         type="number"
@@ -142,36 +226,10 @@ const Apply = () => {
                     </div>
                   )}
                 </div>
+
                 <div className="col-lg-6">
                   <div className="form-group">
-                    <div className="form-group">
-                      <label>Are you credit card user</label>
-                      <div className="row">
-                        <div className="col-lg-6 ">
-                          <input
-                            type="number"
-                            className="form-control"
-                            name="crLimitMin"
-                            placeholder="Your min credit limit"
-                          />
-                        </div>
-                        <div className="col-lg-6">
-                          <input
-                            type="number"
-                            className="form-control"
-                            name="crLimitMax"
-                            placeholder="Your max credit limit"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="form-group">
-                    <label>
-                      Current area pincode<span className="text-danger">*</span>
-                    </label>
+                    <label>Current area pincode</label>
                     <input
                       type="text"
                       className="form-control"
@@ -222,46 +280,6 @@ const Apply = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-6">
-                  <div className="row">
-                    <div className="col-12">
-                      <div className="form-group">
-                        <label>Contact</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="contact"
-                          placeholder="Your Contact No."
-                        />
-                      </div>
-                    </div>
-                    <div className="col-12 ">
-                      <div className="form-group">
-                        <label>Subject</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="subject"
-                          placeholder="Your Subject"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-12 ">
-                      <div className="form-group">
-                        <label>Message</label>
-                        <textarea
-                          name="message"
-                          className="form-control"
-                          id="message"
-                          //   cols={30}
-                          rows={3}
-                          placeholder="Your Message"
-                          defaultValue={""}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <div className="col-12 d-flex mt-10" style={{ gap: "1rem" }}>
                   <button
                     className="btn credit-btn  d-flex align-items-center justify-content-center"
@@ -306,6 +324,7 @@ const Apply = () => {
           </div>
         </div>
       </div>
+      <BankLogo />
     </div>
   );
 };

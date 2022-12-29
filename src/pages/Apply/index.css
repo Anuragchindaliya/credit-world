@@ -1,0 +1,8 @@
+/* .applyForm {
+
+} */
+@media only screen and (min-width: 768px) {
+    .applyForm {
+      padding: 5em 0;
+    }
+  }

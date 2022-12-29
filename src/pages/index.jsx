@@ -1,5 +1,6 @@
 import React from "react";
 import { docTitle } from "../App";
+import BankLogo from "../components/common/BankLogo";
 import AddressCta from "../components/CTA/AddressCta";
 import HomeCta from "../components/CTA/HomeCta";
 import HomeCta2 from "../components/CTA/HomeCta2";
@@ -17,6 +18,7 @@ const Home = ({ title }) => {
       <HomeCta />
       <HomeCta2 />
       <Services />
+      <BankLogo />
       <AddressCta />
     </>
   );
