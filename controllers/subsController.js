@@ -107,3 +107,16 @@ export const exportCsv = async (req, res, next) => {
     next(error);
   }
 };
+export const getAllSubs = async (req, res, next) => {
+  try {
+    const result = await Subs.findAll();
+    res.json({
+      message: "success",
+      count: result?.[0]?.length || 0,
+      result: result?.[0],
+    });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
