@@ -4,62 +4,34 @@ import ReactOwlCarousel from "react-owl-carousel";
 // import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { getAllBanks } from "../../../api";
-import "./index.css";
-const owlSetting = {
-  responsive: {
-    0: {
-      items: 3.5,
-    },
-    450: {
-      items: 4,
-    },
-    600: {
-      items: 5,
-    },
-    1000: {
-      items: 4.5,
-      margin: 30,
-    },
-  },
-  loop: true,
-  //   nav: true,
-  //   navText: [
-  //     '<i class="fa fa-angle-left"></i>',
-  //     '<i class="fa fa-angle-right"></i>',
-  //   ],
-  dots: false,
-  autoplay: true,
-  autoplayTimeout: 2000,
-  smartSpeed: 500,
-  // stagePadding: 10,
-};
+import { getAllCards } from "../../api";
+// import "./index.css";
 
-const BankLogo = () => {
+const CardSlider = () => {
   const owlSetting = useMemo(
     () => ({
       responsive: {
         0: {
-          items: 2.5,
+          items: 1.5,
         },
         450: {
-          items: 4,
+          items: 2,
         },
         600: {
-          items: 5,
+          items: 3,
         },
         1000: {
           items: 4.5,
           margin: 30,
         },
       },
-      loop: true,
       //   nav: true,
       //   navText: [
       //     '<i class="fa fa-angle-left"></i>',
       //     '<i class="fa fa-angle-right"></i>',
       //   ],
       dots: false,
+      loop: true,
       autoplay: true,
       autoplayTimeout: 2000,
       smartSpeed: 500,
@@ -67,49 +39,60 @@ const BankLogo = () => {
     }),
     []
   );
-  const banks = useQuery("banks", getAllBanks, {
+  const cards = useQuery("cards", getAllCards, {
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 30,
   });
-  if (banks.isLoading) return <div>Loading...</div>;
-  if (banks.isError) return <div>{banks.error?.toString()}</div>;
-  // console.log(banks.data?.data?.banks);
+  if (cards.isLoading)
+    return (
+      <div className="container py-5 my-5 d-flex justify-content-center align-items-center">
+        <h4>
+          <div className="spinner-border text-primary mx-2" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          Loading Cards...
+        </h4>
+      </div>
+    );
+  if (cards.isError) return <div>{cards.error?.toString()}</div>;
+  // console.log(cards.data?.data?.cards);
   return (
     <div style={{ paddingBlock: "3em" }}>
       <ReactOwlCarousel
-        className="banksSlider"
+        className="cardsSlider"
         //   loop
         //   margin={10}
         //   nav
         {...owlSetting}
       >
-        {banks.data?.data?.banks?.map((d, i) => {
+        {cards.data?.data?.cards?.map((d, i) => {
           return (
-            <Link
+            <div
               key={i}
               className="item"
-              to={"/cards/" + d?.slug}
+              //   to={"/cards/" + d?.slug}
               style={{
                 width: "100%",
                 padding: "1em",
-                display: "flex",
-                objectFit: "contain",
-                overflow: "hidden",
-                alignItems: "center",
+                // display: "flex",
+                // objectFit: "contain",
+                // overflow: "hidden",
+                // alignItems: "center",
+                // flexDirection: "column",
               }}
             >
-              {/* <h4>{i}</h4> */}
               <img
                 src={d.img}
                 style={{
                   margin: "auto",
                   display: "block",
                   objectFit: "contain",
-                  width: "100%",
+                  //   width: "100%",
                   // height: 100,
                 }}
               />
-            </Link>
+              <h6 className="mt-2 text-left d-block">{d?.name}</h6>
+            </div>
           );
         })}
       </ReactOwlCarousel>
@@ -117,4 +100,4 @@ const BankLogo = () => {
   );
 };
 
-export default BankLogo;
+export default CardSlider;

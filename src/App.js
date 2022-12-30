@@ -4,6 +4,8 @@ import Footer from "./components/Footer";
 import { lazy, Suspense } from "react";
 import Loader from "./components/common/Loader";
 import Apply from "./pages/Apply";
+import Register from "./pages/Register";
+import DownloadCSV from "./pages/DownloadCSV";
 
 const Home = lazy(() => import("./pages"));
 const About = lazy(() => import("./pages/About"));
@@ -26,13 +28,18 @@ function App() {
       element: <About title="About Us" />,
     },
     { path: "contact", element: <Contact title={"Contact Us"} /> },
-    { path: "cards/:bankname", element: <Bank  /> },
+    { path: "cards/:bankname", element: <Bank /> },
     { path: "loans", element: <Loan /> },
     { path: "loans/:loanname", element: <Loan /> },
-    { path: "loans", element: <Loan title="Loan"/> },
-    { path: "insurance/:insurancename", element: <Insurance title="Insurace" /> },
+    { path: "loans", element: <Loan title="Loan" /> },
+    {
+      path: "insurance/:insurancename",
+      element: <Insurance title="Insurace" />,
+    },
     { path: "privacy", element: <Privacy title={"Privacy Policy"} /> },
     { path: "apply", element: <Apply title={"Apply"} /> },
+    { path: "register", element: <Register title={"Register"} /> },
+    { path: "download", element: <DownloadCSV title={"Download"} /> },
     { path: "*", element: <NotFound title="Not Found" /> },
   ]);
   return (

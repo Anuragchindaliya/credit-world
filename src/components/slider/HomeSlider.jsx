@@ -1,5 +1,6 @@
 import React from "react";
 import ReactOwlCarousel from "react-owl-carousel";
+import { Link } from "react-router-dom";
 // const owlSetting = {
 //   dots: false,
 //   items: 1,
@@ -33,17 +34,37 @@ const slides = [
     description: "Go faster with your SMART CARD be travel your hobby",
     bgimg: "assets/img/bg-img/1.jpg",
     targetLink: "/",
+    button: (
+      <Link
+        to={"/register"}
+        className="btn credit-btn mt-50"
+        data-animation="fadeInUp"
+        data-delay="700ms"
+      >
+        Apply Now
+      </Link>
+    ),
   },
   {
     title: (
       <>
-       get your <span>Credit</span> now
+        get your <span>Credit</span> now
       </>
     ),
     subTitle: "45 Days Interest Free",
     description: "Can you use your credit card to buy beyond your card limit?",
     bgimg: "assets/img/bg-img/5.jpg",
     targetLink: "/",
+    button: (
+      <a
+        href={"/"}
+        className="btn credit-btn mt-50"
+        data-animation="fadeInUp"
+        data-delay="700ms"
+      >
+        Discover
+      </a>
+    ),
   },
   {
     title: (
@@ -52,9 +73,20 @@ const slides = [
       </>
     ),
     subTitle: "2 years interest",
-    description: "Understand Your Credit. You generally need credit to get a bank loan.",
+    description:
+      "Understand Your Credit. You generally need credit to get a bank loan.",
     bgimg: "assets/img/bg-img/21.jpg",
     targetLink: "/",
+    button: (
+      <a
+        href={"/"}
+        className="btn credit-btn mt-50"
+        data-animation="fadeInUp"
+        data-delay="700ms"
+      >
+        Discover
+      </a>
+    ),
   },
 ];
 const HomeSlider = () => {
@@ -63,7 +95,7 @@ const HomeSlider = () => {
       {/* <h1>slider</h1> */}
       <ReactOwlCarousel className="hero-slideshow owl-carousel" {...owlSetting}>
         {/* Single Slide */}
-        {slides.map((item,i) => (
+        {slides.map((item, i) => (
           <div key={i} className="single-slide bg-img">
             {/* Background Image*/}
             <div
@@ -86,14 +118,15 @@ const HomeSlider = () => {
                     <p data-animation="fadeInUp" data-delay="500ms">
                       {item?.description}
                     </p>
-                    <a
-                      href={item?.targetLink}
+                    {item?.button}
+                    {/* <Link
+                      to={item?.targetLink}
                       className="btn credit-btn mt-50"
                       data-animation="fadeInUp"
                       data-delay="700ms"
                     >
-                      Discover
-                    </a>
+                      Apply Now
+                    </Link> */}
                   </div>
                 </div>
               </div>

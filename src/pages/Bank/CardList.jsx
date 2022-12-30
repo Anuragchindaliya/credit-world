@@ -34,7 +34,7 @@ const CardList = ({ bankId }) => {
       </div>
     );
   }
-  console.log({ cardDetails });
+  // console.log({ cardDetails });
   return (
     <section>
       <div className="container all-cards mb-70">

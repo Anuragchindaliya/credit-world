@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: "https://credit-world.onrender.com/",
+  // baseURL: "http://localhost:5000",
+  // baseURL: "/api",
 });
 
 export const fetchBankData = (bankname) => {
@@ -10,6 +12,12 @@ export const fetchBankData = (bankname) => {
 
 export const subscribe = (body) => {
   return api.post("subs", body);
+};
+export const getAllSubs = () => {
+  return api.get("subs");
+};
+export const downloadCSV = () => {
+  return api.get("subs/export");
 };
 export const getAllCards = () => {
   return api.get("cards");

@@ -25,11 +25,10 @@ const Apply = () => {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("handleSubmit", e);
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);
     formProps.body = `<div><h1>Credit World</h1><p>Thanks for applying</p><div>Name: ${formProps?.name}</div><div>Sender Mail: ${formProps?.email}</div><div>Contact: ${formProps?.contact}</div><div>pincode: ${formProps?.pincode}</div><div>Credit card User: ${formProps?.cardUser? "YES":"NO"}</div><div>Card Name: ${selectedCard?.name}</div><div><br /><img src="${selectedCard?.img}" style="width:200px" /></div></div>`;
-    console.log({ formData, formProps });
+    // console.log({ formData, formProps });
     // return;
     addSubscriber(
       { cardId: selectedCard.id, ...formProps }
@@ -256,7 +255,6 @@ const Apply = () => {
                             const dataset =
                               e.target.options[e.target.selectedIndex].dataset;
                             setSelectedCard({ ...dataset, id: e.target.value });
-                            console.log({ e }, dataset);
                           }}
                         >
                           {cards?.map((item) => {
