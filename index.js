@@ -6,6 +6,7 @@ import corsOptions from "./config/corsOptions.js";
 import bankRoute from "./routes/bankRoute.js";
 import cardRoute from "./routes/cardRoute.js";
 import subsRoute from "./routes/subsRoute.js";
+import { logger } from "./middlewares/logger.js";
 const app = express();
 // db.connect((err) => {
 //   if (err) {
@@ -17,6 +18,9 @@ const app = express();
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json()); // parse json bodies in the request object
+//--built in middleware
+app.use(logger);
+
 
 // Redirect requests to endpoint starting with /posts to postRoutes.js
 app.use("/cards", cardRoute);
