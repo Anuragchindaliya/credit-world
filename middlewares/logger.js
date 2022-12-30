@@ -21,8 +21,9 @@ export const logEvent = async (message, fileName) => {
 };
 
 export const logger = (req, res, next) => {
-  const message = `${req.method}\t${req.url}\t${req.headers.origin}\n`;
-  logEvent(message, "reqLog.log");
-  console.log(`${req.method} ${req.path}`);
+  const message = `${req.method}\t${req.url}\t${req.headers?.["User-Agent"]}\t${new Intl.DateTimeFormat('en-us', { dateStyle: 'long', timeStyle: 'short'}).format(new Date())}\n`;
+  //   logEvent(message, "reqLog.log");
+  console.log(message);
+  //   console.log(`${req.method} ${req.path} ${new Date()} ${message}`);
   next();
 };

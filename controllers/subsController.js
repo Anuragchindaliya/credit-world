@@ -1,4 +1,5 @@
 import * as dotenv from "dotenv";
+import { Parser } from "json2csv";
 dotenv.config();
 import Subs from "../models/SubsModel.js";
 import { sendMail } from "./mailController.js";
@@ -18,7 +19,7 @@ export const saveSubs = async (req, res, next) => {
     ITR,
     crLimitMin,
     crLimitMax,
-    cardUser
+    cardUser,
   } = req.body;
   const bodyHtml =
     body ||
@@ -42,15 +43,15 @@ export const saveSubs = async (req, res, next) => {
     ITR,
     crLimitMin,
     crLimitMax,
-    cardUser
+    cardUser,
   });
   let messageRes = "";
   try {
     const subResult = await sub.save();
     if (subResult?.[0]?.affectedRows) {
       messageRes += "Successfully";
-    }else{
-      throw new Error("sql error: ",subResult)
+    } else {
+      throw new Error("sql error: ", subResult);
     }
     // return res.json({ ...subResult?.[0] });
 
@@ -80,4 +81,29 @@ export const saveSubs = async (req, res, next) => {
   }
 
   res.json({ messageRes, bodyHtml });
+};
+export const exportCsv = async (req, res, next) => {
+  try {
+    const result = await Subs.findAllJOIN();
+    const fields = [
+      { label: "ID", value: "subId" },
+      { label: "Name", value: "name" },
+      { label: "Contact", value: "contact" },
+      { label: "Pincode", value: "pincode" },
+      { label: "Card User", value: "cardUser" },
+      { label: "Salary", value: "salary" },
+      { label: "ITR", value: "itr" },
+      { label: "Requested Card", value: "cardName" },
+      { label: "Email", value: "email" },
+      { label: "Created At", value: "createdAt" },
+    ];
+    const opts = { fields };
+    const parser = new Parser(opts);
+    const csv = parser.parse(result[0]);
+    res.attachment(`credit_${Date.now()}.csv`);
+    res.send(csv);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 };
