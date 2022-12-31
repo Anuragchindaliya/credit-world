@@ -7,6 +7,7 @@ import bankRoute from "./routes/bankRoute.js";
 import cardRoute from "./routes/cardRoute.js";
 import subsRoute from "./routes/subsRoute.js";
 import { logger } from "./middlewares/logger.js";
+import applicantRoute from "./routes/applicantRoute.js";
 const app = express();
 // db.connect((err) => {
 //   if (err) {
@@ -26,6 +27,7 @@ app.use(logger);
 app.use("/cards", cardRoute);
 app.use("/banks", bankRoute);
 app.use("/subs", subsRoute);
+app.use("/applicants", applicantRoute);
 
 // Global Error Handler. IMPORTANT function params MUST start with err
 app.use((err, req, res, next) => {
