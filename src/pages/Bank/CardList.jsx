@@ -60,7 +60,10 @@ const CardList = ({ bankId }) => {
                 </div>
                 {/* modal */}
                 {/* Button trigger modal */}
-                <button type="button" className="btn btn-primary mr-2">
+                <button
+                  type="button"
+                  className="btn btn-danger bg-red-700 mr-2"
+                >
                   <Link
                     to={"/apply"}
                     // href="tel:+91-7217667147"

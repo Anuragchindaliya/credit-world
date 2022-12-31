@@ -13,14 +13,17 @@ export const fetchBankData = (bankname) => {
 export const subscribe = (body) => {
   return api.post("subs", body);
 };
+export const registerApplicant = (body) => {
+  return api.post("applicants", body);
+};
 export const getAllSubs = () => {
   return api.get("subs");
 };
 export const downloadCSV = () => {
   return api.get("subs/export");
 };
-export const getAllCards = () => {
-  return api.get("cards");
+export const getAllCards = (bankId) => {
+  return api.get(`cards?bankId=${bankId}`);
 };
 export const getAllBanks = () => {
   return api.get("banks");

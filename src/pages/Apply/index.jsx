@@ -280,7 +280,7 @@ const Apply = () => {
                 </div>
                 <div className="col-12 d-flex mt-10" style={{ gap: "1rem" }}>
                   <button
-                    className="btn credit-btn  d-flex align-items-center justify-content-center"
+                    className="btn credit-btn  d-flex align-items-center justify-content-center bg-red-700"
                     type="submit"
                     disabled={isApplying}
                   >

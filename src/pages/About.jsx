@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { docTitle } from "../App";
 import Breadcrumb from "../components/common/Breadcrumb";
 import useTitle from "../hooks/useTitle";
@@ -43,9 +44,9 @@ const About = ({ title }) => {
                   Creditworld working for you. We offer you the most suitable
                   card which totally complementary to your profile.
                 </p>
-                <a href="post" className="btn credit-btn mt-50">
-                  Discover
-                </a>
+                <Link to="/download" className="btn credit-btn mt-50">
+                  Download Applicats
+                </Link>
               </div>
             </div>
             <div className="col-12 col-md-6">
