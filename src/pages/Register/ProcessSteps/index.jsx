@@ -20,7 +20,7 @@ const ProcessSteps = () => {
       <div className="container pb-10 px-10">
         <div className="elements-title mb-[4rem] text-center">
           <div className="line m-auto" />
-          <h2 className="mt-3 font-medium">Basic Eligibility Criteria</h2>
+          <h2 className="mt-3 font-medium">How it Works</h2>
         </div>
         <div className="row">
           {/* ========== Web Icons ========== */}
