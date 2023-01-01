@@ -5,7 +5,8 @@ import { lazy, Suspense } from "react";
 import Loader from "./components/common/Loader";
 import Apply from "./pages/Apply";
 import Register from "./pages/Register";
-import DownloadCSV from "./pages/DownloadCSV";
+import DownloadCSV from "./pages/Subscribers";
+import Applicants from "./pages/Applicants";
 
 const Home = lazy(() => import("./pages"));
 const About = lazy(() => import("./pages/About"));
@@ -40,6 +41,7 @@ function App() {
     { path: "apply", element: <Apply title={"Apply"} /> },
     { path: "register", element: <Register title={"Register"} /> },
     { path: "all/subscribers/download", element: <DownloadCSV title={"Download"} /> },
+    { path: "register/applicants/download", element: <Applicants title={"Applicants"} /> },
     { path: "*", element: <NotFound title="Not Found" /> },
   ]);
   return (

@@ -44,9 +44,9 @@ const About = ({ title }) => {
                   Creditworld working for you. We offer you the most suitable
                   card which totally complementary to your profile.
                 </p>
-                <Link to="/download" className="btn credit-btn mt-50">
+                {/* <Link to="/download" className="btn credit-btn mt-50">
                   Download Applicats
-                </Link>
+                </Link> */}
               </div>
             </div>
             <div className="col-12 col-md-6">

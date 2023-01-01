@@ -30,9 +30,9 @@ const ApplyForm = () => {
   const {
     mutate: addSubscriber,
     isLoading: isApplying,
-    isSuccess,
-    reset,
-    data: successRes,
+    // isSuccess,
+    // reset,
+    // data: successRes,
   } = useMutation(registerApplicant);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,6 +47,7 @@ const ApplyForm = () => {
       <div>Web: creditworld.in </div>
       Mail: support@creditworld.in
     </div>`;
+    formProps.bankId = "1";
 
     // formProps.body = `<div><h1>Credit World</h1><p>Thanks for applying</p><div>Name: ${
     //   formProps?.name

@@ -19,8 +19,14 @@ export const registerApplicant = (body) => {
 export const getAllSubs = () => {
   return api.get("subs");
 };
+export const getAllApplicants = () => {
+  return api.get("applicants");
+};
 export const downloadCSV = () => {
   return api.get("subs/export");
+};
+export const applicantsExport = () => {
+  return api.get("applicants/export");
 };
 export const getAllCards = (bankId) => {
   return api.get(`cards?bankId=${bankId}`);
