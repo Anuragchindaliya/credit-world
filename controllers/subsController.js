@@ -57,7 +57,7 @@ export const saveSubs = async (req, res, next) => {
 
     // send mail with defined transport object
     const mailFormat = {
-      from: `"Credit World Agent" <${process.env.MAIL}>`, // sender address
+      from: `"Credit World" <${process.env.MAIL}>`, // sender address
       to: email,
       subject: `Credit card applied`, // Subject line
       html: body, // html body
@@ -100,7 +100,7 @@ export const exportCsv = async (req, res, next) => {
     const opts = { fields };
     const parser = new Parser(opts);
     const csv = parser.parse(result[0]);
-    res.attachment(`credit_${Date.now()}.csv`);
+    res.attachment(`subscriber_${Date.now()}.csv`);
     res.send(csv);
   } catch (error) {
     console.log(error);

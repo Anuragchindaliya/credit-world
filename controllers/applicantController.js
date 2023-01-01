@@ -35,7 +35,7 @@ export const createApplicant = async (req, res, next) => {
 
     // send mail with defined transport object
     const mailFormat = {
-      from: `"Credit World Agent" <${process.env.MAIL}>`, // sender address
+      from: `"Creditworld" <${process.env.MAIL}>`, // sender address
       to: email,
       subject: `Credit card applied`, // Subject line
       html: bodyHtml, // html body
@@ -64,21 +64,21 @@ export const exportCsv = async (req, res, next) => {
   try {
     const result = await Applicant.findAllJOIN();
     const fields = [
-      { label: "ID", value: "subId" },
+      { label: "ID", value: "id" },
       { label: "Name", value: "name" },
       { label: "Contact", value: "contact" },
       { label: "Pincode", value: "pincode" },
       { label: "Card User", value: "cardUser" },
       { label: "Salary", value: "salary" },
-      { label: "ITR", value: "itr" },
-      { label: "Requested Card", value: "cardName" },
+      { label: "ITR", value: "ITR" },
+      { label: "Bank", value: "bankName" },
       { label: "Email", value: "email" },
       { label: "Created At", value: "createdAt" },
     ];
     const opts = { fields };
     const parser = new Parser(opts);
     const csv = parser.parse(result[0]);
-    res.attachment(`credit_${Date.now()}.csv`);
+    res.attachment(`applicants_${Date.now()}.csv`);
     res.send(csv);
   } catch (error) {
     console.log(error);
@@ -87,7 +87,7 @@ export const exportCsv = async (req, res, next) => {
 };
 export const getAllApplicants = async (req, res, next) => {
   try {
-    const result = await Applicant.findAll();
+    const result = await Applicant.findAllJOIN();
     res.json({
       message: "success",
       count: result?.[0]?.length || 0,

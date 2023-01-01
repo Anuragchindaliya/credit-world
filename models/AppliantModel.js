@@ -40,7 +40,7 @@ class Applicant {
   }
   static findAllJOIN() {
     let sql =
-      "SELECT subs.*, cards.name as cardName FROM subscribers as subs INNER JOIN cards ON subs.cardId=cards.id;";
+      "SELECT apps.*, banks.name as bankName FROM applicants as apps INNER JOIN banks ON apps.bankId=banks.id;";
     return db.execute(sql);
   }
 
