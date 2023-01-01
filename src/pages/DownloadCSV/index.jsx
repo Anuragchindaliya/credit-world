@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation, useQuery } from "react-query";
 import { useTable } from "react-table";
-import { downloadCSV, getAllSubs } from "../../api";
+import api, { downloadCSV, getAllSubs } from "../../api";
 
 const DownloadCSV = () => {
   return (
@@ -23,6 +23,7 @@ const DownloadButton = () => {
     link.setAttribute("download", "applicats.csv");
     document.body.appendChild(link);
     link.click();
+    link.remove();
   };
   return (
     <section
@@ -45,6 +46,13 @@ const DownloadButton = () => {
                 </h4>
               </div>
               <div className="cta-btn">
+                {/* <a
+                  href={`${api?.getUri()}/subs/export`}
+                  className="btn credit-btn box-shadow"
+                  download="credit.csv"
+                >
+                  download
+                </a> */}
                 <button
                   onClick={handleDownload}
                   className="btn credit-btn box-shadow"

@@ -39,7 +39,7 @@ function App() {
     { path: "privacy", element: <Privacy title={"Privacy Policy"} /> },
     { path: "apply", element: <Apply title={"Apply"} /> },
     { path: "register", element: <Register title={"Register"} /> },
-    { path: "download", element: <DownloadCSV title={"Download"} /> },
+    { path: "all/subscribers/download", element: <DownloadCSV title={"Download"} /> },
     { path: "*", element: <NotFound title="Not Found" /> },
   ]);
   return (

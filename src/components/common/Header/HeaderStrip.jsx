@@ -4,19 +4,32 @@ import { Link } from "react-router-dom";
 const HeaderStrip = () => {
   return (
     <>
+      
       {/* Top Header Area */}
       <div className="container h-100">
-        <div className="row h-100 align-items-center">
+      <marquee>
+        Creditworld do not charge any amount for applying credit card
+      </marquee>
+        <div className="row  align-items-center">
           <div className="col-12 d-flex justify-content-between">
             {/* Logo Area */}
+            
             <div className="logo">
               <Link to="/">
-                <h1 style={{ color: "#003679", fontSize: 26,display:"flex",fontFamily:"Monotype Broadway Regular",margin:0 }}>
+                <h1
+                  style={{
+                    color: "#003679",
+                    fontSize: 26,
+                    display: "flex",
+                    fontFamily: "Monotype Broadway Regular",
+                    margin: 0,
+                  }}
+                >
                   CREDITW
                   <img
                     title="Creditworld"
                     src="assets/img/core-img/cwIcon.png"
-                    style={{ width: 30,margin:"auto" }}
+                    style={{ width: 30, margin: "auto" }}
                     alt="Creditworld logo"
                   />
                   RLD
