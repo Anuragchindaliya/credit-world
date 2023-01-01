@@ -4,8 +4,11 @@ import Applicant from "../models/AppliantModel.js";
 dotenv.config();
 import { sendMail } from "./mailController.js";
 export const createApplicant = async (req, res, next) => {
-  const { name, contact, email, pincode, salary, ITR, cardUser, body } =
+  const { name, contact, email, pincode, salary, ITR, cardUser, body, bankId } =
     req.body;
+  if (!name || !contact || !email || !bankId) {
+    return res.json({ message: "all fields are required" });
+  }
   const bodyHtml =
     body ||
     `<div>
@@ -22,6 +25,7 @@ export const createApplicant = async (req, res, next) => {
     ITR,
     cardUser,
     body,
+    bankId,
   });
   let messageRes = "";
   try {

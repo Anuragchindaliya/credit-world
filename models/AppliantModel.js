@@ -1,8 +1,16 @@
 import db from "../config/db.js";
 
 class Applicant {
-
-  constructor({ name, contact, email, pincode, salary, ITR, cardUser = "0" }) {
+  constructor({
+    name,
+    contact,
+    email,
+    pincode,
+    salary,
+    ITR,
+    cardUser = "0",
+    bankId,
+  }) {
     this.info = {
       name: name,
       contact: contact || null,
@@ -11,6 +19,7 @@ class Applicant {
       salary: salary || null,
       ITR: ITR || null,
       cardUser,
+      bankId,
     };
   }
 
@@ -23,9 +32,10 @@ class Applicant {
         pincode,
         salary,
         ITR,
-        cardUser
+        cardUser,
+        bankId
     )
-    VALUES(?,?,?,?,?,?,?)
+    VALUES(?,?,?,?,?,?,?,?)
     `;
 
     return db.query(sql, [...Object.values(this.info)]);
