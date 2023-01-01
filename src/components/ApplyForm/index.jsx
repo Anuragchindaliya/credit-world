@@ -1,11 +1,29 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
+import { toast } from "react-toastify";
 import { registerApplicant } from "../../api";
 import "./index.css";
 
 const salaried = "salaried";
 const selfEmployed = "selfEmployed";
 const ApplyForm = () => {
+  const notify = () => {
+    toast.success(
+      <>
+        Applied successfull, <br /> We will connect you shortly
+      </>,
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      }
+    );
+  };
   const [occupation, setOccupation] = useState(salaried);
   const [isCardUser, setCardUser] = useState(false);
 
@@ -20,17 +38,30 @@ const ApplyForm = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);
-    formProps.body = `<div><h1>Credit World</h1><p>Thanks for applying</p><div>Name: ${
-      formProps?.name
-    }</div><div>Sender Mail: ${formProps?.email}</div><div>Contact: ${
-      formProps?.contact
-    }</div><div>pincode: ${formProps?.pincode}</div><div>Credit card User: ${
-      formProps?.cardUser ? "YES" : "NO"
-    }</div></div>`;
-    console.log({ formData, formProps });
+
+    formProps.body = `<div>
+    <h1>Credit World</h1>
+      <div>Thankyou for applying credit card, representative will connect you shortly. They will suggest you the best credit card that suits you</div>
+      <br />
+      <div>Thanks and regards</div>
+      <div>Web: creditworld.in </div>
+      Mail: support@creditworld.in
+    </div>`;
+
+    // formProps.body = `<div><h1>Credit World</h1><p>Thanks for applying</p><div>Name: ${
+    //   formProps?.name
+    // }</div><div>Sender Mail: ${formProps?.email}</div><div>Contact: ${
+    //   formProps?.contact
+    // }</div><div>pincode: ${formProps?.pincode}</div><div>Credit card User: ${
+    //   formProps?.cardUser ? "YES" : "NO"
+    // }</div></div>`;
+    // console.log({ formData, formProps });
     // return;
     addSubscriber(formProps, {
-      // onSuccess: () => e.target.reset()
+      onSuccess: () => {
+        notify();
+        e.target.reset();
+      },
     });
   };
 
@@ -257,7 +288,8 @@ const ApplyForm = () => {
                     <>Apply now</>
                   )}
                 </button>
-                {isSuccess && successRes?.data?.messageRes && (
+                {/* success msg */}
+                {/* {isSuccess && successRes?.data?.messageRes && (
                   <div
                     className="alert alert-success font-weight-bolder"
                     role="alert"
@@ -274,7 +306,7 @@ const ApplyForm = () => {
                       <span aria-hidden="true">×</span>
                     </button>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </form>
