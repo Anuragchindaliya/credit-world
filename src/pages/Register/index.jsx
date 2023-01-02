@@ -28,10 +28,10 @@ const Register = () => {
                 Credit Card Eligibility ✓ Offers ✓ Fee charges ✓ Reward Points ✓
                 Apply Online instantly at IndiaLends.
               </p>
-              <CardSlider />
+              <CardSlider bankId={1} />
             </div>
             <div className="col-lg-5 mb-5 ">
-              <ApplyForm />
+              <ApplyForm bankId={1}/>
             </div>
           </div>
         </div>

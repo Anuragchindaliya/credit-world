@@ -52,8 +52,8 @@ const CardList = ({ bankId }) => {
                 />
               </div>
               <div className="card-block p-4 col-lg-9">
-                <h4 className="m-0">{card?.name}</h4>
-                <div className="card-text p-4 text-justify w-100">
+                <h4 className="m-0 text-xl font-semibold">{card?.name}</h4>
+                <div className="card-text pt-2 pb-4 text-justify w-100">
                   {/* <p>{card?.content}</p> */}
                   <div dangerouslySetInnerHTML={{ __html: card.content }} />
                   {card?.rewards && <CardRewards rewards={card?.rewards} />}

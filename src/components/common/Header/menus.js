@@ -46,12 +46,12 @@ const menus = [
           title: "CITI BANK",
         },
         {
-          title: "YES BANK",
-        },
+          title: "SBI BANK",
+        },    
       ],
       [
         {
-          title: "SBI BANK",
+          title: "YES BANK",
         },
         {
           title: "RBL BANK",

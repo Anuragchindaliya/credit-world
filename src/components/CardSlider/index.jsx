@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { getCardsByBankId } from "../../api";
 // import "./index.css";
 
-const CardSlider = () => {
+const CardSlider = ({bankId=1}) => {
   const owlSetting = useMemo(
     () => ({
       responsive: {
@@ -24,24 +24,19 @@ const CardSlider = () => {
       dots: true,
       loop: true,
       autoplay: true,
-      autoplayTimeout: 2000,
+      autoplayTimeout: 4000,
       smartSpeed: 500,
       // stagePadding: 10,
     }),
     []
   );
-  // useQuery(
-  //   ["card", bankId],
-  //   () => {
-  //     return getCardsByBankId(bankId);
-  //   },
   const cards = useQuery(
-    ["card", 1],
+    ["card", bankId],
     () => {
-      return getCardsByBankId(1);
+      return getCardsByBankId(bankId);
     },
     {
-      refetchOnWindowFocus: false,
+      enabled: !!bankId,
       staleTime: 1000 * 60 * 30,
     }
   );

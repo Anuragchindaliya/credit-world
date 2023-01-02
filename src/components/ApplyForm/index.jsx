@@ -6,7 +6,7 @@ import "./index.css";
 
 const salaried = "salaried";
 const selfEmployed = "selfEmployed";
-const ApplyForm = () => {
+const ApplyForm = ({bankId}) => {
   const notify = () => {
     toast.success(
       <>
@@ -47,7 +47,7 @@ const ApplyForm = () => {
       <div>Web: creditworld.in </div>
       Mail: support@creditworld.in
     </div>`;
-    formProps.bankId = "1";
+    formProps.bankId = bankId;
 
     // formProps.body = `<div><h1>Credit World</h1><p>Thanks for applying</p><div>Name: ${
     //   formProps?.name

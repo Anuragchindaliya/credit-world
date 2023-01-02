@@ -49,7 +49,7 @@ const Apply = () => {
     setCardUser((b) => !b);
   };
   return (
-    <div className="applyForm bg-gray">
+    <div className="applyForm bg-gray py-5">
       <div
         className="container bg-white p-5 rounded"
         style={{ boxShadow: "5px 5px 5px #dce0ff" }}
@@ -58,7 +58,7 @@ const Apply = () => {
         <div dangerouslySetInnerHTML={{__html:data?.data?.bodyHtml}}></div> */}
         <div className="row">
           <div className="col-12">
-            <h4 className="">Get your card now</h4>
+            <h4 className="text-2xl font-semibold">Get your card now</h4>
             <p>We need this information to connect with you</p>
             <form onSubmit={handleSubmit}>
               <div className="row">
