@@ -1,12 +1,26 @@
 import React from "react";
-import { useTable } from "react-table";
+import { useGlobalFilter, useTable } from "react-table";
+import GlobalFilter from "./GlobalFilter";
 
 const TableLayout = ({ data, columns }) => {
-  const tableInstance = useTable({ columns, data });
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance;
+  const tableInstance = useTable({ columns, data }, useGlobalFilter);
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    preGlobalFilteredRows,
+    state,
+    setGlobalFilter,
+  } = tableInstance;
   return (
     <div className="table-responsive">
+      <GlobalFilter
+        preGlobalFilteredRows={preGlobalFilteredRows}
+        globalFilter={state.globalFilter}
+        setGlobalFilter={setGlobalFilter}
+      />
       <table
         className="table table-bordered"
         {...getTableProps()}

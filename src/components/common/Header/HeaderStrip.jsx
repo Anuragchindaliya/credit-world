@@ -17,13 +17,14 @@ const HeaderStrip = () => {
             <div className="logo">
               <Link to="/">
                 <h1
-                  style={{
-                    color: "#003679",
-                    fontSize: 26,
-                    display: "flex",
-                    fontFamily: "Monotype Broadway Regular",
-                    margin: 0,
-                  }}
+                className="text-blue-900 text-3xl sm:text-[38px] flex font-['Monotype_Broadway_Regular']"
+                  // style={{
+                  //   color: "#003679",
+                  //   fontSize: 26,
+                  //   display: "flex",
+                  //   fontFamily: "Monotype Broadway Regular",
+                  //   margin: 0,
+                  // }}
                 >
                   CREDITW
                   <img
@@ -42,7 +43,7 @@ const HeaderStrip = () => {
             </div>
             {/* Top Contact Info */}
             <div className="top-contact-info d-flex align-items-center">
-              <a
+              {/* <a
                 href="/#"
                 data-toggle="tooltip"
                 data-placement="bottom"
@@ -51,7 +52,7 @@ const HeaderStrip = () => {
               >
                 <img src="assets/img/core-img/placeholder.png" alt="" />{" "}
                 <span>Delhi NCR in Faridabad, 121001</span>
-              </a>
+              </a> */}
               <a
                 href="mailto:support@creditworld.in"
                 data-toggle="tooltip"

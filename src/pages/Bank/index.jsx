@@ -24,7 +24,7 @@ const Bank = () => {
   if (isLoading) {
     return (
       <div className="container py-5 my-5 d-flex justify-content-center align-items-center">
-        <h4>
+        <h4 className="text-xl flex font-semibold">
           <div className="spinner-border text-primary mx-2" role="status">
             <span className="sr-only">Loading...</span>
           </div>

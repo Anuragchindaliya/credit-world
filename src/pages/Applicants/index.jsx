@@ -85,7 +85,7 @@ const Applicants = () => {
                 <button
                   onClick={handleDownload}
                   // className="btn credit-btn box-shadow"
-                  className=" btn credit-btn bg-danger rounded text-white"
+                  className="btn md:px-5 bg-danger rounded text-white"
                 >
                   {isDownloading ? <>Downloading...</> : <>Download CSV</>}
                 </button>

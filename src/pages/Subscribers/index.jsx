@@ -89,7 +89,7 @@ const DownloadButton = () => {
                 <button
                   onClick={handleDownload}
                   // className="btn credit-btn box-shadow"
-                  className="btn credit-btn box-shadow bg-danger  rounded text-white"
+                  className="btn  box-shadow bg-danger  rounded text-white"
                 >
                   {isDownloading ? <>Downloading...</> : <>Download CSV</>}
                 </button>
