@@ -18,6 +18,9 @@ const ApplicantsColumns = [
   {
     Header: "Card User",
     accessor: "cardUser",
+    Cell:({value})=>{
+      return value?"YES":"NO";
+    } 
   },
   {
     Header: "Bank Name",
@@ -40,18 +43,19 @@ const ApplicantsColumns = [
     accessor: "createdAt",
   },
 ];
+const bankId = 1;
 const Applicants = () => {
-  const { data } = useQuery("applicants", getAllApplicants, {
+  const { data } = useQuery("applicants", () => getAllApplicants(bankId), {
     refetchOnWindowFocus: false,
   });
   const { mutateAsync: getCSV, isLoading: isDownloading } =
     useMutation(applicantsExport);
   const handleDownload = async () => {
-    const result = await getCSV();
+    const result = await getCSV(bankId);
     const url = window.URL.createObjectURL(new Blob([result.data]));
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download",`applicants_${Date.now()}.csv`);
+    link.setAttribute("download", `applicants_${Date.now()}.csv`);
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -102,9 +106,13 @@ const Applicants = () => {
 };
 const ApplicantsTable = () => {
   const columns = React.useMemo(() => ApplicantsColumns, []);
-  const { data, isLoading } = useQuery("applicants", getAllApplicants, {
-    refetchOnWindowFocus: false,
-  });
+  const { data, isLoading } = useQuery(
+    "applicants",
+    () => getAllApplicants(bankId),
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
 
   if (isLoading) {
     return (
@@ -116,7 +124,114 @@ const ApplicantsTable = () => {
       </div>
     );
   }
-  return <TableLayout data={data?.data?.result} columns={columns} />;
+  return <TableLayout 
+  // data={data?.data?.result}
+  data={[
+    {
+        "id": 1,
+        "bankId": 1,
+        "name": "anurag",
+        "contact": "9625891968",
+        "email": "anuragwebpoint@gmail.com",
+        "pincode": "121005",
+        "cardUser": 0,
+        "salary": "12023.00",
+        "ITR": null,
+        "createdAt": "2023-01-01T13:39:57.000Z",
+        "bankName": "Hdfc Bank"
+    },
+    {
+        "id": 2,
+        "bankId": 1,
+        "name": "T mohan ",
+        "contact": "7306999422",
+        "email": "rohithmohan79225@gmail.com",
+        "pincode": "517325",
+        "cardUser": 0,
+        "salary": "35000.00",
+        "ITR": null,
+        "createdAt": "2023-01-01T13:39:57.000Z",
+        "bankName": "Hdfc Bank"
+    },
+    {
+        "id": 3,
+        "bankId": 1,
+        "name": "T mohan ",
+        "contact": "7306999422",
+        "email": "rohithmohan79225@gmail.com",
+        "pincode": "517325",
+        "cardUser": 0,
+        "salary": "35000.00",
+        "ITR": null,
+        "createdAt": "2023-01-01T13:39:57.000Z",
+        "bankName": "Hdfc Bank"
+    },
+    {
+        "id": 4,
+        "bankId": 1,
+        "name": "T mohan ",
+        "contact": "7306999422",
+        "email": "rohithmohan79225@gmail.com",
+        "pincode": "517325",
+        "cardUser": 1,
+        "salary": "35000.00",
+        "ITR": null,
+        "createdAt": "2023-01-01T13:39:57.000Z",
+        "bankName": "Hdfc Bank"
+    },
+    {
+        "id": 5,
+        "bankId": 1,
+        "name": "Rammilan ",
+        "contact": "8810626383",
+        "email": "ramrammilanrajpoot@gmail.com",
+        "pincode": "285001",
+        "cardUser": 0,
+        "salary": null,
+        "ITR": "400000.00",
+        "createdAt": "2023-01-01T13:39:57.000Z",
+        "bankName": "Hdfc Bank"
+    },
+    {
+        "id": 6,
+        "bankId": 1,
+        "name": "Rammilan ",
+        "contact": "8810626383",
+        "email": "ramrammilanrajpoot@gmail.com",
+        "pincode": "201301",
+        "cardUser": 0,
+        "salary": null,
+        "ITR": "400000.00",
+        "createdAt": "2023-01-01T13:39:57.000Z",
+        "bankName": "Hdfc Bank"
+    },
+    {
+        "id": 7,
+        "bankId": 1,
+        "name": "BHARAT SUNDESHA ",
+        "contact": "9530066956",
+        "email": "bharatsundesha2208@gmail.com",
+        "pincode": "344022",
+        "cardUser": 1,
+        "salary": null,
+        "ITR": "350000.00",
+        "createdAt": "2023-01-01T13:39:57.000Z",
+        "bankName": "Hdfc Bank"
+    },
+    {
+        "id": 8,
+        "bankId": 1,
+        "name": "BHARAT SUNDESHA ",
+        "contact": "9530066956",
+        "email": "bharatsundesha2208@gmail.com",
+        "pincode": "344022",
+        "cardUser": 1,
+        "salary": null,
+        "ITR": "350000.00",
+        "createdAt": "2023-01-01T13:39:57.000Z",
+        "bankName": "Hdfc Bank"
+    }]}
+   columns={columns} />;
 };
 
 export default Applicants;

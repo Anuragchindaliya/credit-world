@@ -29,11 +29,11 @@ export const downloadCSV = () => {
 export const registerApplicant = (body) => {
   return api.post("applicants", body);
 };
-export const getAllApplicants = () => {
-  return api.get("applicants");
+export const getAllApplicants = (bankId) => {
+  return api.get(`applicants?bankId=${bankId}`);
 };
-export const applicantsExport = () => {
-  return api.get("applicants/export");
+export const applicantsExport = (bankId) => {
+  return api.get(`applicants/export?bankId=${bankId}`);
 };
 
 // CARDS
