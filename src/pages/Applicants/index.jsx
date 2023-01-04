@@ -18,9 +18,7 @@ const ApplicantsColumns = [
   {
     Header: "Card User",
     accessor: "cardUser",
-    Cell:({value})=>{
-      return value?"YES":"NO";
-    } 
+    Cell:({value})=>value?"YES":"NO"
   },
   {
     Header: "Bank Name",

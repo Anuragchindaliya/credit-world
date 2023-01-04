@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
-import { registerApplicant } from "../../api";
+import { registerApplicant, registerApplier } from "../../api";
 import "./index.css";
 
 const salaried = "salaried";
@@ -33,7 +33,7 @@ const ApplyForm = ({bankId}) => {
     // isSuccess,
     // reset,
     // data: successRes,
-  } = useMutation(registerApplicant);
+  } = useMutation(registerApplier);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);

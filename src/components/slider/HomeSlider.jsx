@@ -37,7 +37,7 @@ const slides = [
     button: (
       <Link
         to={"/register"}
-        className="btn credit-btn mt-50"
+        className="btn credit-btn mt-2"
         data-animation="fadeInUp"
         data-delay="700ms"
       >
@@ -58,7 +58,7 @@ const slides = [
     button: (
       <a
         href={"/"}
-        className="btn credit-btn mt-50"
+        className="btn credit-btn mt-2"
         data-animation="fadeInUp"
         data-delay="700ms"
       >
@@ -80,7 +80,7 @@ const slides = [
     button: (
       <a
         href={"/"}
-        className="btn credit-btn mt-50"
+        className="btn credit-btn mt-2"
         data-animation="fadeInUp"
         data-delay="700ms"
       >
@@ -96,7 +96,10 @@ const HomeSlider = () => {
       <ReactOwlCarousel className="hero-slideshow owl-carousel" {...owlSetting}>
         {/* Single Slide */}
         {slides.map((item, i) => (
-          <div key={i} className="single-slide bg-img">
+          <div key={i} 
+          className="single-slide bg-img"
+          // className="bg-white overflow-hidden relative w-full h-44 z-50 bg-no-repeat bg-cover bg-[center_center]"
+          >
             {/* Background Image*/}
             <div
               className="slide-bg-img bg-img bg-overlay"
@@ -105,7 +108,7 @@ const HomeSlider = () => {
             {/* Welcome Text */}
             <div className="container h-100">
               <div className="row h-100 align-items-center justify-content-center">
-                <div className="col-12 col-lg-9">
+                <div className="col-12 col-lg-9 mb-5">
                   <div className="welcome-text text-center">
                     <h6 data-animation="fadeInUp" data-delay="100ms">
                       {/* 15 Days Process */}
