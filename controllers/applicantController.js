@@ -91,7 +91,13 @@ export const exportCsv = async (req, res, next) => {
 };
 export const getAllApplicants = async (req, res, next) => {
   try {
-    const result = await Applicant.findAllJOIN();
+    const { query } = req;
+    const filter = Object.keys(query).reduce((sql, key, i) => {
+      const join = i ? " AND " : "";
+      sql += `${join}${key}='${query[key]}'`;
+      return sql;
+    }, "");
+    const result = await Applicant.findAllJOIN(filter);
     res.json({
       message: "success",
       count: result?.[0]?.length || 0,

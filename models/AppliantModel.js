@@ -48,9 +48,12 @@ class Applicant {
     }
     return db.execute(sql);
   }
-  static findAllJOIN() {
+  static findAllJOIN(filter) {
     let sql =
-      "SELECT apps.*, banks.name as bankName FROM applicants as apps INNER JOIN banks ON apps.bankId=banks.id;";
+      "SELECT apps.*, banks.name as bankName FROM applicants as apps INNER JOIN banks ON apps.bankId=banks.id";
+    if (!!filter) {
+      sql += ` WHERE ${filter}`;
+    }
     return db.execute(sql);
   }
 
