@@ -66,7 +66,13 @@ export const createApplicant = async (req, res, next) => {
 };
 export const exportCsv = async (req, res, next) => {
   try {
-    const result = await Applicant.findAllJOIN();
+    const { query } = req;
+    const filter = Object.keys(query).reduce((sql, key, i) => {
+      const join = i ? " AND " : "";
+      sql += `${join}${key}='${query[key]}'`;
+      return sql;
+    }, "");
+    const result = await Applicant.findAllJOIN(filter);
     const fields = [
       { label: "ID", value: "id" },
       { label: "Name", value: "name" },
