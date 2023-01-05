@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
-import { registerApplicant, registerApplier } from "../../api";
 import "./index.css";
 
 const salaried = "salaried";
 const selfEmployed = "selfEmployed";
-const ApplyForm = ({bankId}) => {
+const ApplyForm = ({bankId,apiService}) => {
   const notify = () => {
     toast.success(
       <>
@@ -33,7 +32,7 @@ const ApplyForm = ({bankId}) => {
     // isSuccess,
     // reset,
     // data: successRes,
-  } = useMutation(registerApplier);
+  } = useMutation(apiService);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);

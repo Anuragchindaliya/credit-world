@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { Link, useParams } from "react-router-dom";
-import { fetchBankData } from "../../api";
+import { fetchBankData, registerApplier } from "../../api";
 import { docTitle } from "../../App";
 import ApplyForm from "../../components/ApplyForm";
 import CardSlider from "../../components/CardSlider";
@@ -62,7 +62,7 @@ const Bank = () => {
               <CardSlider bankId={bankId} />
             </div>
             <div className="col-lg-5 mb-5 ">
-              <ApplyForm bankId={bankId} />
+              <ApplyForm bankId={bankId} apiService={registerApplier} />
             </div>
           </div>
         </div>
