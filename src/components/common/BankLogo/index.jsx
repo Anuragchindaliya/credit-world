@@ -75,7 +75,12 @@ const BankLogo = () => {
   if (banks.isError) return <div>{banks.error?.toString()}</div>;
   // console.log(banks.data?.data?.banks);
   return (
-    <div style={{ paddingBlock: "3em" }}>
+    <div style={{ paddingBlock: "3em",backgroundColor:"#f7f7f7" }}>
+      <div className="elements-title mb-[2rem] text-center">
+        <div className="line m-auto" />
+        <h2 className="mt-3 font-medium">OUR PARTNERS</h2>
+        <p>We have partnered with India's leading Financial Institutions.</p>
+      </div>
       <ReactOwlCarousel
         className="banksSlider"
         //   loop

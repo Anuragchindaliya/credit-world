@@ -31,8 +31,8 @@ const AddressCta = () => {
               <div className="contact-content">
                 {/* Single Contact Content */}
                 <div className="single-contact-content d-flex align-items-center">
-                  <div className="icon">
-                    <img src="assets/img/core-img/location.png" alt="" />
+                  <div className="icon flex">
+                    <img className="m-auto" src="assets/img/core-img/location.png" alt="" />
                   </div>
                   <div className="text">
                     <p>Delhi NCR </p>
@@ -56,14 +56,14 @@ const AddressCta = () => {
                 {/* Single Contact Content */}
                 <div className="single-contact-content d-flex align-items-center">
                   <a href="mailto:naveenkumar@gmail.com">
-                    <div className="icon">
-                      <img src="assets/img/core-img/message2.png" alt="" />
+                    <div className="icon flex">
+                      <img className="m-auto" src="assets/img/core-img/message2.png" alt="" />
                     </div>
                   </a>
                   <div className="text">
-                    <a href="mailto:info.creditworld@gmail.com">
-                      <p>info.creditworld</p>
-                      <span>-@gmail.com</span>
+                    <a href="mailto:support@creditworld.in">
+                      <p>support</p>
+                      <span>-@creditworld.in</span>
                     </a>
                   </div>
                 </div>

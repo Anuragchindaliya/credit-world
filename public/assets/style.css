@@ -1399,6 +1399,7 @@ img {
 }
 .single-news-area .news-content .news-meta a img {
   margin-right: 5px;
+  display:inline-block!important;
 }
 .single-news-area .news-content .news-meta a:last-child {
   margin-left: 31px;
@@ -1842,7 +1843,8 @@ img {
   }
 }
 .single-latest-news-area .news-content .news-meta a img {
-  margin-right: 2px;
+  margin-right: 6px;
+  display: inline-block;
 }
 .single-latest-news-area .news-content .news-meta a:last-child {
   margin-left: 21px;
