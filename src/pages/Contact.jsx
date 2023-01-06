@@ -16,11 +16,7 @@ const Contact = ({ title }) => {
               <div className="single-contact-area mb-100">
                 {/* Logo */}
                 {/* <Link to="/#" className="d-block mb-30"> */}
-                  <img
-                    src="assets/img/core-img/cwLogo.png"
-                    width={300}
-                    alt=""
-                  />
+                <img src="assets/img/core-img/cwLogo.png" width={300} alt="" />
                 {/* </Link> */}
               </div>
             </div>
@@ -78,7 +74,7 @@ const Contact = ({ title }) => {
                     <h5>Get in touch</h5>
                     {/* Single Contact Content */}
                     <div className="single-contact-content d-flex align-items-center">
-                      <div className="icon">
+                      <div className="icon flex items-center justify-center">
                         <img
                           src="assets/img/core-img/location.png"
                           alt="Address"
@@ -109,7 +105,7 @@ const Contact = ({ title }) => {
                     {/* Single Contact Content */}
                     <div className="single-contact-content d-flex align-items-center">
                       <a href="mailto:support@creditworld.in">
-                        <div className="icon">
+                        <div className="icon flex items-center justify-center">
                           <img src="assets/img/core-img/message2.png" alt="" />
                         </div>
                       </a>
