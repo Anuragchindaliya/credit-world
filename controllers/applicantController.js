@@ -9,6 +9,14 @@ export const createApplicant = async (req, res, next) => {
   if (!name || !contact || !email || !bankId) {
     return res.json({ message: "all fields are required" });
   }
+
+  const existResult = await Applicant.checkExist({ contact });
+  console.log("contactExist", existResult?.[0].length);
+  if (existResult?.[0].length) {
+    return res
+      .status(409)
+      .json({ status: 409, message: "User already registered" });
+  }
   const bodyHtml =
     body ||
     `<div>
@@ -44,19 +52,19 @@ export const createApplicant = async (req, res, next) => {
       subject: `Credit card applied`, // Subject line
       html: bodyHtml, // html body
     };
-    const info = await sendMail(mailFormat);
-    // console.log({info});
-    // console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+    // const info = await sendMail(mailFormat);
+    // // console.log({info});
+    // // console.log("Message sent: %s", info.messageId);
+    // // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
-    // Preview only available when sending through an Ethereal account
-    // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-    if (info?.rejected?.length) {
-      return res.json({ message: "Subscribe Error" });
-    } else {
-      messageRes += " subscribed";
-    }
+    // // Preview only available when sending through an Ethereal account
+    // // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+    // if (info?.rejected?.length) {
+    //   return res.json({ message: "Subscribe Error" });
+    // } else {
+    //   messageRes += " subscribed";
+    // }
   } catch (error) {
     console.log(error);
     next(error);

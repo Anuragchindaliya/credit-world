@@ -40,7 +40,13 @@ class Applicant {
 
     return db.query(sql, [...Object.values(this.info)]);
   }
-
+  static checkExist(cause) {
+    const condition = Object.keys(cause).reduce((acc, key) => {
+      return `${acc} ${key}='${cause[key]}'`
+    }, "");
+    const sql = `SELECT * FROM applicants WHERE${condition}`;
+    return db.execute(sql);
+  }
   static findAll(filter) {
     let sql = "SELECT * FROM applicants";
     if (!!filter) {
