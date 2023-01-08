@@ -12,7 +12,7 @@ const Login = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const token = useAppSelector(selectCurrentToken);
-    const [login, { isLoading, isError, error }] = useLoginMutation();
+    const [login, { isLoading }] = useLoginMutation();
     const handleLoginSubmitClick = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const target = e.target as typeof e.target & {

@@ -36,13 +36,13 @@ const SubsColumns = [
   },
 ];
 const SubscribersTable = () => {
-  const { data, error, isLoading } = useGetSubscribersQuery();
+  const { data, error, isLoading, isError } = useGetSubscribersQuery();
 
   if (isLoading) {
     return <div>Loading Appliers...</div>;
   }
-  if (!data?.result) {
-    return <div>Data not found</div>;
+  if (isError) {
+    return <div>{error.message}</div>;
   }
   return (
     <div className="p-4">

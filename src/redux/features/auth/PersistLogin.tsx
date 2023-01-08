@@ -1,9 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect, useRef,
+  // useState
+} from "react";
 import { useSelector } from "react-redux";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { getCookie } from "../../../utils";
+import {
+  // Link,
+  Outlet, useNavigate
+} from "react-router-dom";
 // import usePersist from "../../hools/usePersist";
-import { useRefreshMutation } from "./authApi";
+// import { useRefreshMutation } from "./authApi";
 import { selectCurrentToken } from "./authSlice";
 
 const PersistLogin = () => {
@@ -35,7 +40,7 @@ const PersistLogin = () => {
   //   return () => { effectRan.current = true };
   //   // eslint-disable-next-line
   // }, []);
-  
+
   useEffect(() => {
     if (effectRan.current || process.env.NODE_ENV !== "development") {
       // const accessToken = getCookie("accessToken")

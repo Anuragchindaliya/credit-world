@@ -1,7 +1,7 @@
 import {
-  BaseQueryApi,
+  // BaseQueryApi,
   createApi,
-  FetchArgs,
+  // FetchArgs,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 // import {
