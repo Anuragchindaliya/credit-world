@@ -67,7 +67,8 @@ import { RootState } from "../reducers";
 export const apiSlice = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000",
+    // baseUrl: "http://localhost:5000",
+    baseUrl: "https://credit-world.onrender.com/",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
       if (token) {

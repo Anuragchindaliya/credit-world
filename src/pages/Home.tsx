@@ -8,7 +8,6 @@ import { useAppSelector } from '../redux/hooks';
 const Home = () => {
   const navigate = useNavigate();
   const token = useAppSelector((store) => store.auth.token);
-  console.log({ token })
   useEffect(() => {
     if (!token) {
       navigate("/login")

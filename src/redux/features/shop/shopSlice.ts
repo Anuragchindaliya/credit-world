@@ -39,7 +39,7 @@ export const fetchShop = createAsyncThunk("shop/fetchShops", async () => {
 });
 export const getShopData = async () => {
   return await axios.get("https://fakestoreapi.com/products").then((res) => {
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   });
 };

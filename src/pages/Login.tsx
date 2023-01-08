@@ -30,7 +30,6 @@ const Login = () => {
         dispatch(setCredentials({ accessToken }));
         setCookie("accessToken", accessToken)
         navigate("/")
-        console.log(email, password, res)
     }
     const effectRan = useRef(false);
 
