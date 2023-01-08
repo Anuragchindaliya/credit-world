@@ -103,7 +103,7 @@ const DownloadButton = () => {
 };
 const SubsTable = () => {
   const columns = React.useMemo(() => SubsColumns, []);
-  const { data, isLoading } = useQuery("subs", getAllSubs, {
+  const { data, isLoading, isError, error } = useQuery("subs", getAllSubs, {
     refetchOnWindowFocus: false,
   });
 
@@ -114,6 +114,13 @@ const SubsTable = () => {
           <span className="sr-only">Loading...</span>
         </div>
         <h4 className="text-xl">Loading Subscribers...</h4>
+      </div>
+    );
+  }
+  if (isError) {
+    return (
+      <div className="container py-4  d-flex justify-content-center align-items-center">
+        <h4 className="text-xl">{error.response.data.message}</h4>
       </div>
     );
   }
