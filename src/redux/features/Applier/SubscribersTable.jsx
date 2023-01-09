@@ -38,11 +38,12 @@ const SubsColumns = [
 ];
 const SubscribersTable = () => {
   const { data, error, isLoading, isError } = useGetSubscribersQuery();
-  const [downlaodCSV, { isLoading: isDownloading, ...props }] =
+  const [downlaodCSV, { isLoading: isDownloading }] =
     useExportSubsCSVMutation();
   const handleDownload = async () => {
     const result = await downlaodCSV();
-    const url = window.URL.createObjectURL(new Blob([result.error.data]));
+    const csvData = result?.error?.data || result?.data;
+    const url = window.URL.createObjectURL(new Blob([csvData]));
     const link = document.createElement("a");
     link.href = url;
     link.setAttribute("download", `subscribers_${Date.now()}.csv`);

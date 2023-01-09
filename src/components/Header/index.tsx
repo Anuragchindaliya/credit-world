@@ -8,15 +8,15 @@ import SwipeDrawer from '../Drawer/SwipeDrawer';
 import crIcon from "../../assets/img/coreimg/cwIcon.png";
 import { deleteCookie } from '../../utils';
 import { setCredentials } from '../../redux/features/auth/authSlice';
-
+import logoutIcon from "../../assets/img/icon/logout.svg"
 const Header = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const isDrawerOpen = useAppSelector((state) => state.appTheme.drawerShow);
-  const [profileMenuShow, setProfileMenuShow] = useState<boolean>(false)
-  const handleDrawer = useCallback(() => {
-    dispatch(toggleDrawer());
-  }, [])
+  // const [profileMenuShow, setProfileMenuShow] = useState<boolean>(false)
+  // const handleDrawer = useCallback(() => {
+  //   dispatch(toggleDrawer());
+  // }, [])
   const signout = () => {
     deleteCookie("accessToken");
     navigate("/login")
@@ -25,9 +25,9 @@ const Header = () => {
   return (
     <>
       <header>
-        <nav className="bg-white border-b-2 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <nav className="bg-white border-b-2 border-gray-200 px-4 lg:px-6  dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center">
-            <div className="flex justify-start items-center">
+            <div className="flex justify-start items-center ">
               {/* <button
                 onClick={handleDrawer}
                 id="toggleSidebar"
@@ -81,7 +81,7 @@ const Header = () => {
                 </svg>
                 <span className="sr-only">Toggle sidebar</span>
               </button>
-              <Link to="/" className="flex mr-4">
+              <Link to="/" className="flex mr-4 py-2.5">
                 <img
                   src={crIcon}
                   className="mr-3 h-8"
@@ -619,23 +619,26 @@ const Header = () => {
               <div className='relative'>
                 <button
                   type="button"
-                  className="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                  className=" items-center flex mx-3 p-3 h-8 text-sm md:mr-0 bg-gray-100 hover:bg-gray-200"
                   id="user-menu-button"
                   aria-expanded="false"
                   data-dropdown-toggle="dropdown"
-                  onClick={() => {
-                    setProfileMenuShow((b) => !b)
-                  }}
+                  // onClick={() => {
+                  //   setProfileMenuShow((b) => !b)
+                  // }}
+                  onClick={signout}
                 >
                   <span className="sr-only">Open user menu</span>
                   <img
-                    className="w-8 h-8 rounded-full"
-                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    className="w-6 h-6 mr-1 "
+                    // src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    src={logoutIcon}
                     alt="user photo"
                   />
+                  LOGOUT
                 </button>
                 {/* Dropdown menu */}
-                <div
+                {/* <div
                   className={`${profileMenuShow ? "absolute top-5 right-1" : "hidden"} z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600`}
                   id="dropdown"
                 >
@@ -653,7 +656,7 @@ const Header = () => {
                       </button>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

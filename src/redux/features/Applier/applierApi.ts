@@ -49,7 +49,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
           "Content-Type": "text/csv",
         },
         cache: "no-cache",
-        responseHandler: (response: { text: () => any }) => response.text(),
+        // responseHandler: (response: { text: () => any }) => response.text(),
         // responseHandler: async (response) => {
         //   console.log("responseHandler", response);
         //   window.location.assign(
