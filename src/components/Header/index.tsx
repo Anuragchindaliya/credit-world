@@ -25,10 +25,10 @@ const Header = () => {
   return (
     <>
       <header>
-        <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <nav className="bg-white border-b-2 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center">
             <div className="flex justify-start items-center">
-              <button
+              {/* <button
                 onClick={handleDrawer}
                 id="toggleSidebar"
                 aria-expanded="true"
@@ -47,7 +47,7 @@ const Header = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </button>
+              </button> */}
               <button
                 aria-expanded="true"
                 aria-controls="sidebar"
@@ -91,7 +91,7 @@ const Header = () => {
                   Creditworld
                 </span>
               </Link>
-              <form action="#" method="GET" className="hidden lg:block lg:pl-2">
+              {/* <form action="#" method="GET" className="hidden lg:block lg:pl-2">
                 <label htmlFor="topbar-search" className="sr-only">
                   Search
                 </label>
@@ -118,7 +118,7 @@ const Header = () => {
                     placeholder="Search"
                   />
                 </div>
-              </form>
+              </form> */}
             </div>
             <div className="flex items-center lg:order-2">
               {/* <button
@@ -636,7 +636,7 @@ const Header = () => {
                 </button>
                 {/* Dropdown menu */}
                 <div
-                  className={`${profileMenuShow ? "absolute top-5 right-1" : "hidden"} z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`}
+                  className={`${profileMenuShow ? "absolute top-5 right-1" : "hidden"} z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600`}
                   id="dropdown"
                 >
                   <ul
@@ -647,9 +647,9 @@ const Header = () => {
                       <button
                         // href="#"
                         onClick={signout}
-                        className="w-full py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        className="w-full py-2 px-4 text-sm font-bold hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
-                        Sign out
+                        LOG OUT
                       </button>
                     </li>
                   </ul>

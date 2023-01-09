@@ -21,9 +21,9 @@ const TableLayout = ({ data, columns }) => {
         globalFilter={state.globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
-      <div className="table-responsive overflow-x-auto">
+      <div className="table-responsive overflow-x-auto h-[calc(100vh-194px)]">
         <table
-          className="table table-bordered"
+          className="table table-bordered "
           {...getTableProps()}
           style={{ border: "solid 1px blue", width: "100%", height: "100%" }}
         >

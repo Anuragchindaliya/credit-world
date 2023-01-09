@@ -78,7 +78,7 @@ const PersistLogin = () => {
   // }
 
   // return content
-  return <Outlet />
+  return token && <Outlet />
 };
 
 export default PersistLogin;

@@ -39,8 +39,38 @@ export const authApiSlice = apiSlice.injectEndpoints({
     appliers: builder.query<Applier[], void>({
       query: () => "applier",
     }),
-    getSubscribers: builder.query<Applier[], void>({
+    getSubscribers: builder.query<Subscribers[], void>({
       query: () => "subs",
+    }),
+    exportSubsCSV: builder.mutation<Text, void>({
+      query: () => ({
+        url: "subs/export",
+        headers: {
+          "Content-Type": "text/csv",
+        },
+        cache: "no-cache",
+        responseHandler: (response: { text: () => any }) => response.text(),
+        // responseHandler: async (response) => {
+        //   console.log("responseHandler", response);
+        //   window.location.assign(
+        //     window.URL.createObjectURL(await response.blob())
+        //   );
+        // },
+      }),
+      // queryFn: async (_, api, extraOptions, baseQuery) => {
+      //   const result = await baseQuery({
+      //     url: `subs/export`,
+      //     responseHandler: (response) => response.blob(),
+      //   });
+      //   var hiddenElement = document.createElement("a");
+      //   var url = window.URL || window.webkitURL;
+      //   var blobPDF = url.createObjectURL((result as any).data);
+      //   hiddenElement.href = blobPDF;
+      //   hiddenElement.target = "_blank";
+      //   hiddenElement.download = `${Date.now()}_report.csv`;
+      //   hiddenElement.click();
+      //   return { data: null };
+      // },
     }),
     // appliers: builder.mutation({
     //   query: (credentials) => ({
@@ -52,4 +82,8 @@ export const authApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useAppliersQuery, useGetSubscribersQuery } = authApiSlice;
+export const {
+  useAppliersQuery,
+  useGetSubscribersQuery,
+  useExportSubsCSVMutation,
+} = authApiSlice;
