@@ -28,7 +28,7 @@ const Navbar = () => {
           ${screenWidth < 990 ? "breakpoint-on" : "breakpoint-off"}
         `}
         >
-          <div className="container">
+          <div className="container p-0 pl-3">
             {/* Menu */}
             <nav
               className="classy-navbar justify-content-between"

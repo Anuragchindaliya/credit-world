@@ -6,24 +6,30 @@ import Navbar from "./Navbar";
 
 const Header = () => {
   // const headerRef = useRef();
-  const [ref, isIntersecting] = useInView({
-    threshold: 0,
-    // rootMargin: "150px",
-  });
-  useScrollToTop({ ref });
+  // const [ref, isIntersecting] = useInView({
+  //   threshold: 0,
+  //   // rootMargin: "150px",
+  // });
+  // useScrollToTop({ ref });
   return (
     <header className="header-area">
       {/* Top Header Area */}
-      <div className="top-header-area" ref={ref}>
+      <div
+        className="top-header-area"
+        // ref={ref}
+      >
         <HeaderStrip />
       </div>
       {/* Navbar Area */}
       <div
         id="sticker-sticky-wrapper"
-        className={`sticky-wrapper ${!isIntersecting ? "is-sticky" : ""}`}
-        style={{
-          ...(!isIntersecting && { position: "fixed", width: "100%", top: 0 }),
-        }}
+        // className={`sticky-wrapper ${!isIntersecting ? "is-sticky" : ""}`}
+        className={`sticky-wrapper w-[4rem] md:w-full  absolute sm:static `}
+        style={
+          {
+            // ...(!isIntersecting && { position: "fixed", width: "100%", top: 0 }),
+          }
+        }
       >
         <Navbar />
       </div>
