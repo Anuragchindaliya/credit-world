@@ -596,7 +596,8 @@ img {
 }
 @media only screen and (max-width: 767px) {
   .header-area .credit-main-menu .classy-navbar {
-    height: 70px;
+    height: 54px;
+    width: 48px;
   }
 }
 .header-area .credit-main-menu .classy-navbar .classynav ul li a {
