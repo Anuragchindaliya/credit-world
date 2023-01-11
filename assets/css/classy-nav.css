@@ -919,7 +919,7 @@ img {
   display: none;
 }
 .breakpoint-on .classynav {
-  padding-top: 70px;
+  padding-top: 10px;
 }
 .breakpoint-on .classynav ul li .megamenu {
   position: relative;
