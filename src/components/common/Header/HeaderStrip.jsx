@@ -42,7 +42,7 @@ const HeaderStrip = () => {
               </Link>
             </div>
             {/* Top Contact Info */}
-            <div className="top-contact-info d-flex align-items-center">
+            <div className="top-contact-info hidden md:flex align-items-center">
               {/* <a
                 href="/#"
                 data-toggle="tooltip"

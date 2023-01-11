@@ -43,19 +43,34 @@ const Navbar = () => {
                 </span>
               </div>
               {/* Menu */}
-              {drawerShow && 
-              <div
-              onClick={handleDrawer}
-                style={{
-                  backgroundColor: "rgba(0,0,0,.1)",
-                  position: "fixed",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                }}
-              />}
+              {drawerShow && (
+                <div
+                  onClick={handleDrawer}
+                  style={{
+                    backgroundColor: "rgba(0,0,0,.1)",
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              )}
               <div className={`classy-menu ${drawerShow ? "menu-on" : ""}`}>
+              <div className="top-contact-info align-items-center sm:hidden p-3">
+                <a
+                  href="mailto:support@creditworld.in"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="support@creditworld.in"
+                  data-original-title="support@creditworld.in"
+                  className="flex"
+                  style={{display:"flex",gap:".5em"}}
+                >
+                  <img src="assets/img/core-img/message.png" style={{filter: "saturate(25.5)"}} alt="" />
+                  <span>support@creditworld.in</span>
+                </a>
+                </div>
                 {/* Close Button */}
                 <div className="classycloseIcon" onClick={handleDrawer}>
                   <div className="cross-wrap">
