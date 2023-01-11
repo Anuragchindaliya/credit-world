@@ -13,7 +13,8 @@ const featuresIcon = [
   },
   {
     title:"Loans",
-    icon:"icon-coin"
+    // icon:"icon-coin"
+    icon:"icon-wallet"
   },
   {
     title:"Insurance",
