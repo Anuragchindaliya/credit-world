@@ -5,6 +5,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        'tb': '992px',
+        // => @media (min-width: 992px) { ... }
+      },
       colors: {
         primary: {
           ...colors.blue,
