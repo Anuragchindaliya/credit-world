@@ -18,9 +18,17 @@ const Navbar = () => {
 
   return (
     <>
+    {/* Navbar Toggler */}
+    <div className="w-15 h-10 right-0 top-[4px] tb:hidden px-2 absolute flex  z-40 " onClick={handleDrawer}>
+                <span className="navbarToggler m-auto">
+                  <span className="rounded-sm cursor-pointer block h-1 mt-1 p-0 relative w-8 duration-300 bg-blue-900" />
+                  <span className="rounded-sm cursor-pointer block h-1 mt-1 p-0 relative w-8 duration-300 bg-blue-900" />
+                  <span className="rounded-sm cursor-pointer block h-1 mt-1 p-0 relative w-8 duration-300 bg-blue-900" />
+                </span>
+              </div>
       <div
-        className="credit-main-menu"
-        id="sticker"
+        className={`credit-main-menu w-0 h-0  tb:w-auto tb:h-auto  ${screenWidth < 990 ? "overflow-hidden":"overflow-visible"} "
+        id="sticker`}
         // style={{ width: 615 }}
       >
         <div
@@ -28,20 +36,13 @@ const Navbar = () => {
           ${screenWidth < 990 ? "breakpoint-on" : "breakpoint-off"}
         `}
         >
-          <div className="container p-0 pl-3">
+          <div className="container">
             {/* Menu */}
             <nav
               className="classy-navbar justify-content-between"
               id="creditNav"
             >
-              {/* Navbar Toggler */}
-              <div className="classy-navbar-toggler" onClick={handleDrawer}>
-                <span className="navbarToggler">
-                  <span />
-                  <span />
-                  <span />
-                </span>
-              </div>
+              
               {/* Menu */}
               {drawerShow && (
                 <div
@@ -57,7 +58,7 @@ const Navbar = () => {
                 />
               )}
               <div className={`classy-menu ${drawerShow ? "menu-on" : ""}`}>
-              <div className="top-contact-info align-items-center sm:hidden p-3">
+              <div className="top-contact-info align-items-center tb:hidden p-3">
                 <a
                   href="mailto:support@creditworld.in"
                   data-toggle="tooltip"

@@ -24,7 +24,7 @@ const Header = () => {
       <div
         id="sticker-sticky-wrapper"
         // className={`sticky-wrapper ${!isIntersecting ? "is-sticky" : ""}`}
-        className={`sticky-wrapper w-[4rem] md:w-full  absolute md:static right-[15px] top-5`}
+        className={`sticky-wrapper  tb:w-full [max]  absolute tb:static right-[15px] top-5`}
         style={
           {
             // ...(!isIntersecting && { position: "fixed", width: "100%", top: 0 }),
