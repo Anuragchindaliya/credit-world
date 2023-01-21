@@ -7,12 +7,9 @@ const Private = () => {
   return (
     <>
       <Header />
-      <PersistLogin>
-        <div className="bg-gray-100">
-          <Outlet />
-        </div>
-        <div>Footer</div>
-      </PersistLogin>
+      <PersistLogin />
+          {/* <Outlet /> */}
+        {/* <div>Footer</div> */}
     </>
   );
 };

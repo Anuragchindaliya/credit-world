@@ -8,7 +8,7 @@ const GlobalFilter = ({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) 
     setGlobalFilter(value || undefined);
   }, 200);
   return (
-    <form className="flex items-center mb-3">
+    <form className="flex flex-1 items-center">
       <label htmlFor="voice-search" className="sr-only">
         Search
       </label>

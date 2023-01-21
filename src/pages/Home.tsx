@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Products from '../components/Products';
+import ApplicantTable from '../redux/features/Applicant/ApplicantTable';
 import ApplierTable from '../redux/features/Applier/ApplierTable';
 import SubscribersTable from '../redux/features/Applier/SubscribersTable';
 import { useAppSelector } from '../redux/hooks';
@@ -15,10 +16,11 @@ const Home = () => {
   }, [token])
 
   return (
-    <div className='bg-white rounded-xl'>
+    <div className='bg-white shadow-lg rounded-lg dark:bg-gray-800'>
       {/* <Hero /> */}
       {/* <ApplierTable /> */}
-      <SubscribersTable />
+      {/* <SubscribersTable /> */}
+      <ApplicantTable />
       {/* <Products /> */}
     </div>
   )

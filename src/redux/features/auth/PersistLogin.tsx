@@ -78,7 +78,9 @@ const PersistLogin = () => {
   // }
 
   // return content
-  return token && <Outlet />
+  return token && <div className="bg-gray-100 p-2 dark:bg-gray-900">
+    <Outlet />
+  </div>
 };
 
 export default PersistLogin;
