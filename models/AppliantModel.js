@@ -56,7 +56,7 @@ class Applicant {
   }
   static findAllJOIN(filter) {
     let sql =
-      "SELECT apps.*, banks.name as bankName FROM applicants as apps INNER JOIN banks ON apps.bankId=banks.id";
+      "SELECT apps.*, banks.name as bankName FROM applicants as apps INNER JOIN banks ON apps.bankId=banks.id ORDER BY id DESC";
     if (!!filter) {
       sql += ` WHERE ${filter}`;
     }
