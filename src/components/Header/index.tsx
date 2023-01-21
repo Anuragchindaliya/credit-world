@@ -8,7 +8,8 @@ import SwipeDrawer from '../Drawer/SwipeDrawer';
 import crIcon from "../../assets/img/coreimg/cwIcon.png";
 import { deleteCookie } from '../../utils';
 import { setCredentials } from '../../redux/features/auth/authSlice';
-import logoutIcon from "../../assets/img/icon/logout.svg"
+// import logoutIcon from "../../assets/img/icon/logout.svg"
+import { DarkThemeButton } from '../Drawer/Sidebar';
 const Header = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -25,7 +26,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <nav className="bg-white border-b-2 border-gray-200 px-4 lg:px-6  dark:bg-gray-800">
+        <nav className="bg-white border-b-2 dark:border-gray-600 border-gray-200 px-4 lg:px-6  dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center">
             <div className="flex justify-start items-center ">
               {/* <button
@@ -48,7 +49,7 @@ const Header = () => {
                   />
                 </svg>
               </button> */}
-              <button
+              {/* <button
                 aria-expanded="true"
                 aria-controls="sidebar"
                 className="p-2 mr-2 text-gray-600 rounded-lg cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -80,14 +81,14 @@ const Header = () => {
                   />
                 </svg>
                 <span className="sr-only">Toggle sidebar</span>
-              </button>
+              </button> */}
               <Link to="/" className="flex mr-4 py-2.5">
                 <img
                   src={crIcon}
                   className="mr-3 h-8"
                   alt="FlowBite Logo"
                 />
-                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                <span className="self-center text-2xl font-semibold whitespace-nowrap hidden md:block dark:text-white">
                   Creditworld
                 </span>
               </Link>
@@ -616,10 +617,13 @@ const Header = () => {
                   </a>
                 </div>
               </div>
-              <div className='relative'>
-                <button
+              {/* <DarkThemeButton /> */}
+              <div 
+              // className='relative rounded-3xl overflow-hidden'
+              >
+                {/* <button
                   type="button"
-                  className=" items-center flex mx-3 p-3 h-8 text-sm md:mr-0 bg-gray-100 hover:bg-gray-200"
+                  className=" items-center flex ml-auto px-4 py-1 text-sm md:mr-0 bg-gray-100 hover:bg-gray-200 dark:text-white"
                   id="user-menu-button"
                   aria-expanded="false"
                   data-dropdown-toggle="dropdown"
@@ -630,13 +634,35 @@ const Header = () => {
                 >
                   <span className="sr-only">Open user menu</span>
                   <img
-                    className="w-6 h-6 mr-1 "
+                    className="w-4 h-6 mr-1 text-white"
                     // src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                     src={logoutIcon}
                     alt="user photo"
                   />
                   LOGOUT
+                </button> */}
+                <button
+                 onClick={signout}
+                className="flex py-1 px-3 items-center gap-3 text-gray-900 rounded-md bg-gray-100 hover:bg-gray-200 transition-colors duration-200 dark:text-white dark:bg-gray-700 cursor-pointer dark:hover:bg-gray-600">
+                  <svg
+                    stroke="currentColor"
+                    fill="none"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1={21} y1={12} x2={9} y2={12} />
+                  </svg>
+                  Log out
                 </button>
+
                 {/* Dropdown menu */}
                 {/* <div
                   className={`${profileMenuShow ? "absolute top-5 right-1" : "hidden"} z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600`}
@@ -657,6 +683,7 @@ const Header = () => {
                     </li>
                   </ul>
                 </div> */}
+
               </div>
             </div>
           </div>

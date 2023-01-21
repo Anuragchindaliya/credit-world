@@ -5,14 +5,14 @@ const SlideToogle = ({ isDarkMode, toggle }: any) => {
         // suppressHydrationWarning
         title={isDarkMode ? "Go Dark Mode" : "Go Light Mode"}
         className={
-          " relative m-2 inline-flex h-7 w-14 cursor-pointer items-center rounded-full bg-gray-200 focus:outline-none focus:ring-4 focus:ring-blue-800 dark:border-gray-600  dark:bg-blue-600 dark:focus:ring-blue-300"
+          " relative m-2 inline-flex h-7 w-14 cursor-pointer items-center rounded-full bg-gray-200 focus:outline-none focus:ring-4 focus:ring-red-800 dark:border-gray-600  dark:bg-red-600 dark:focus:ring-red-300"
         }
         type="button"
         onClick={toggle}
       >
         <div
           className={
-            "  absolute left-[4px]  top-[2px] mr-2 flex h-6  w-6 items-center  justify-center rounded-full border border-gray-300 bg-white text-xs  font-medium text-gray-700 transition-all  hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:translate-x-full  dark:border-gray-600 dark:text-gray-400 dark:focus:ring-gray-500 "
+            "  absolute left-[4px]  top-[2px] mr-2 flex h-6  w-6 items-center  justify-center rounded-full border border-gray-300 bg-white text-xs  font-medium text-gray-700 transition-all  hover:text-red-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:translate-x-full  dark:border-gray-600 dark:text-gray-400 dark:focus:ring-gray-500 "
           }
         >
           <svg

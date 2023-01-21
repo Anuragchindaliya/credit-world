@@ -3,7 +3,15 @@ import { toggleTheme } from '../../redux/features/theme/themeSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import SlideToogle from '../ui/button/SlideToggle'
 import Menu from './Menu';
-
+export const DarkThemeButton = () => {
+    const dispatch = useAppDispatch();
+    const isDarkMode = useAppSelector((state) => state.appTheme.darkTheme)
+    // const isDrawerOpen = useAppSelector((state) => state.appTheme.drawerShow)
+    const handleTheme = () => {
+        dispatch(toggleTheme())
+    }
+    return <SlideToogle isDarkMode={isDarkMode} toggle={handleTheme} />
+}
 const Sidebar = () => {
     const dispatch = useAppDispatch();
     const isDarkMode = useAppSelector((state) => state.appTheme.darkTheme)

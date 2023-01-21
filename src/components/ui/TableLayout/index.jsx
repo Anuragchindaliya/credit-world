@@ -291,7 +291,9 @@ const TableLayout = ({ data, columns, onRefresh }) => {
           className="w-full text-sm text-left text-gray-500 dark:text-gray-400"
           {...getTableProps()}
         >
-          <thead className=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
+          <thead className=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          //  sticky top-0"
+           >
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 <th
