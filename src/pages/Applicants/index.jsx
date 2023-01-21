@@ -18,7 +18,7 @@ const ApplicantsColumns = [
   {
     Header: "Card User",
     accessor: "cardUser",
-    Cell:({value})=>value?"YES":"NO"
+    Cell: ({ value }) => (value ? "YES" : "NO"),
   },
   {
     Header: "Bank Name",
@@ -43,11 +43,15 @@ const ApplicantsColumns = [
 ];
 const bankId = 1;
 const Applicants = () => {
-  const { data } = useQuery("applicants", () => getAllApplicants(bankId), {
+  const columns = React.useMemo(() => ApplicantsColumns, []);
+  const applicants = useQuery("applicants", () => getAllApplicants(bankId), {
     refetchOnWindowFocus: false,
+    retry:false
   });
+
   const { mutateAsync: getCSV, isLoading: isDownloading } =
     useMutation(applicantsExport);
+
   const handleDownload = async () => {
     const result = await getCSV(bankId);
     const url = window.URL.createObjectURL(new Blob([result.data]));
@@ -58,7 +62,18 @@ const Applicants = () => {
     link.click();
     link.remove();
   };
-  const count = data?.data?.count;
+
+  const count = applicants?.data?.count;
+
+  if (applicants?.isError) {
+    return (
+      <div className="container py-4  d-flex justify-content-center align-items-center h-72">
+        <h4 className="text-xl">
+          {applicants?.error?.response?.data?.message}
+        </h4>
+      </div>
+    );
+  }
   return (
     <section
       className=""
@@ -95,36 +110,25 @@ const Applicants = () => {
             </div>
           </div>
           <div className="col-12">
-            <ApplicantsTable />
+            {applicants?.isLoading ? (
+              <div className="container py-4  d-flex justify-content-center align-items-center">
+                <div className="spinner-border text-primary mx-2" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
+                <h4 className="text-xl">Loading Applicants...</h4>
+              </div>
+            ) : (
+              <TableLayout data={applicants?.data?.data?.result} columns={columns} />
+            )}
           </div>
         </div>
       </div>
     </section>
   );
 };
-const ApplicantsTable = () => {
-  const columns = React.useMemo(() => ApplicantsColumns, []);
-  const { data, isLoading } = useQuery(
-    "applicants",
-    () => getAllApplicants(bankId),
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
-
-  if (isLoading) {
-    return (
-      <div className="container py-4  d-flex justify-content-center align-items-center">
-        <div className="spinner-border text-primary mx-2" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-        <h4 className="text-xl">Loading Applicants...</h4>
-      </div>
-    );
-  }
-  return <TableLayout 
-  data={data?.data?.result}
-   columns={columns} />;
-};
+// const ApplicantsTable = ({ applicants }) => {
+//   const columns = React.useMemo(() => ApplicantsColumns, []);
+//   return <TableLayout data={applicants?.data?.data?.result} columns={columns} />;
+// };
 
 export default Applicants;
