@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
 import crIcon from "../assets/img/coreimg/cwIcon.png";
+import Loader from '../components/ui/button/Loader';
 import { useLoginMutation } from '../redux/features/auth/authApi';
 import { selectCurrentToken, setCredentials } from '../redux/features/auth/authSlice';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
@@ -13,6 +14,7 @@ const Login = () => {
     const dispatch = useAppDispatch();
     const token = useAppSelector(selectCurrentToken);
     const [login, { isLoading }] = useLoginMutation();
+    const [passwordType, setPasswordType] = useState(true)
     const handleLoginSubmitClick = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const target = e.target as typeof e.target & {
@@ -43,6 +45,7 @@ const Login = () => {
         return () => { effectRan.current = true };
         // eslint-disable-next-line
     }, []);
+
     return (
         <section className="bg-gray-50 dark:bg-gray-900 h-screen">
             {/* {isError && (
@@ -132,19 +135,55 @@ const Login = () => {
                                 >
                                     Password
                                 </label>
-                                <input
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="••••••••"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    //   onChange={handlePwdInput}
-                                    //   value={password}
-                                    required
-                                    autoComplete="true"
-                                />
+                                <div
+                                    className='flex relative'
+                                >
+                                    <input
+                                        type={passwordType ? "password" : "text"}
+                                        name={"password"}
+                                        id="password"
+                                        placeholder="••••••••"
+                                        className=" rounded bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pr-14"
+                                        // className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        //   onChange={handlePwdInput}
+                                        //   value={password}
+                                        required
+                                        autoComplete="true"
+                                    />
+                                    <div
+                                        onClick={() => {
+                                            setPasswordType((b) => !b)
+                                        }}
+                                        className="cursor-pointer w-10 m-[2px] absolute right-0 top-0 bottom-0 inline-flex items-center px-3 text-sm text-gray-900 bg-gray-100 hover:bg-gray-200  border border-r-0 border-gray-300 rounded-r-md dark:bg-gray-800 dark:hover:bg-gray-700  dark:text-gray-400 dark:border-gray-600">
+                                        <svg
+                                            className="h-4"
+                                            style={{display:passwordType?"block":"none"}}
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 576 512"
+                                        >
+                                            <path
+                                                fill="currentColor"
+                                                d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
+                                            ></path>
+                                        </svg>
+                                        <svg
+                                            className="h-4 "
+                                            style={{display:passwordType?"none":"block"}}
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 640 512"
+                                        >
+                                            <path
+                                                fill="currentColor"
+                                                d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+                                            ></path>
+                                        </svg>
+
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex items-center justify-between">
+                            {/* <div className="flex items-center justify-between">
                                 <div className="flex items-start">
                                     <div className="flex items-center h-5">
                                         <input
@@ -171,17 +210,22 @@ const Login = () => {
                                 >
                                     Forgot password?
                                 </a>
-                            </div>
+                            </div> */}
                             {/* <Link to={"/"}> */}
                             <button
                                 type="submit"
-                                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                className="w-full text-white bg-primary-800 hover:bg-primary-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-900 dark:hover:bg-primary-800 dark:focus:ring-primary-800"
                                 disabled={isLoading}
                             >
-                                {isLoading ? <>Signing in..</> : <>Sign in</>}
+                                {isLoading ? <>
+                                    <Loader />
+                                    Signing in...
+                                </> : <>
+                                    Sign in
+                                </>}
                             </button>
                             {/* </Link> */}
-                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                            {/* <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Don’t have an account yet?{" "}
                                 <Link
                                     to={"/signup"}
@@ -189,7 +233,7 @@ const Login = () => {
                                 >
                                     Sign up
                                 </Link>
-                            </p>
+                            </p> */}
                         </form>
                     </div>
                 </div>

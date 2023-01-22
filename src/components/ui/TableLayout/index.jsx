@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useGlobalFilter,
   useTable,
@@ -55,13 +55,38 @@ const RefreshButton = ({ onRefresh }) => {
   );
 };
 
-const MyPager = ({canPreviousPage,previousPage,nextPage,canNextPage,gotoPage,pageCount,pageIndex,pageSize,rows,setPageSize})=>{
-  return <nav
-  className="flex flex-wrap items-center gap-3 pt-3 pb-1 text-sm"
-  aria-label="Table navigation"
->
-  <ul className="inline-flex items-center -space-x-px">
-    <li>
+const MyPager = ({
+  canPreviousPage,
+  previousPage,
+  nextPage,
+  canNextPage,
+  gotoPage,
+  pageCount,
+  pageIndex,
+  pageSize,
+  rows,
+  setPageSize,
+  pageOptions,
+}) => {
+  const [pageNumber, setPageNumber] = useState(1);
+  useEffect(() => {
+    setPageNumber(pageIndex + 1);
+  }, [pageIndex]);
+
+  const handleGotoPage= ()=>{
+    // const page = pageNumber ? Number(pageNumber) - 1 : 0;
+    const page = Number(pageNumber) - 1;
+    if(page!=pageIndex){
+      gotoPage(page);
+    }
+  }
+  return (
+    <nav
+      className="flex flex-wrap items-center gap-3 pt-3 pb-1 text-sm"
+      aria-label="Table navigation"
+    >
+      <ul className="inline-flex items-center -space-x-px">
+        {/* <li>
       <button
         disabled={!canPreviousPage}
         onClick={() => gotoPage(0)}
@@ -84,53 +109,57 @@ const MyPager = ({canPreviousPage,previousPage,nextPage,canNextPage,gotoPage,pag
           <path d="M66.6,108.91c1.55,1.63,2.31,3.74,2.28,5.85c-0.03,2.11-0.84,4.2-2.44,5.79l-0.12,0.12c-1.58,1.5-3.6,2.23-5.61,2.2 c-2.01-0.03-4.02-0.82-5.55-2.37C37.5,102.85,20.03,84.9,2.48,67.11c-0.07-0.05-0.13-0.1-0.19-0.16C0.73,65.32-0.03,63.19,0,61.08 c0.03-2.11,0.85-4.21,2.45-5.8l0.27-0.26C20.21,37.47,37.65,19.87,55.17,2.36C56.71,0.82,58.7,0.03,60.71,0 c2.01-0.03,4.03,0.7,5.61,2.21l0.15,0.15c1.57,1.58,2.38,3.66,2.41,5.76c0.03,2.1-0.73,4.22-2.28,5.85L19.38,61.23L66.6,108.91 L66.6,108.91z M118.37,106.91c1.54,1.62,2.29,3.73,2.26,5.83c-0.03,2.11-0.84,4.2-2.44,5.79l-0.12,0.12 c-1.57,1.5-3.6,2.23-5.61,2.21c-2.01-0.03-4.02-0.82-5.55-2.37C89.63,101.2,71.76,84.2,54.24,67.12c-0.07-0.05-0.14-0.11-0.21-0.17 c-1.55-1.63-2.31-3.76-2.28-5.87c0.03-2.11,0.85-4.21,2.45-5.8C71.7,38.33,89.27,21.44,106.8,4.51l0.12-0.13 c1.53-1.54,3.53-2.32,5.54-2.35c2.01-0.03,4.03,0.7,5.61,2.21l0.15,0.15c1.57,1.58,2.38,3.66,2.41,5.76 c0.03,2.1-0.73,4.22-2.28,5.85L71.17,61.23L118.37,106.91L118.37,106.91z"></path>
         </svg>
       </button>
-    </li>
-    <li>
-      <button
-        disabled={!canPreviousPage}
-        onClick={previousPage}
-        title="Previous"
-        className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-      >
-        <span className="sr-only">Previous</span>
-        <svg
-          className="w-5 h-5"
-          aria-hidden="true"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
-    </li>
-    <li>
-      <button
-        onClick={nextPage}
-        disabled={!canNextPage}
-        className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-      >
-        <span className="sr-only">Next</span>
-        <svg
-          className="w-5 h-5"
-          aria-hidden="true"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
-    </li>
-    <li>
+    </li> */}
+        <li>
+          <button
+            disabled={!canPreviousPage}
+            onClick={previousPage}
+            title="Previous"
+            className="flex px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+
+            // className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            <span className="sr-only">Previous</span>
+            <svg
+              className="w-5 h-5"
+              aria-hidden="true"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={nextPage}
+            disabled={!canNextPage}
+            className="flex px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+
+            // className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            <span className="sr-only">Next</span>
+            <svg
+              className="w-5 h-5"
+              aria-hidden="true"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </li>
+        {/* <li>
       <button
         onClick={() => gotoPage(pageCount - 1)}
         disabled={!canNextPage}
@@ -152,30 +181,44 @@ const MyPager = ({canPreviousPage,previousPage,nextPage,canNextPage,gotoPage,pag
           <path d="M54.03 108.91a8.288 8.288 0 00-2.28 5.85c.03 2.11.84 4.2 2.44 5.79l.12.12c1.58 1.5 3.6 2.23 5.61 2.2 2.01-.03 4.01-.82 5.55-2.37 17.66-17.66 35.13-35.61 52.68-53.4.07-.05.13-.1.19-.16a8.335 8.335 0 002.28-5.87 8.323 8.323 0 00-2.45-5.8l-.27-.26C100.43 37.47 82.98 19.87 65.46 2.36A7.956 7.956 0 0059.92 0c-2.01-.03-4.03.7-5.61 2.21l-.15.15a8.318 8.318 0 00-2.41 5.76c-.03 2.1.73 4.22 2.28 5.85l47.22 47.27-47.22 47.67zm-51.77-2A8.265 8.265 0 000 112.74c.03 2.11.84 4.2 2.44 5.79l.12.12c1.57 1.5 3.6 2.23 5.61 2.21 2.01-.03 4.02-.82 5.55-2.37C31.01 101.2 48.87 84.2 66.39 67.12c.07-.05.14-.11.21-.17a8.335 8.335 0 002.28-5.87 8.323 8.323 0 00-2.45-5.8C48.94 38.33 31.36 21.44 13.83 4.51l-.12-.13a7.945 7.945 0 00-5.54-2.35c-2.01-.03-4.03.7-5.61 2.2l-.15.15A8.336 8.336 0 000 10.14c-.03 2.1.73 4.22 2.28 5.85l47.18 45.24-47.2 45.68z" />
         </svg>
       </button>
-    </li>
-  </ul>
-  {/* <span className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-    Page
-    <input
-      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-14 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      type="number"
-      defaultValue={pageIndex + 1}
-      onBlur={(e) => {
-        const page = e.target.value ? Number(e.target.value) - 1 : 0;
-        gotoPage(page);
-      }}
-      // max={pageOptions.length}
-    />
-    <strong>
-      of{" "}
-      <span className="text-gray-900 dark:text-white">
-        {pageOptions.length}
+    </li> */}
+      </ul>
+      <span className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+        Page
+        <form onSubmit={(e)=>{
+          e.preventDefault();
+          console.log("submit")
+          handleGotoPage();
+          // gotoPage(Number(pageNumber)-1);
+        }}>
+          <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-14 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            type="number"
+            value={pageNumber}
+            // defaultValue={pageIndex + 1}
+            onChange={(e) => {
+              setPageNumber(e.target.value);
+            }}
+            onBlur={(e) => {
+              console.log("blur")
+              // const page = e.target.value ? Number(e.target.value) - 1 : 0;
+              // gotoPage(page);
+              handleGotoPage();
+            }}
+            min={1}
+            max={pageOptions.length}
+          />
+        </form>
+        <strong>
+          of{" "}
+          <span className="text-gray-900 dark:text-white">
+            {pageOptions.length}
+          </span>
+        </strong>
       </span>
-    </strong>
-  </span> */}
 
-  {/* <RefreshButton onRefresh={onRefresh} /> */}
-  {/* <button
+      {/* <RefreshButton onRefresh={onRefresh} /> */}
+      {/* <button
     onClick={() => setAllFilters([])}
     type="button"
     disabled=""
@@ -185,7 +228,7 @@ const MyPager = ({canPreviousPage,previousPage,nextPage,canNextPage,gotoPage,pag
     RESET
   </button> */}
 
-  <div className="ml-auto text-sm font-normal text-gray-500 dark:text-gray-400">
+      {/* <div className="ml-auto text-sm font-normal text-gray-500 dark:text-gray-400">
     Showing{" "}
     <span className="font-semibold text-gray-900 dark:text-white">
       {pageIndex * pageSize + 1}-
@@ -210,9 +253,10 @@ const MyPager = ({canPreviousPage,previousPage,nextPage,canNextPage,gotoPage,pag
         Show {pageSize}
       </option>
     ))}
-  </select>
-</nav>
-}
+  </select> */}
+    </nav>
+  );
+};
 const TableLayout = ({ data, columns, onRefresh }) => {
   const defaultColumn = React.useMemo(
     () => ({
@@ -262,7 +306,6 @@ const TableLayout = ({ data, columns, onRefresh }) => {
     state: { pageIndex, pageSize, globalFilter },
   } = tableInstance;
   // console.log("tableInstance", tableInstance);
-  console.log({headerGroups})
   return (
     <>
       <div className="flex gap-2 items-center mb-3">
@@ -286,14 +329,15 @@ const TableLayout = ({ data, columns, onRefresh }) => {
           RESET
         </button> */}
       </div>
-      <div className="relative overflow-x-auto shadow-md  table-wrp block max-h-[68vh] mb-3">
+      <div className="relative overflow-x-auto shadow-md  table-wrp block max-h-[61.1vh] ">
         <table
           className="w-full text-sm text-left text-gray-500 dark:text-gray-400"
           {...getTableProps()}
         >
-          <thead className=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-          //  sticky top-0"
-           >
+          <thead
+            className=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            //  sticky top-0"
+          >
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 <th
@@ -303,18 +347,17 @@ const TableLayout = ({ data, columns, onRefresh }) => {
                   Sr
                 </th>
                 {headerGroup.headers.map((column) => {
-                  // debugger
                   // console.log("column",column)
                   return (
-                  <th
-                    scope="col"
-                    className="px-3 py-2 border-[1px] dark:border-gray-600 font-bold"
-                    {...column.getHeaderProps()}
-                    style={{width:column.width}}
-                  >
-                    <div className="flex">
-                      <div>{column.render("Header")}</div>
-                      {/* <span {...column.getSortByToggleProps()}>
+                    <th
+                      scope="col"
+                      className="px-3 py-2 border-[1px] dark:border-gray-600 font-bold"
+                      {...column.getHeaderProps()}
+                      style={{ width: column.width }}
+                    >
+                      <div className="flex">
+                        <div>{column.render("Header")}</div>
+                        {/* <span {...column.getSortByToggleProps()}>
                         {column.isSorted ? (
                           column.isSortedDesc ? (
                             <svg
@@ -352,14 +395,15 @@ const TableLayout = ({ data, columns, onRefresh }) => {
                       <div className="relative">
                         {column.canFilter ? column.render("Filter") : null}
                       </div> */}
-                    </div>
-                  </th>
-                )})}
+                      </div>
+                    </th>
+                  );
+                })}
               </tr>
             ))}
           </thead>
           <tbody {...getTableBodyProps()} className="h-96 overflow-y-auto">
-            {rows?.map((row) => {
+            {page?.map((row) => {
               prepareRow(row);
               const rowIndex = row?.index + 1;
               const stripClass =
@@ -431,7 +475,19 @@ const TableLayout = ({ data, columns, onRefresh }) => {
           </tbody>
         </table>
       </div>
-            {/* <MyPager canPreviousPage={canPreviousPage} previousPage={previousPage} nextPage={nextPage} canNextPage={canNextPage} gotoPage={gotoPage} pageCount={pageCount} pageSize={pageSize} rows={rows} setPageSize={setPageSize} pageIndex={pageIndex} /> */}
+      <MyPager
+        canPreviousPage={canPreviousPage}
+        previousPage={previousPage}
+        nextPage={nextPage}
+        canNextPage={canNextPage}
+        gotoPage={gotoPage}
+        pageCount={pageCount}
+        pageSize={pageSize}
+        rows={rows}
+        setPageSize={setPageSize}
+        pageIndex={pageIndex}
+        pageOptions={pageOptions}
+      />
     </>
   );
 };
