@@ -68,6 +68,7 @@ const MyPager = ({
   rows,
   setPageSize,
   pageOptions,
+  onRefresh
 }) => {
   const [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
@@ -220,7 +221,7 @@ const MyPager = ({
         </strong>
       </span>
 
-      {/* <RefreshButton onRefresh={onRefresh} /> */}
+      <RefreshButton onRefresh={onRefresh} />
       {/* <button
     onClick={() => setAllFilters([])}
     type="button"
@@ -523,6 +524,7 @@ const TableLayout = ({ data, columns, onRefresh }) => {
         setPageSize={setPageSize}
         pageIndex={pageIndex}
         pageOptions={pageOptions}
+        onRefresh={onRefresh}
       />
     </>
   );
