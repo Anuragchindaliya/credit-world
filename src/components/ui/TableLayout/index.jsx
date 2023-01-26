@@ -429,9 +429,9 @@ const TableLayout = ({ data, columns, onRefresh }) => {
                           </svg>
                         )}
                         </span> */}
-                      {/* <div className="relative">
+                      <div className="relative">
                         {column.canFilter ? column.render("Filter") : null}
-                      </div> */}
+                      </div>
                       </div>
                     </th>
                   );
