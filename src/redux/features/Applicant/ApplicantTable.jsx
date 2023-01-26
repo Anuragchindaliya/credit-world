@@ -23,21 +23,21 @@ const ApplicantTable = () => {
     link.click();
     link.remove();
   };
-  // const banksData = useMemo(() => {
-  //   const result = data?.result;
-  //   if (!Boolean(result)) {
-  //     return [];
-  //   }
-  //   const allBankCount = data?.result.reduce((acc, cur) => {
-  //     const { bankId, bankName } = cur;
-  //     acc[bankId]
-  //       ? ++acc[bankId].count
-  //       : (acc[bankId] = { bankName, count: 1 });
-  //     return acc;
-  //     // return (acc[bankId]=(acc[bankId] || {bankName,count:1}),acc)
-  //   }, {});
-  //   return Object.values(allBankCount);
-  // }, [data?.result]);
+  const banksData = useMemo(() => {
+    const result = data?.result;
+    if (!Boolean(result)) {
+      return [];
+    }
+    const allBankCount = data?.result.reduce((acc, cur) => {
+      const { bankId, bankName } = cur;
+      acc[bankId]
+        ? ++acc[bankId].count
+        : (acc[bankId] = { bankName, count: 1 });
+      return acc;
+      // return (acc[bankId]=(acc[bankId] || {bankName,count:1}),acc)
+    }, {});
+    return Object.values(allBankCount);
+  }, [data?.result]);
   // console.log({ banksData });
   // const content =
   if (isLoading) {
@@ -81,7 +81,7 @@ const ApplicantTable = () => {
         <h2 className="text-2xl font-semibold sm:text-3xl dark:text-gray-100">
           Applicants
         </h2>
-        {/* <div className="m-auto hidden sm:flex gap-4 font-semibold">
+        <div className="m-auto hidden sm:flex gap-4 font-semibold">
           {banksData?.map((bd, i) => {
             const { bankName, count } = bd;
             return (
@@ -97,7 +97,7 @@ const ApplicantTable = () => {
               </div>
             );
           })}
-        </div> */}
+        </div>
 
         <button
           onClick={handleDownload}

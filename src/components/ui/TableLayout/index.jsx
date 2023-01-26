@@ -430,7 +430,7 @@ const TableLayout = ({ data, columns, onRefresh }) => {
                           </svg>
                         )}
                         </span> */}
-                      <div className="relative">
+                      <div className="relative ml-auto">
                         {column.canFilter ? column.render("Filter") : null}
                       </div>
                       </div>
