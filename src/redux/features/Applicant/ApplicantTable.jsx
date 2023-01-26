@@ -77,7 +77,7 @@ const ApplicantTable = () => {
   }
   return (
     <div className="px-4 py-2 ">
-      <div className="flex items-center pb-2">
+      <div className="flex items-center pb-2 gap-2">
         <h2 className="text-2xl font-semibold sm:text-3xl dark:text-gray-100">
           Applicants
         </h2>
@@ -86,14 +86,14 @@ const ApplicantTable = () => {
             const { bankName, count } = bd;
             return (
               <div
-                className="shadow hover:shadow-lg rounded-lg overflow-hidden flex"
+                className="  overflow-hidden flex"
                 key={i}
                 title={`${bankName} recived ${count} applicants`}
               >
-                <div className="bg-blue-200 w-full h-full px-3 py-1">
+                <div className="bg-blue-100 text-blue-800 w-full h-full px-3 py-1 border rounded-none border-r-0 rounded-l-lg border-blue-100 dark:bg-blue-900 dark:text-blue-100 dark:border-blue-800">
                   {bankName}
                 </div>
-                <div className="bg-red-600 text-white px-3 py-1 ">{count}</div>
+                <div className="bg-red-100 text-red-700 px-3 py-1 rounded-r-lg border border-red-100 border-l-0 dark:bg-red-900 dark:text-red-300 dark:border-red-800 flex items-center">{count}</div>
               </div>
             );
           })}
@@ -104,7 +104,7 @@ const ApplicantTable = () => {
           // className="btn credit-btn box-shadow"
           // className="btn  box-shadow bg-danger  rounded text-white"
           title="Download Applicant CSV"
-          className="flex items-center justify-between ml-auto md:px-3 p-2 bg-red-600 hover:bg-red-700 rounded text-white text-sm dark:bg-red-700 dark:hover:bg-red-600"
+          className="flex items-center justify-between ml-auto md:px-3 p-2 bg-red-50 hover:bg-red-100 rounded text-red-700 text-sm  dark:hover:bg-red-800 dark:hover:text-red-100 dark:bg-red-900 dark:text-red-300"
         >
           {/* {isDownloading ? <>Downloading...</> : <>Download CSV</>} */}
           {isDownloading ? (

@@ -36,7 +36,7 @@ const RefreshButton = ({ onRefresh }) => {
       type="button"
       disabled=""
       title="refresh"
-      className="inline-flex items-center justify-center w-auto px-3 py-2 space-x-2 text-sm font-medium text-white transition bg-red-700 dark:hover:bg-red-600 border border-red-700 rounded appearance-none cursor-pointer select-none hover:border-red-800 hover:bg-red-800 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:pointer-events-none disabled:opacity-75"
+      className="inline-flex items-center justify-center w-auto px-3 py-2 space-x-2 text-sm font-medium text-gray-600 transition  border border-gray-300 dark:border-gray-700 rounded appearance-none cursor-pointer select-none hover:bg-gray-200 hover:text-gray-900 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:pointer-events-none disabled:opacity-75 dark:hover:bg-gray-700 dark:hover:text-gray-100 dark:bg-gray-800 dark:text-gray-300"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -228,7 +228,7 @@ const MyPager = ({
     type="button"
     disabled=""
     title="Reset filter"
-    className="hidden sm:inline-flex items-center justify-center w-auto px-3 py-2 space-x-2 text-sm  text-white transition bg-red-700 dark:hover:bg-red-600 border border-red-700 rounded appearance-none cursor-pointer select-none hover:border-red-800 hover:bg-red-800 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:pointer-events-none disabled:opacity-75"
+    className="hidden sm:inline-flex items-center justify-center w-auto px-3 py-2 space-x-2 text-sm  text-red-700 font-semibold transition bg-red-100 dark:hover:bg-red-800  rounded appearance-none cursor-pointer select-none hover:border-red-800 hover:bg-red-200 focus:border-red-300 focus:outline-none focus:ring-2 focus:ring-red-300 disabled:pointer-events-none disabled:opacity-75 dark:bg-red-900 dark:text-red-300 dark:hover:text-red-100"
   >
     RESET
   </button>
@@ -325,7 +325,7 @@ const TableLayout = ({ data, columns, onRefresh }) => {
           console.log({csvData,data});
           makeCsv(getTableDataForExport(csvData, columns), `applicants_${Date.now()}.csv`)
         }}
-          className="text-red-700 bg-red-100 border border-red-200 hover:bg-red-200 hover:text-red-900 disabled:hover:bg-white focus:ring-red-700 focus:text-red-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-2 dark:disabled:hover:bg-gray-800  group flex h-min items-center justify-center p-0.5 text-center font-medium focus:z-10 rounded-lg"
+          className="text-gray-700 bg-gray-100 border border-gray-300 hover:bg-gray-200 hover:text-gray-900 disabled:hover:bg-white focus:ring-red-700 focus:text-red-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-2 dark:disabled:hover:bg-gray-800  group flex h-min items-center justify-center p-0.5 text-center font-medium focus:z-10 rounded-lg"
           type="button"
         >
           <span className="flex items-center rounded-md text-sm px-3 py-2">
