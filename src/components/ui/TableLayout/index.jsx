@@ -372,8 +372,8 @@ const TableLayout = ({ data, columns, onRefresh }) => {
           {...getTableProps()}
         >
           <thead
-            className=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-            //  sticky top-0"
+            className=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400
+             sticky top-0"
           >
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
