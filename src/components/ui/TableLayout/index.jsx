@@ -68,7 +68,8 @@ const MyPager = ({
   rows,
   setPageSize,
   pageOptions,
-  onRefresh
+  onRefresh,
+  setAllFilters
 }) => {
   const [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
@@ -222,15 +223,15 @@ const MyPager = ({
       </span>
 
       <RefreshButton onRefresh={onRefresh} />
-      {/* <button
+      <button
     onClick={() => setAllFilters([])}
     type="button"
     disabled=""
     title="Reset filter"
-    className="inline-flex items-center justify-center w-auto px-3 py-2 space-x-2 text-sm  text-white transition bg-red-700 dark:hover:bg-red-600 border border-red-700 rounded appearance-none cursor-pointer select-none hover:border-red-800 hover:bg-red-800 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:pointer-events-none disabled:opacity-75"
+    className="hidden sm:inline-flex items-center justify-center w-auto px-3 py-2 space-x-2 text-sm  text-white transition bg-red-700 dark:hover:bg-red-600 border border-red-700 rounded appearance-none cursor-pointer select-none hover:border-red-800 hover:bg-red-800 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:pointer-events-none disabled:opacity-75"
   >
     RESET
-  </button> */}
+  </button>
 
       <div className="ml-auto text-sm font-normal text-gray-500 dark:text-gray-400">
         Showing{" "}
@@ -525,6 +526,7 @@ const TableLayout = ({ data, columns, onRefresh }) => {
         pageIndex={pageIndex}
         pageOptions={pageOptions}
         onRefresh={onRefresh}
+        setAllFilters={setAllFilters}
       />
     </>
   );
