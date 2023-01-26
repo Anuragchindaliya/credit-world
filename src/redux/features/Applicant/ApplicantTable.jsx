@@ -1,65 +1,14 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import Loader from "../../../components/ui/button/Loader";
 import TableLayout from "../../../components/ui/TableLayout";
-import { SelectColumnFilter } from "../../../components/ui/TableLayout/ColumnFilter";
 import {
   useApplicantsQuery,
   useExportApplicantCSVMutation,
 } from "./applicantApi";
-const SubsColumns = [
-  {
-    Header: "Name",
-    accessor: "name", // accessor is the "key" in the data
-    disableFilters: true,
-    size: 20,
-  },
-  {
-    Header: "Salary",
-    accessor: "salary",
-    disableFilters: true,
-  },
-  {
-    Header: "ITR",
-    accessor: "itr",
-    disableFilters: true,
-  },
-  {
-    Header: "cardUser",
-    accessor: "cardUser",
-    // disableFilters: true,
-    Cell: ({ value }) => (value ? "YES" : "NO"),
-    Filter: SelectColumnFilter,
-  },
-  {
-    Header: "Bank Name",
-    accessor: "bankName",
-    width:"200px",
-    Filter: SelectColumnFilter,
-  },
-  {
-    Header: "Contact",
-    accessor: "contact",
-    disableFilters: true,
-  },
-  {
-    Header: "Email",
-    accessor: "email",
-    disableFilters: true,
-  },
-  {
-    Header: "Pincode",
-    accessor: "pincode",
-    disableFilters: true,
-  },
-  {
-    Header: "Created At",
-    accessor: "createdAt",
-    Cell: ({ value }) => new Date(value).toLocaleString(),
-    disableFilters: true,
-  },
-];
+import SubsColumns from "./columns";
+
 const ApplicantTable = () => {
-  const columns = useMemo(()=>SubsColumns,[])
+  const columns = useMemo(() => SubsColumns, []);
   const { data, error, isLoading, isError, refetch } = useApplicantsQuery();
   const [downlaodCSV, { isLoading: isDownloading }] =
     useExportApplicantCSVMutation();
@@ -69,7 +18,7 @@ const ApplicantTable = () => {
     const url = window.URL.createObjectURL(new Blob([csvData]));
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", `subscribers_${Date.now()}.csv`);
+    link.setAttribute("download", `applicants_${Date.now()}.csv`);
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -155,7 +104,7 @@ const ApplicantTable = () => {
           // className="btn credit-btn box-shadow"
           // className="btn  box-shadow bg-danger  rounded text-white"
           title="Download Applicant CSV"
-          className="flex items-center justify-between ml-auto md:px-3 p-2 bg-red-600 hover:bg-red-700 dark:hover:bg-red-500 rounded text-white text-sm"
+          className="flex items-center justify-between ml-auto md:px-3 p-2 bg-red-600 hover:bg-red-700 rounded text-white text-sm dark:bg-red-700 dark:hover:bg-red-600"
         >
           {/* {isDownloading ? <>Downloading...</> : <>Download CSV</>} */}
           {isDownloading ? (
@@ -184,11 +133,7 @@ const ApplicantTable = () => {
           )}
         </button>
       </div>
-      <TableLayout
-        data={data.result}
-        columns={columns}
-        onRefresh={refetch}
-      />
+      <TableLayout data={data.result} columns={columns} onRefresh={refetch} />
     </div>
   );
 };

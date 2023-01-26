@@ -8,6 +8,7 @@ import {
   useSortBy,
 } from "react-table";
 import GlobalFilter from "./GlobalFilter";
+// import { getTableDataForExport, makeCsv } from "./utils";
 function DefaultColumnFilter({
   column: { filterValue, preFilteredRows, setFilter },
 }) {
@@ -73,51 +74,51 @@ const MyPager = ({
     setPageNumber(pageIndex + 1);
   }, [pageIndex]);
 
-  const handleGotoPage= ()=>{
+  const handleGotoPage = () => {
     // const page = pageNumber ? Number(pageNumber) - 1 : 0;
     const page = Number(pageNumber) - 1;
-    if(page!=pageIndex){
+    if (page != pageIndex) {
       gotoPage(page);
     }
-  }
+  };
   return (
     <nav
       className="flex flex-wrap items-center gap-3 pt-3 pb-1 text-sm"
       aria-label="Table navigation"
     >
       <ul className="inline-flex items-center -space-x-px">
-        {/* <li>
-      <button
-        disabled={!canPreviousPage}
-        onClick={() => gotoPage(0)}
-        title="Previous"
-        className="flex px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-      >
-        <span className="sr-only">Previous</span>
-        <svg
-          className="w-3 h-5"
-          aria-hidden="true"
-          fill="currentColor"
-          //  viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-          // x="0px"
-          // y="0px"
-          viewBox="0 0 120.64 122.88"
-          xmlSpace="preserve"
-          // {...props}
-        >
-          <path d="M66.6,108.91c1.55,1.63,2.31,3.74,2.28,5.85c-0.03,2.11-0.84,4.2-2.44,5.79l-0.12,0.12c-1.58,1.5-3.6,2.23-5.61,2.2 c-2.01-0.03-4.02-0.82-5.55-2.37C37.5,102.85,20.03,84.9,2.48,67.11c-0.07-0.05-0.13-0.1-0.19-0.16C0.73,65.32-0.03,63.19,0,61.08 c0.03-2.11,0.85-4.21,2.45-5.8l0.27-0.26C20.21,37.47,37.65,19.87,55.17,2.36C56.71,0.82,58.7,0.03,60.71,0 c2.01-0.03,4.03,0.7,5.61,2.21l0.15,0.15c1.57,1.58,2.38,3.66,2.41,5.76c0.03,2.1-0.73,4.22-2.28,5.85L19.38,61.23L66.6,108.91 L66.6,108.91z M118.37,106.91c1.54,1.62,2.29,3.73,2.26,5.83c-0.03,2.11-0.84,4.2-2.44,5.79l-0.12,0.12 c-1.57,1.5-3.6,2.23-5.61,2.21c-2.01-0.03-4.02-0.82-5.55-2.37C89.63,101.2,71.76,84.2,54.24,67.12c-0.07-0.05-0.14-0.11-0.21-0.17 c-1.55-1.63-2.31-3.76-2.28-5.87c0.03-2.11,0.85-4.21,2.45-5.8C71.7,38.33,89.27,21.44,106.8,4.51l0.12-0.13 c1.53-1.54,3.53-2.32,5.54-2.35c2.01-0.03,4.03,0.7,5.61,2.21l0.15,0.15c1.57,1.58,2.38,3.66,2.41,5.76 c0.03,2.1-0.73,4.22-2.28,5.85L71.17,61.23L118.37,106.91L118.37,106.91z"></path>
-        </svg>
-      </button>
-    </li> */}
+        <li>
+          <button
+            disabled={!canPreviousPage}
+            onClick={() => gotoPage(0)}
+            title="Previous"
+            className="flex px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            <span className="sr-only">Previous</span>
+            <svg
+              className="w-3 h-5"
+              aria-hidden="true"
+              fill="currentColor"
+              //  viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              // x="0px"
+              // y="0px"
+              viewBox="0 0 120.64 122.88"
+              xmlSpace="preserve"
+              // {...props}
+            >
+              <path d="M66.6,108.91c1.55,1.63,2.31,3.74,2.28,5.85c-0.03,2.11-0.84,4.2-2.44,5.79l-0.12,0.12c-1.58,1.5-3.6,2.23-5.61,2.2 c-2.01-0.03-4.02-0.82-5.55-2.37C37.5,102.85,20.03,84.9,2.48,67.11c-0.07-0.05-0.13-0.1-0.19-0.16C0.73,65.32-0.03,63.19,0,61.08 c0.03-2.11,0.85-4.21,2.45-5.8l0.27-0.26C20.21,37.47,37.65,19.87,55.17,2.36C56.71,0.82,58.7,0.03,60.71,0 c2.01-0.03,4.03,0.7,5.61,2.21l0.15,0.15c1.57,1.58,2.38,3.66,2.41,5.76c0.03,2.1-0.73,4.22-2.28,5.85L19.38,61.23L66.6,108.91 L66.6,108.91z M118.37,106.91c1.54,1.62,2.29,3.73,2.26,5.83c-0.03,2.11-0.84,4.2-2.44,5.79l-0.12,0.12 c-1.57,1.5-3.6,2.23-5.61,2.21c-2.01-0.03-4.02-0.82-5.55-2.37C89.63,101.2,71.76,84.2,54.24,67.12c-0.07-0.05-0.14-0.11-0.21-0.17 c-1.55-1.63-2.31-3.76-2.28-5.87c0.03-2.11,0.85-4.21,2.45-5.8C71.7,38.33,89.27,21.44,106.8,4.51l0.12-0.13 c1.53-1.54,3.53-2.32,5.54-2.35c2.01-0.03,4.03,0.7,5.61,2.21l0.15,0.15c1.57,1.58,2.38,3.66,2.41,5.76 c0.03,2.1-0.73,4.22-2.28,5.85L71.17,61.23L118.37,106.91L118.37,106.91z"></path>
+            </svg>
+          </button>
+        </li>
         <li>
           <button
             disabled={!canPreviousPage}
             onClick={previousPage}
             title="Previous"
-            className="flex px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            // className="flex px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 
-            // className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span className="sr-only">Previous</span>
             <svg
@@ -139,9 +140,9 @@ const MyPager = ({
           <button
             onClick={nextPage}
             disabled={!canNextPage}
-            className="flex px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            // className="flex px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 
-            // className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span className="sr-only">Next</span>
             <svg
@@ -159,38 +160,40 @@ const MyPager = ({
             </svg>
           </button>
         </li>
-        {/* <li>
-      <button
-        onClick={() => gotoPage(pageCount - 1)}
-        disabled={!canNextPage}
-        className="flex px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-      >
-        <span className="sr-only">Next</span>
-        <svg
-          className="w-3 h-5"
-          aria-hidden="true"
-          fill="currentColor"
-          //  viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-          // x="0px"
-          // y="0px"
-          viewBox="0 0 120.64 122.88"
-          xmlSpace="preserve"
-          // {...props}
-        >
-          <path d="M54.03 108.91a8.288 8.288 0 00-2.28 5.85c.03 2.11.84 4.2 2.44 5.79l.12.12c1.58 1.5 3.6 2.23 5.61 2.2 2.01-.03 4.01-.82 5.55-2.37 17.66-17.66 35.13-35.61 52.68-53.4.07-.05.13-.1.19-.16a8.335 8.335 0 002.28-5.87 8.323 8.323 0 00-2.45-5.8l-.27-.26C100.43 37.47 82.98 19.87 65.46 2.36A7.956 7.956 0 0059.92 0c-2.01-.03-4.03.7-5.61 2.21l-.15.15a8.318 8.318 0 00-2.41 5.76c-.03 2.1.73 4.22 2.28 5.85l47.22 47.27-47.22 47.67zm-51.77-2A8.265 8.265 0 000 112.74c.03 2.11.84 4.2 2.44 5.79l.12.12c1.57 1.5 3.6 2.23 5.61 2.21 2.01-.03 4.02-.82 5.55-2.37C31.01 101.2 48.87 84.2 66.39 67.12c.07-.05.14-.11.21-.17a8.335 8.335 0 002.28-5.87 8.323 8.323 0 00-2.45-5.8C48.94 38.33 31.36 21.44 13.83 4.51l-.12-.13a7.945 7.945 0 00-5.54-2.35c-2.01-.03-4.03.7-5.61 2.2l-.15.15A8.336 8.336 0 000 10.14c-.03 2.1.73 4.22 2.28 5.85l47.18 45.24-47.2 45.68z" />
-        </svg>
-      </button>
-    </li> */}
+        <li>
+          <button
+            onClick={() => gotoPage(pageCount - 1)}
+            disabled={!canNextPage}
+            className="flex px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            <span className="sr-only">Next</span>
+            <svg
+              className="w-3 h-5"
+              aria-hidden="true"
+              fill="currentColor"
+              //  viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              // x="0px"
+              // y="0px"
+              viewBox="0 0 120.64 122.88"
+              xmlSpace="preserve"
+              // {...props}
+            >
+              <path d="M54.03 108.91a8.288 8.288 0 00-2.28 5.85c.03 2.11.84 4.2 2.44 5.79l.12.12c1.58 1.5 3.6 2.23 5.61 2.2 2.01-.03 4.01-.82 5.55-2.37 17.66-17.66 35.13-35.61 52.68-53.4.07-.05.13-.1.19-.16a8.335 8.335 0 002.28-5.87 8.323 8.323 0 00-2.45-5.8l-.27-.26C100.43 37.47 82.98 19.87 65.46 2.36A7.956 7.956 0 0059.92 0c-2.01-.03-4.03.7-5.61 2.21l-.15.15a8.318 8.318 0 00-2.41 5.76c-.03 2.1.73 4.22 2.28 5.85l47.22 47.27-47.22 47.67zm-51.77-2A8.265 8.265 0 000 112.74c.03 2.11.84 4.2 2.44 5.79l.12.12c1.57 1.5 3.6 2.23 5.61 2.21 2.01-.03 4.02-.82 5.55-2.37C31.01 101.2 48.87 84.2 66.39 67.12c.07-.05.14-.11.21-.17a8.335 8.335 0 002.28-5.87 8.323 8.323 0 00-2.45-5.8C48.94 38.33 31.36 21.44 13.83 4.51l-.12-.13a7.945 7.945 0 00-5.54-2.35c-2.01-.03-4.03.7-5.61 2.2l-.15.15A8.336 8.336 0 000 10.14c-.03 2.1.73 4.22 2.28 5.85l47.18 45.24-47.2 45.68z" />
+            </svg>
+          </button>
+        </li>
       </ul>
       <span className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
         Page
-        <form onSubmit={(e)=>{
-          e.preventDefault();
-          console.log("submit")
-          handleGotoPage();
-          // gotoPage(Number(pageNumber)-1);
-        }}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            // console.log("submit");
+            handleGotoPage();
+            // gotoPage(Number(pageNumber)-1);
+          }}
+        >
           <input
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-14 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="number"
@@ -200,7 +203,7 @@ const MyPager = ({
               setPageNumber(e.target.value);
             }}
             onBlur={(e) => {
-              console.log("blur")
+              // console.log("blur");
               // const page = e.target.value ? Number(e.target.value) - 1 : 0;
               // gotoPage(page);
               handleGotoPage();
@@ -228,32 +231,32 @@ const MyPager = ({
     RESET
   </button> */}
 
-      {/* <div className="ml-auto text-sm font-normal text-gray-500 dark:text-gray-400">
-    Showing{" "}
-    <span className="font-semibold text-gray-900 dark:text-white">
-      {pageIndex * pageSize + 1}-
-      {pageSize > rows.length
-        ? rows.length
-        : pageIndex * pageSize + pageSize}
-    </span>{" "}
-    of{" "}
-    <span className="font-semibold text-gray-900 dark:text-white">
-      {rows.length}
-    </span>
-  </div>
-  <select
-    className="block w-15 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    value={pageSize}
-    onChange={(e) => {
-      setPageSize(Number(e.target.value));
-    }}
-  >
-    {[5, 10, 20, 30, 40, 50].map((pageSize) => (
-      <option key={pageSize} value={pageSize}>
-        Show {pageSize}
-      </option>
-    ))}
-  </select> */}
+      <div className="ml-auto text-sm font-normal text-gray-500 dark:text-gray-400">
+        Showing{" "}
+        <span className="font-semibold text-gray-900 dark:text-white">
+          {pageIndex * pageSize + 1}-
+          {pageSize > rows.length
+            ? rows.length
+            : pageIndex * pageSize + pageSize}
+        </span>{" "}
+        of{" "}
+        <span className="font-semibold text-gray-900 dark:text-white">
+          {rows.length}
+        </span>
+      </div>
+      <select
+        className="block w-15 p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value={pageSize}
+        onChange={(e) => {
+          setPageSize(Number(e.target.value));
+        }}
+      >
+        {[5, 10, 20, 30, 40, 50].map((pageSize) => (
+          <option key={pageSize} value={pageSize}>
+            Show {pageSize}
+          </option>
+        ))}
+      </select>
     </nav>
   );
 };
@@ -303,9 +306,9 @@ const TableLayout = ({ data, columns, onRefresh }) => {
     previousPage,
     setPageSize,
     setAllFilters,
-    state: { pageIndex, pageSize, globalFilter },
+    state: { pageIndex, pageSize, globalFilter},
   } = tableInstance;
-  // console.log("tableInstance", tableInstance);
+  console.log("tableInstance", tableInstance);
   return (
     <>
       <div className="flex gap-2 items-center mb-3">
@@ -315,16 +318,49 @@ const TableLayout = ({ data, columns, onRefresh }) => {
           setGlobalFilter={setGlobalFilter}
         />
         {/* <button
+        onClick={() => {
+          const csvData = rows.map((row)=>row.values);
+          console.log({csvData,data});
+          makeCsv(getTableDataForExport(csvData, columns), `applicants_${Date.now()}.csv`)
+        }}
+          className="text-red-700 bg-red-100 border border-red-200 hover:bg-red-200 hover:text-red-900 disabled:hover:bg-white focus:ring-red-700 focus:text-red-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-2 dark:disabled:hover:bg-gray-800  group flex h-min items-center justify-center p-0.5 text-center font-medium focus:z-10 rounded-lg"
+          type="button"
+        >
+          <span className="flex items-center rounded-md text-sm px-3 py-2">
+            <div className="flex items-center gap-x-3">
+              <svg
+                stroke="currentColor"
+                fill="currentColor"
+                strokeWidth={0}
+                viewBox="0 0 20 20"
+                className="text-xl"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span>Export</span>
+            </div>
+          </span>
+        </button> */}
+        {/* <button
           // onClick={async () => {
           //   setRefreshing(true);
           //   const result = await onRefresh?.();
           //   setRefreshing(false);
           // }}
-          onClick={() => setAllFilters([])}
+          // onClick={() => setAllFilters([])}
           type="button"
           disabled=""
           title="reset"
-          className="inline-flex items-center justify-center w-auto px-3 py-2 space-x-2 text-sm  text-white transition bg-red-700 dark:hover:bg-red-600 border border-red-700 rounded appearance-none cursor-pointer select-none hover:border-red-800 hover:bg-red-800 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:pointer-events-none disabled:opacity-75"
+        className="inline-flex items-center py-2.5 px-3 text-sm font-medium text-white bg-red-600 rounded-lg border border-red-700 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-700 dark:hover:bg-red-600 dark:focus:ring-red-800"
+
+          // className="inline-flex items-center justify-center w-auto px-3 py-2 space-x-2 text-sm  text-white transition bg-red-700 dark:hover:bg-red-600 border border-red-700 rounded appearance-none cursor-pointer select-none hover:border-red-800 hover:bg-red-800 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:pointer-events-none disabled:opacity-75"
         >
           RESET
         </button> */}
@@ -391,8 +427,8 @@ const TableLayout = ({ data, columns, onRefresh }) => {
                             <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
                           </svg>
                         )}
-                      </span>
-                      <div className="relative">
+                        </span> */}
+                      {/* <div className="relative">
                         {column.canFilter ? column.render("Filter") : null}
                       </div> */}
                       </div>
@@ -406,14 +442,14 @@ const TableLayout = ({ data, columns, onRefresh }) => {
             {page?.map((row) => {
               prepareRow(row);
               const rowIndex = row?.index + 1;
-              const stripClass =
-                rowIndex % 2
-                  ? "bg-white dark:bg-gray-900 "
-                  : " bg-gray-50 dark:bg-gray-800";
+              // const stripClass =
+              //   rowIndex % 2
+              //     ? "bg-white dark:bg-gray-900 "
+              //     : " bg-gray-50 dark:bg-gray-800";
               return (
                 <tr
                   {...row.getRowProps()}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 even:bg-gray-50 dark:even:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-600 "
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 even:bg-gray-50 dark:even:bg-gray-900 hover:bg-red-50 dark:hover:bg-gray-600 "
                 >
                   <td scope="row" className={"px-3 py-2 "}>
                     {rowIndex}

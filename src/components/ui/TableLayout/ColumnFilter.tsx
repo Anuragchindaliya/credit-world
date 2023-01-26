@@ -26,7 +26,6 @@ export function SelectColumnFilter(props: any) {
 
   // Render a multi-select box
   const handleMenuShow = () => setMenuShow((b) => !b);
-  console.log({props})
   return (
     <div className="" onClick={(e) => e.stopPropagation()}>
       <div className="relative cursor-pointer pl-3" onClick={handleMenuShow}>
