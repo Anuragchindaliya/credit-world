@@ -8,7 +8,7 @@ import {
   useSortBy,
 } from "react-table";
 import GlobalFilter from "./GlobalFilter";
-// import { getTableDataForExport, makeCsv } from "./utils";
+import { getTableDataForExport, makeCsv } from "./utils";
 function DefaultColumnFilter({
   column: { filterValue, preFilteredRows, setFilter },
 }) {
@@ -319,7 +319,7 @@ const TableLayout = ({ data, columns, onRefresh }) => {
           globalFilter={globalFilter}
           setGlobalFilter={setGlobalFilter}
         />
-        {/* <button
+        <button
         onClick={() => {
           const csvData = rows.map((row)=>row.values);
           console.log({csvData,data});
@@ -349,7 +349,7 @@ const TableLayout = ({ data, columns, onRefresh }) => {
               <span>Export</span>
             </div>
           </span>
-        </button> */}
+        </button>
         {/* <button
           // onClick={async () => {
           //   setRefreshing(true);
