@@ -78,7 +78,7 @@ const ApplicantTable = () => {
   return (
     <div className="px-4 py-2 ">
       <div className="flex items-center pb-2 gap-2">
-        <h2 className="text-2xl font-semibold sm:text-3xl dark:text-gray-100">
+        <h2 className="text-2xl font-semibold sm:text-2xl dark:text-gray-100">
           Applicants
         </h2>
         <div className="m-auto hidden sm:flex gap-4 font-semibold">

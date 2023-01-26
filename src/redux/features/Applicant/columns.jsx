@@ -6,6 +6,7 @@ const SubsColumns = [
       accessor: "name", // accessor is the "key" in the data
       disableFilters: true,
       size: 20,
+      width:"100px"
     },
     {
       Header: "Salary",

@@ -82,15 +82,17 @@ const Header = () => {
                 </svg>
                 <span className="sr-only">Toggle sidebar</span>
               </button> */}
-              <Link to="/" className="flex mr-4 py-2.5">
-                <img
-                  src={crIcon}
-                  className="mr-3 h-8"
-                  alt="FlowBite Logo"
-                />
-                <span className="self-center text-2xl font-semibold whitespace-nowrap hidden md:block dark:text-white">
-                  Creditworld
-                </span>
+              <Link to="/" className="flex py-2.5 text-2xl items-center font-semibold  dark:text-white">
+
+                {/* <span className="self-center text-2xl font-semibold whitespace-nowrap hidden md:block dark:text-white"> */}
+                <span>CREDITW</span>
+                <span><img
+                    src={crIcon}
+                    className="h-5"
+                    alt="FlowBite Logo"
+                  /></span>
+                <span>RLD</span>
+                {/* </span> */}
               </Link>
               {/* <form action="#" method="GET" className="hidden lg:block lg:pl-2">
                 <label htmlFor="topbar-search" className="sr-only">
@@ -618,7 +620,7 @@ const Header = () => {
                 </div>
               </div>
               {/* <DarkThemeButton /> */}
-              <div 
+              <div
               // className='relative rounded-3xl overflow-hidden'
               >
                 {/* <button
@@ -642,8 +644,8 @@ const Header = () => {
                   LOGOUT
                 </button> */}
                 <button
-                 onClick={signout}
-                className="flex py-1 px-3 items-center gap-3 text-gray-900 rounded-md bg-gray-100 hover:bg-gray-200 transition-colors duration-200 dark:text-white dark:bg-gray-700 cursor-pointer dark:hover:bg-gray-600">
+                  onClick={signout}
+                  className="flex py-1 px-3 items-center gap-3 text-gray-900 rounded-md bg-gray-100 hover:bg-gray-200 transition-colors duration-200 dark:text-white dark:bg-gray-700 cursor-pointer dark:hover:bg-gray-600">
                   <svg
                     stroke="currentColor"
                     fill="none"
