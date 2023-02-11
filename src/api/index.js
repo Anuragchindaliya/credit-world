@@ -29,6 +29,9 @@ export const downloadCSV = () => {
 export const registerApplicant = (body) => {
   return api.post("applicants", body);
 };
+export const registerRequest = (body) => {
+  return api.post("requests", body);
+};
 export const registerApplier = (body) => {
   return api.post("applier", body);
 };

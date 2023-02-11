@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { registerApplicant } from "../../api";
 import ApplyForm from "../../components/ApplyForm";
 import CardSlider from "../../components/CardSlider";
 import Comparison from "./Camparison";
 import Feature from "./Feature";
 import ProcessSteps from "./ProcessSteps";
 
-const Register = () => {
+const Register = ({apiService}) => {
   return (
     <>
       <div className="bg-gray ">
@@ -32,7 +31,7 @@ const Register = () => {
               <CardSlider bankId={1} />
             </div>
             <div className="col-lg-5 mb-5 ">
-              <ApplyForm bankId={1} apiService={registerApplicant} />
+              <ApplyForm bankId={1} apiService={apiService} />
             </div>
           </div>
         </div>
