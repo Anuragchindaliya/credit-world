@@ -64,6 +64,15 @@ export const authApiSlice = apiSlice.injectEndpoints({
         cache: "no-cache",
       }),
     }),
+    exportRequestCSV: builder.mutation<Text, void>({
+      query: () => ({
+        url: "requests/export?bankId=1",
+        headers: {
+          "Content-Type": "text/csv",
+        },
+        cache: "no-cache",
+      }),
+    }),
   }),
 });
 
@@ -71,5 +80,6 @@ export const {
   useAppliersQuery,
   useGetSubscribersQuery,
   useExportApplicantCSVMutation,
+  useExportRequestCSVMutation,
   useApplicantsQuery
 } = authApiSlice;
