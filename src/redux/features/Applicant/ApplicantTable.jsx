@@ -4,6 +4,7 @@ import TableLayout from "../../../components/ui/TableLayout";
 import {
   useApplicantsQuery,
   useExportApplicantCSVMutation,
+  useExportRequestCSVMutation,
 } from "./applicantApi";
 import SubsColumns from "./columns";
 
@@ -12,6 +13,8 @@ const ApplicantTable = () => {
   const { data, error, isLoading, isError, refetch } = useApplicantsQuery();
   const [downlaodCSV, { isLoading: isDownloading }] =
     useExportApplicantCSVMutation();
+  const [downlaodRequesters, { isLoading: isDownloadingReq }] =
+    useExportRequestCSVMutation();
   const handleDownload = async () => {
     const result = await downlaodCSV();
     const csvData = result?.error?.data || result?.data;
@@ -19,6 +22,17 @@ const ApplicantTable = () => {
     const link = document.createElement("a");
     link.href = url;
     link.setAttribute("download", `applicants_${Date.now()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+  const handleDownloadRequest = async () => {
+    const result = await downlaodRequesters();
+    const csvData = result?.error?.data || result?.data;
+    const url = window.URL.createObjectURL(new Blob([csvData]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `requester_${Date.now()}.csv`);
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -100,11 +114,45 @@ const ApplicantTable = () => {
         </div>
 
         <button
-          onClick={handleDownload}
+          onClick={handleDownloadRequest}
           // className="btn credit-btn box-shadow"
           // className="btn  box-shadow bg-danger  rounded text-white"
           title="Download Applicant CSV"
           className="flex items-center justify-between ml-auto md:px-3 p-2 bg-red-50 hover:bg-red-100 rounded text-red-700 text-sm  dark:hover:bg-red-800 dark:hover:text-red-100 dark:bg-red-900 dark:text-red-300"
+        >
+          {/* {isDownloading ? <>Downloading...</> : <>Download CSV</>} */}
+          {isDownloadingReq ? (
+            <>
+              <Loader className="text-white " />
+              <div>Downloading...</div>
+            </>
+          ) : (
+            <>
+              <div className="w-6 mr-1">
+                <svg
+                  className=""
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div>Requesters</div>
+            </>
+          )}
+        </button>
+
+        <button
+          onClick={handleDownload}
+          // className="btn credit-btn box-shadow"
+          // className="btn  box-shadow bg-danger  rounded text-white"
+          title="Download Applicant CSV"
+          className="flex items-center justify-between ml-1 md:px-3 p-2 bg-red-50 hover:bg-red-100 rounded text-red-700 text-sm  dark:hover:bg-red-800 dark:hover:text-red-100 dark:bg-red-900 dark:text-red-300"
         >
           {/* {isDownloading ? <>Downloading...</> : <>Download CSV</>} */}
           {isDownloading ? (
@@ -128,7 +176,7 @@ const ApplicantTable = () => {
                   />
                 </svg>
               </div>
-              <div>Download CSV</div>
+              <div>Applicants</div>
             </>
           )}
         </button>
