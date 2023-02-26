@@ -32,6 +32,9 @@ export const registerApplicant = (body) => {
 export const registerRequest = (body) => {
   return api.post("requests", body);
 };
+export const registerEngage = (body) => {
+  return api.post("engage", body);
+};
 export const registerApplier = (body) => {
   return api.post("applier", body);
 };

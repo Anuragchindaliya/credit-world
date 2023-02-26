@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { z } from "zod";
 
 export const FormSchema = z.object({
@@ -32,3 +33,15 @@ export const FormSchema = z.object({
   }).min(1,{ message: "Salary is required" }),
   // occupation:
 });
+export const notify = (type, msgHtml) => {
+  toast?.[type](msgHtml, {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};
