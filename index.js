@@ -12,6 +12,7 @@ import applicantRoute from "./routes/applicantRoute.js";
 import applierRoute from "./routes/applierRoute.js";
 import userRouter from "./api/users/user.route.js";
 import requestRoute from "./routes/requestRoute.js";
+import engageRoute from "./routes/engageRoute.js";
 const app = express();
 // db.connect((err) => {
 //   if (err) {
@@ -34,6 +35,7 @@ app.use("/banks", bankRoute);
 app.use("/subs", subsRoute);
 app.use("/applicants", applicantRoute);
 app.use("/requests", requestRoute);
+app.use("/engage", engageRoute);
 app.use("/applier", applierRoute);
 app.use("/auth", userRouter);
 
