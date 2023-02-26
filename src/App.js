@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import DownloadCSV from "./pages/Subscribers";
 import Applicants from "./pages/Applicants";
 import { registerApplicant, registerRequest } from "./api";
+import EngageForm from "./components/ApplyForm/EngageForm";
 
 const Home = lazy(() => import("./pages"));
 const About = lazy(() => import("./pages/About"));
@@ -42,6 +43,7 @@ function App() {
     { path: "apply", element: <Apply title={"Apply"} /> },
     { path: "register", element: <Register title={"Register"} apiService={registerApplicant} /> },
     { path: "request", element: <Register title={"Request Now"} apiService={registerRequest} /> },
+    { path: "engage", element: <EngageForm title={"Engage Now"} apiService={registerRequest} /> },
     { path: "all/subscribers/download", element: <DownloadCSV title={"Download"} /> },
     { path: "register/applicants/download", element: <Applicants title={"Applicants"} /> },
     { path: "*", element: <NotFound title="Not Found" /> },

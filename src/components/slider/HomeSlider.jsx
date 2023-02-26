@@ -78,14 +78,14 @@ const slides = [
     bgimg: "assets/img/bg-img/21.jpg",
     targetLink: "/",
     button: (
-      <a
-        href={"/"}
+      <Link
+        to={"/engage"}
         className="btn credit-btn mt-2"
         data-animation="fadeInUp"
         data-delay="700ms"
       >
-        Discover
-      </a>
+        Engage Now
+      </Link>
     ),
   },
 ];
