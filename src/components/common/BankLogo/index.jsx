@@ -71,53 +71,62 @@ const BankLogo = () => {
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 30,
   });
-  if (banks.isLoading) return <div>Loading...</div>;
+  // if (banks.isLoading) return <div>Loading...</div>;
   if (banks.isError) return <div>{banks.error?.toString()}</div>;
   // console.log(banks.data?.data?.banks);
   return (
-    <div style={{ paddingBlock: "3em",backgroundColor:"#f7f7f7" }}>
+    <div style={{ paddingBlock: "3em", backgroundColor: "#f7f7f7" }}>
       <div className="elements-title mb-[2rem] text-center">
         <div className="line m-auto" />
         <h2 className="mt-3 font-medium">OUR PARTNERS</h2>
         <p>We have partnered with India's leading Financial Institutions.</p>
       </div>
-      <ReactOwlCarousel
-        className="banksSlider"
-        //   loop
-        //   margin={10}
-        //   nav
-        {...owlSetting}
-      >
-        {banks.data?.data?.banks?.map((d, i) => {
-          return (
-            <Link
-              key={i}
-              className="item"
-              to={"/cards/" + d?.slug}
-              style={{
-                width: "100%",
-                padding: "1em",
-                display: "flex",
-                objectFit: "contain",
-                overflow: "hidden",
-                alignItems: "center",
-              }}
-            >
-              {/* <h4>{i}</h4> */}
-              <img
-                src={d.img}
+      {banks.isLoading ? (
+        <div className="flex justify-center items-center">
+          <div className="spinner-border text-red-600 mx-2" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <span>Loading...</span>
+        </div>
+      ) : (
+        <ReactOwlCarousel
+          className="banksSlider"
+          //   loop
+          //   margin={10}
+          //   nav
+          {...owlSetting}
+        >
+          {banks.data?.data?.banks?.map((d, i) => {
+            return (
+              <Link
+                key={i}
+                className="item"
+                to={"/cards/" + d?.slug}
                 style={{
-                  margin: "auto",
-                  display: "block",
-                  objectFit: "contain",
                   width: "100%",
-                  // height: 100,
+                  padding: "1em",
+                  display: "flex",
+                  objectFit: "contain",
+                  overflow: "hidden",
+                  alignItems: "center",
                 }}
-              />
-            </Link>
-          );
-        })}
-      </ReactOwlCarousel>
+              >
+                {/* <h4>{i}</h4> */}
+                <img
+                  src={d.img}
+                  style={{
+                    margin: "auto",
+                    display: "block",
+                    objectFit: "contain",
+                    width: "100%",
+                    // height: 100,
+                  }}
+                />
+              </Link>
+            );
+          })}
+        </ReactOwlCarousel>
+      )}
     </div>
   );
 };

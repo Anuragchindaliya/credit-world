@@ -1,9 +1,19 @@
 import axios from "axios";
-
+import { sleep } from "./utils.ts";
 const api = axios.create({
   baseURL: "https://credit-world.onrender.com/",
   // baseURL: "http://localhost:5000",
   // baseURL: "/api",
+});
+// const addSleep = async (func)=>{
+//   await sleep(1000);
+//   return await func()
+// }
+api.interceptors.response.use(async (response) => {
+  // if (process.env.NODE_ENV === 'development') {
+    await sleep(10000);
+  // }
+  return response;
 });
 
 // BANK
