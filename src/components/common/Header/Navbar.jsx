@@ -14,21 +14,26 @@ const Navbar = () => {
     if (drawerShow) {
       setDrawerShow(false);
     }
-    window.scrollTo(0,0);
+    // window.scrollTo(0,0);
   }, [pathname]);
 
   return (
     <>
-    {/* Navbar Toggler */}
-    <div className="w-15 h-10 right-0 top-[4px] tb:hidden px-2 absolute flex  z-40 " onClick={handleDrawer}>
-                <span className="navbarToggler m-auto">
-                  <span className="rounded-sm cursor-pointer block h-1 mt-1 p-0 relative w-8 duration-300 bg-blue-900" />
-                  <span className="rounded-sm cursor-pointer block h-1 mt-1 p-0 relative w-8 duration-300 bg-blue-900" />
-                  <span className="rounded-sm cursor-pointer block h-1 mt-1 p-0 relative w-8 duration-300 bg-blue-900" />
-                </span>
-              </div>
+      {/* Navbar Toggler */}
       <div
-        className={`credit-main-menu w-0 h-0  tb:w-auto tb:h-auto  ${screenWidth < 990 ? "overflow-hidden":"overflow-visible"} "
+        className="w-15 h-10 right-0 top-[4px] tb:hidden px-2 absolute flex  z-40 "
+        onClick={handleDrawer}
+      >
+        <span className="m-auto navbarToggler">
+          <span className="relative block w-8 h-1 p-0 mt-1 duration-300 bg-blue-900 rounded-sm cursor-pointer" />
+          <span className="relative block w-8 h-1 p-0 mt-1 duration-300 bg-blue-900 rounded-sm cursor-pointer" />
+          <span className="relative block w-8 h-1 p-0 mt-1 duration-300 bg-blue-900 rounded-sm cursor-pointer" />
+        </span>
+      </div>
+      <div
+        className={`credit-main-menu w-0 h-0  tb:w-auto tb:h-auto  ${
+          screenWidth < 990 ? "overflow-hidden" : "overflow-visible"
+        } "
         id="sticker`}
         // style={{ width: 615 }}
       >
@@ -43,7 +48,6 @@ const Navbar = () => {
               className="classy-navbar justify-content-between"
               id="creditNav"
             >
-              
               {/* Menu */}
               {drawerShow && (
                 <div
@@ -59,19 +63,23 @@ const Navbar = () => {
                 />
               )}
               <div className={`classy-menu ${drawerShow ? "menu-on" : ""}`}>
-              <div className="top-contact-info align-items-center tb:hidden p-3">
-                <a
-                  href="mailto:support@creditworld.in"
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="support@creditworld.in"
-                  data-original-title="support@creditworld.in"
-                  className="flex"
-                  style={{display:"flex",gap:".5em"}}
-                >
-                  <img src="assets/img/core-img/message.png" style={{filter: "saturate(25.5)"}} alt="" />
-                  <span>support@creditworld.in</span>
-                </a>
+                <div className="p-3 top-contact-info align-items-center tb:hidden">
+                  <a
+                    href="mailto:support@creditworld.in"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="support@creditworld.in"
+                    data-original-title="support@creditworld.in"
+                    className="flex"
+                    style={{ display: "flex", gap: ".5em" }}
+                  >
+                    <img
+                      src="assets/img/core-img/message.png"
+                      style={{ filter: "saturate(25.5)" }}
+                      alt=""
+                    />
+                    <span>support@creditworld.in</span>
+                  </a>
                 </div>
                 {/* Close Button */}
                 <div className="classycloseIcon" onClick={handleDrawer}>
