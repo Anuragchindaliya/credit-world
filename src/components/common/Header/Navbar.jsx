@@ -14,6 +14,7 @@ const Navbar = () => {
     if (drawerShow) {
       setDrawerShow(false);
     }
+    window.scrollTo(0,0);
   }, [pathname]);
 
   return (
