@@ -52,7 +52,7 @@ export const createApplicant = async (req, res, next) => {
       subject: `Credit card applied`, // Subject line
       html: bodyHtml, // html body
     };
-    const info = await sendMail(mailFormat);
+    // const info = await sendMail(mailFormat);
     // console.log({info});
     // console.log("Message sent: %s", info.messageId);
     // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
@@ -60,11 +60,12 @@ export const createApplicant = async (req, res, next) => {
     // Preview only available when sending through an Ethereal account
     // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-    if (info?.rejected?.length) {
-      return res.json({ message: "Subscribe Error" });
-    } else {
-      messageRes += " subscribed";
-    }
+
+    // if (info?.rejected?.length) {
+    //   return res.json({ message: "Subscribe Error" });
+    // } else {
+    //   messageRes += " subscribed";
+    // }
   } catch (error) {
     console.log(error);
     next(error);
