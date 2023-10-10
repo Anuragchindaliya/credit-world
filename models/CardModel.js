@@ -74,6 +74,10 @@ class Card {
 
     return db.execute(sql);
   }
+  static getCount() {
+    const sql = "SELECT COUNT(*) FROM cards";
+    return db.execute(sql);
+  }
 }
 
 export default Card;

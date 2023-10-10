@@ -62,6 +62,10 @@ class Applier {
 
     return db.execute(sql);
   }
+  static getCount() {
+    const sql = "SELECT COUNT(*) FROM applier";
+    return db.execute(sql);
+  }
 }
 
 export default Applier;

@@ -42,7 +42,7 @@ class Engage {
   }
   static checkExist(cause) {
     const condition = Object.keys(cause).reduce((acc, key) => {
-      return `${acc} ${key}='${cause[key]}'`
+      return `${acc} ${key}='${cause[key]}'`;
     }, "");
     const sql = `SELECT * FROM engage WHERE${condition}`;
     return db.execute(sql);
@@ -60,13 +60,17 @@ class Engage {
     if (!!filter) {
       sql += ` WHERE ${filter}`;
     }
-    sql+=" ORDER BY id DESC";
+    sql += " ORDER BY id DESC";
     return db.execute(sql);
   }
 
   static findById(id) {
     let sql = `SELECT * FROM engage WHERE id = ${id};`;
 
+    return db.execute(sql);
+  }
+  static getCount() {
+    const sql = "SELECT COUNT(*) FROM engage";
     return db.execute(sql);
   }
 }

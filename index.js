@@ -13,6 +13,7 @@ import applierRoute from "./routes/applierRoute.js";
 import userRouter from "./api/users/user.route.js";
 import requestRoute from "./routes/requestRoute.js";
 import engageRoute from "./routes/engageRoute.js";
+import dashboardRoute from "./routes/dashboardRoute.js";
 const app = express();
 // db.connect((err) => {
 //   if (err) {
@@ -38,6 +39,7 @@ app.use("/requests", requestRoute);
 app.use("/engage", engageRoute);
 app.use("/applier", applierRoute);
 app.use("/auth", userRouter);
+app.use("/dashboard", dashboardRoute);
 
 // Global Error Handler. IMPORTANT function params MUST start with err
 app.use((err, req, res, next) => {

@@ -42,7 +42,7 @@ class Applicant {
   }
   static checkExist(cause) {
     const condition = Object.keys(cause).reduce((acc, key) => {
-      return `${acc} ${key}='${cause[key]}'`
+      return `${acc} ${key}='${cause[key]}'`;
     }, "");
     const sql = `SELECT * FROM applicants WHERE${condition}`;
     return db.execute(sql);
@@ -60,13 +60,24 @@ class Applicant {
     if (!!filter) {
       sql += ` WHERE ${filter}`;
     }
-    sql+=" ORDER BY id DESC";
+    sql += " ORDER BY id DESC";
     return db.execute(sql);
   }
 
   static findById(id) {
     let sql = `SELECT * FROM applicants WHERE id = ${id};`;
 
+    return db.execute(sql);
+  }
+  static getCount() {
+    const sql = "SELECT COUNT(*) FROM applicants";
+    return db.execute(sql);
+  }
+  static getRecent() {
+    const sql = "SELECT * FROM applicants ORDER BY id DESC LIMIT 5";
+    return db.execute(sql);
+  }
+  static execute(sql) {
     return db.execute(sql);
   }
 }

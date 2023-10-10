@@ -63,6 +63,10 @@ class Bank {
 
     return db.execute(sql);
   }
+  static getCount() {
+    const sql = "SELECT COUNT(*) FROM banks";
+    return db.execute(sql);
+  }
 }
 
 export default Bank;

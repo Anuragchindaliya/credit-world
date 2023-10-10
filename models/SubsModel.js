@@ -73,13 +73,18 @@ class Subs {
     return db.execute(sql);
   }
   static findAllJOIN() {
-    let sql = "SELECT subs.*, cards.name as cardName FROM subscribers as subs INNER JOIN cards ON subs.cardId=cards.id;";
+    let sql =
+      "SELECT subs.*, cards.name as cardName FROM subscribers as subs INNER JOIN cards ON subs.cardId=cards.id;";
     return db.execute(sql);
   }
 
   static findById(id) {
     let sql = `SELECT * FROM subscribers WHERE subId = ${id};`;
 
+    return db.execute(sql);
+  }
+  static getCount() {
+    const sql = "SELECT COUNT(*) FROM subscribers";
     return db.execute(sql);
   }
 }
