@@ -27,8 +27,13 @@ export const getDashboardDetails = async (req, res, next) => {
 
     const salesMade = await Applicant.execute(`SELECT COUNT(*) as saleCount
     FROM applicants
-    WHERE MONTH(createdAt) = MONTH(CURRENT_DATE())
-    AND YEAR(createdAt) = YEAR(CURRENT_DATE())`);
+    WHERE DATE(createdAt) = DATE(CURRENT_DATE())`);
+
+    // for month
+    // SELECT COUNT(*) as saleCount
+    // FROM applicants
+    // WHERE MONTH(createdAt) = MONTH(CURRENT_DATE())
+    // AND YEAR(createdAt) = YEAR(CURRENT_DATE())
 
     // select year(OrderDate),month(OrderDate),count(*)
     //  from Orders
